@@ -1,0 +1,18 @@
+//
+//  RegionMonitor.h
+//  Joymap
+//
+//  Created by gli on 2013/11/10.
+//  Copyright (c) 2013年 sekken. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface RegionMonitor : NSObject
++ (void)refresh;
++ (void)refreshWithAlertIfCannot;
++ (BOOL)deviceSupported;
+
++ (void)debugOutRegions;
+
+@end

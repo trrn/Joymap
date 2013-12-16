@@ -1,0 +1,73 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #import "Env.h"
+    #import "HttpUtil.h"
+    #import "ProcUtil.h"
+    #import "StringUtil.h"
+    #import "FileUtil.h"
+    #import "DefaultsUtil.h"
+    #import "ImageUtil.h"
+    #import "GeoUtil.h"
+    #import "LocationUtil.h"
+    #import "TimeUtil.h"
+
+    #import "NavigationController.h"
+#endif
+
+// ---- Application Dependent ----
+
+#define JDB_FILE_NAME @"jdb.sqlite"
+
+// user defalut keys
+#define DEF_SET_NOTIFY_SPOT        @"DEF_NOTIFY_SPOT"
+#define DEF_SET_JDB_LAST_UPDATED   @"DEF_JDB_LAST_UPDATED"
+#define DEF_SET_MAP_TYPE           @"DEF_SET_MAP_TYPE"
+#define DEF_SET_MAP_TRAFFIC        @"DEF_SET_MAP_TRAFFIC"
+
+#define DEF_SET_ADMIN              @"DEF_SET_ADMIN"
+
+// styles
+#define THUMBNAIL_CGSZ CGSizeMake(44, 44)
+
+// ---- Application Independent ----
+
+#ifdef DEBUG
+#define DLog(fmt, ...) NSLog((@"%s (%d) " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define DLog(...)
+#endif
+
+#define Log(fmt, ...) NSLog((@"%s (%d) " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define ELog(fmt, ...) NSLog((@"error %s (%d) " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define FLog(fmt, ...) NSLog((@"fatal %s (%d) " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#define Err(fmt, ...) [NSException.alloc initWithName:@"" reason:[NSString stringWithFormat:(@"%s (%d) "fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__] userInfo:nil]
+
+#define NSERR(fmt, ...) [NSError errorWithDomain:@"" code:-1 userInfo:@{ NSLocalizedDescriptionKey: [NSString stringWithFormat:(@"%s (%d) "fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__] }]
+
+#define Alert(title, fmt, ...) do { \
+    NSString *msg = [NSString stringWithFormat:fmt, ##__VA_ARGS__]; \
+    dispatch_async(dispatch_get_main_queue(), ^{    \
+        [[UIAlertView.alloc initWithTitle:title  \
+            message:msg    \
+            delegate:nil    \
+            cancelButtonTitle:nil   \
+            otherButtonTitles:NSLocalizedString(@"Close", nil), nil] show]; \
+        }); \
+    Log(@"Alert title[%@] msg[%@]", title, msg);    \
+} while(0)
+

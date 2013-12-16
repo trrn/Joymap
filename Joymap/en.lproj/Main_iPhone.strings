@@ -1,0 +1,201 @@
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.\nLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "0SR-BL-YVw"; */
+"0SR-BL-YVw.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.\nLorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "0Wn-Pn-6vD"; */
+"0Wn-Pn-6vD.text" = "Label";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "0rz-Gb-IWi"; */
+"0rz-Gb-IWi.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUINavigationItem"; title = "Setting"; ObjectID = "0zV-E6-Px7"; */
+"0zV-E6-Px7.title" = "Setting";
+
+/* Class = "IBUILabel"; text = "Credit"; ObjectID = "12q-ih-rod"; */
+"12q-ih-rod.text" = "Credit";
+
+/* Class = "IBUITableViewSection"; headerTitle = "About"; ObjectID = "1Wy-DH-Zae"; */
+"1Wy-DH-Zae.headerTitle" = "About";
+
+/* Class = "IBUILabel"; text = "Layout 1"; ObjectID = "2Is-wk-IgA"; */
+"2Is-wk-IgA.text" = "Layout 1";
+
+/* Class = "IBUITabBarItem"; title = "Map"; ObjectID = "373-9k-IYo"; */
+"373-9k-IYo.title" = "Map";
+
+/* Class = "IBUILabel"; text = "Layout 5"; ObjectID = "3Fh-KR-Mp6"; */
+"3Fh-KR-Mp6.text" = "Layout 5";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Notification"; ObjectID = "3HS-Ig-mpl"; */
+"3HS-Ig-mpl.headerTitle" = "Notification";
+
+/* Class = "IBUITableViewSection"; headerTitle = "To"; ObjectID = "3jT-KO-Rqg"; */
+"3jT-KO-Rqg.headerTitle" = "To";
+
+/* Class = "IBUITableViewSection"; headerTitle = "From"; ObjectID = "5nq-op-TTr"; */
+"5nq-op-TTr.headerTitle" = "From";
+
+/* Class = "IBUIButton"; normalTitle = "Play"; ObjectID = "5p4-Y0-Jpo"; */
+"5p4-Y0-Jpo.normalTitle" = "Play";
+
+/* Class = "IBUIButton"; normalTitle = "Update"; ObjectID = "7zL-66-hw8"; */
+"7zL-66-hw8.normalTitle" = "Update";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet,"; ObjectID = "8ot-vE-Ny7"; */
+"8ot-vE-Ny7.text" = "Lorem ipsum dolor sit er elit lamet,";
+
+/* Class = "IBUITableViewSection"; headerTitle = " "; ObjectID = "A3H-fm-Mkg"; */
+"A3H-fm-Mkg.headerTitle" = " ";
+
+/* Class = "IBUILabel"; text = "Editing"; ObjectID = "BVJ-VN-1M4"; */
+"BVJ-VN-1M4.text" = "Editing";
+
+/* Class = "IBUIViewController"; title = "Home"; ObjectID = "CZ4-MO-1fc"; */
+"CZ4-MO-1fc.title" = "Home";
+
+/* Class = "IBUIButton"; normalTitle = "Apple Maps Route"; ObjectID = "D6f-Ix-rmx"; */
+"D6f-Ix-rmx.normalTitle" = "Apple Maps Route";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non "; ObjectID = "DL6-9A-a7b"; */
+"DL6-9A-a7b.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non ";
+
+/* Class = "IBUIButton"; normalTitle = "Play"; ObjectID = "Db9-Nm-aRj"; */
+"Db9-Nm-aRj.normalTitle" = "Play";
+
+/* Class = "IBUILabel"; text = "Downloading.."; ObjectID = "Dke-6R-XQ9"; */
+"Dke-6R-XQ9.text" = "Downloading..";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "Gj9-9C-aTy"; */
+"Gj9-9C-aTy.text" = "Detail";
+
+/* Class = "IBUILabel"; text = "yyyy/MM/dd HH:mm:ss"; ObjectID = "HIQ-aQ-6Qi"; */
+"HIQ-aQ-6Qi.text" = "yyyy/MM/dd HH:mm:ss";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "J66-1a-yCA"; */
+"J66-1a-yCA.text" = "Title";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Spot Data"; ObjectID = "Ki4-r1-xoY"; */
+"Ki4-r1-xoY.headerTitle" = "Spot Data";
+
+/* Class = "IBUITabBarItem"; title = "Home"; ObjectID = "LMD-xE-MNk"; */
+"LMD-xE-MNk.title" = "Home";
+
+/* Class = "IBUIButton"; normalTitle = "Cancel"; ObjectID = "NzI-Fu-pqu"; */
+"NzI-Fu-pqu.normalTitle" = "Cancel";
+
+/* Class = "IBUILabel"; text = "Normal"; ObjectID = "O83-MX-HCK"; */
+"O83-MX-HCK.text" = "Normal";
+
+/* Class = "IBUILabel"; text = "Layout 4"; ObjectID = "OIg-0D-3xj"; */
+"OIg-0D-3xj.text" = "Layout 4";
+
+/* Class = "IBUILabel"; text = "Notify a spot of near"; ObjectID = "OTf-Vc-PzT"; */
+"OTf-Vc-PzT.text" = "Notify a spot of near";
+
+/* Class = "IBUIViewController"; title = "Map"; ObjectID = "QUy-BD-bpt"; */
+"QUy-BD-bpt.title" = "Map";
+
+/* Class = "IBUITabBarItem"; title = "List"; ObjectID = "Td1-sw-mKP"; */
+"Td1-sw-mKP.title" = "List";
+
+/* Class = "IBUINavigationItem"; title = "Select Layout"; ObjectID = "Ucz-RA-n6E"; */
+"Ucz-RA-n6E.title" = "Select Layout";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Pages"; ObjectID = "Uph-3a-ZZu"; */
+"Uph-3a-ZZu.headerTitle" = "Pages";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "WhQ-uR-sh1"; */
+"WhQ-uR-sh1.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "Zg8-Iq-f33"; */
+"Zg8-Iq-f33.text" = "Label";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "bJl-ZH-Cx6"; */
+"bJl-ZH-Cx6.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "ckE-Yd-zxw"; */
+"ckE-Yd-zxw.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUINavigationItem"; title = "Route"; ObjectID = "cwa-7P-Fcn"; */
+"cwa-7P-Fcn.title" = "Route";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "eW6-dW-7T1"; */
+"eW6-dW-7T1.text" = "Title";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "exZ-Lz-oSp"; */
+"exZ-Lz-oSp.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum"; ObjectID = "fFT-4E-jRa"; */
+"fFT-4E-jRa.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "fzC-2u-pmN"; */
+"fzC-2u-pmN.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUIButton"; normalTitle = "Play"; ObjectID = "i9z-ZG-tfJ"; */
+"i9z-ZG-tfJ.normalTitle" = "Play";
+
+/* Class = "IBUITabBarItem"; title = "Setting"; ObjectID = "o56-fX-YkX"; */
+"o56-fX-YkX.title" = "Setting";
+
+/* Class = "IBUITextField"; placeholder = "Name"; ObjectID = "oHJ-yR-bmn"; */
+"oHJ-yR-bmn.placeholder" = "Name";
+
+/* Class = "IBUIBarButtonItem"; title = "Here"; ObjectID = "oNa-Vk-x51"; */
+"oNa-Vk-x51.title" = "Here";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet,"; ObjectID = "ogY-bT-CYA"; */
+"ogY-bT-CYA.text" = "Lorem ipsum dolor sit er elit lamet,";
+
+/* Class = "IBUIBarButtonItem"; title = "Cancel"; ObjectID = "owV-pb-fIJ"; */
+"owV-pb-fIJ.title" = "Cancel";
+
+/* Class = "IBUIButton"; normalTitle = "Google Maps Route"; ObjectID = "pt3-AM-exF"; */
+"pt3-AM-exF.normalTitle" = "Google Maps Route";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "q2q-hw-spD"; */
+"q2q-hw-spD.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "IBUILabel"; text = "Layout 3"; ObjectID = "sNM-Uk-xUv"; */
+"sNM-Uk-xUv.text" = "Layout 3";
+
+/* Class = "IBUIBarButtonItem"; title = "OK"; ObjectID = "sP9-nP-iv6"; */
+"sP9-nP-iv6.title" = "OK";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute"; ObjectID = "tM8-hY-jax"; */
+"tM8-hY-jax.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute";
+
+/* Class = "IBUILabel"; text = "Layout 2"; ObjectID = "tW3-cs-YHW"; */
+"tW3-cs-YHW.text" = "Layout 2";
+
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "u1k-h3-tet"; */
+"u1k-h3-tet.text" = "Subtitle";
+
+/* Class = "IBUIButton"; normalTitle = "Play"; ObjectID = "uLn-Mf-9ju"; */
+"uLn-Mf-9ju.normalTitle" = "Play";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Map Setting"; ObjectID = "vDr-0T-dOe"; */
+"vDr-0T-dOe.headerTitle" = "Map Setting";
+
+/* Class = "IBUILabel"; text = "Types"; ObjectID = "vPI-Wq-7Xs"; */
+"vPI-Wq-7Xs.text" = "Types";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Marker"; ObjectID = "wUO-vM-Tr3"; */
+"wUO-vM-Tr3.headerTitle" = "Marker";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "wXV-0p-hi2"; */
+"wXV-0p-hi2.text" = "Detail";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat "; ObjectID = "wqC-Dn-OEF"; */
+"wqC-Dn-OEF.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat ";
+
+/* Class = "IBUILabel"; text = "Add Page"; ObjectID = "wvA-0h-YRv"; */
+"wvA-0h-YRv.text" = "Add Page";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "xhn-Qu-Yzi"; */
+"xhn-Qu-Yzi.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Traffic"; ObjectID = "yXn-T0-DcT"; */
+"yXn-T0-DcT.text" = "Traffic";
+
+/* Class = "IBUILabel"; text = "Delete Marker"; ObjectID = "z9D-gb-7dE"; */
+"z9D-gb-7dE.text" = "Delete Marker";
+
