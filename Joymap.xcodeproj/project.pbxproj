@@ -61,7 +61,6 @@
 		479BA39B180AB2B5008E640F /* JoymapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 479BA39A180AB2B5008E640F /* JoymapTests.m */; };
 		47BFBE01182509BD00A2D7D3 /* GeoSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFBE00182509BD00A2D7D3 /* GeoSearch.m */; };
 		47BFBE0418250B4600A2D7D3 /* GeoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFBE0318250B4600A2D7D3 /* GeoUtil.m */; };
-		47D2739E185F39A700EDF905 /* hoge.jdb in Resources */ = {isa = PBXBuildFile; fileRef = 47D2739D185F394200EDF905 /* hoge.jdb */; };
 		47E68652180B87C80065B45B /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E68651180B87C80065B45B /* Pin.m */; };
 		47E68655180B88980065B45B /* Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E68654180B88980065B45B /* Layout.m */; };
 		47E6865B180B8C180065B45B /* Kategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E6865A180B8C180065B45B /* Kategory.m */; };
@@ -191,7 +190,6 @@
 		47BFBE00182509BD00A2D7D3 /* GeoSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoSearch.m; sourceTree = "<group>"; };
 		47BFBE0218250B4600A2D7D3 /* GeoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoUtil.h; sourceTree = "<group>"; };
 		47BFBE0318250B4600A2D7D3 /* GeoUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoUtil.m; sourceTree = "<group>"; };
-		47D2739D185F394200EDF905 /* hoge.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = hoge.jdb; path = ../hoge.jdb; sourceTree = "<group>"; };
 		47E68650180B87C80065B45B /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
 		47E68651180B87C80065B45B /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
 		47E68653180B88980065B45B /* Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout.h; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 		470090C01817AAB3009FB810 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				47D2739D185F394200EDF905 /* hoge.jdb */,
 				470090C51817AB9F009FB810 /* thumbnail_tv.png */,
 				470090C11817AAB3009FB810 /* thumbnail_loading.png */,
 				470090C21817AAB3009FB810 /* thumbnail_nothing.png */,
@@ -569,7 +566,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47D2739E185F39A700EDF905 /* hoge.jdb in Resources */,
 				47F5C985185D5E4200399624 /* DACircularProgress in Resources */,
 				47F5C986185D5E4200399624 /* FMDB in Resources */,
 				470090C61817AB9F009FB810 /* thumbnail_tv.png in Resources */,
