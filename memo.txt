@@ -1,0 +1,59 @@
+
+- カメラ
+    http://news.mynavi.jp/column/iphone/003/index.html
+- スタイル
+- マーカー追加機能
+    layout選択
+    layout編集
+- 日本語化
+    storyboard
+- 経路
+- 一覧画面から地図へのリンク
+
+- 編集
+    画像
+        urlのみ対応(画像・動画をアップロードを行う)
+        サムネイル表示
+        タップでアルバム表示
+            選択後はメモリに保持
+            保存時にアップロード
+        保存時はresource1 (text)
+    表示
+        ないものはnil
+    保存
+        ないものは作成(itemsを更新していく)
+
+    追加 (pin.id == 0)
+        transaction
+            pin > layout > item
+
+    編集/削除 (pin.id != 0)
+        transaction
+            delete
+                item  > layout > pin
+                    item ... 他から使われていないこと
+                        select count(*) from layout_item where pin.id <> ? and item = ?
+            insert
+                pin > layout > item
+                    item ... update(if exists)/insert
+
+- 地図画像の取得
+https://developers.google.com/maps/documentation/staticmaps/?hl=ja&csw=1#Limits
+
+
+- no ActionSheet progress bar
+
+更新要否の判定
+
+バックグラウンドフェッチとの排他制御
+    ボタンで起動中
+        画面表示あり
+    バックグラウンドフェッチで起動中
+        画面表示？
+            フェッチ中に起動された場合何を表示するか。
+            起動されたら停止するか？
+                DL中です、的な表示？
+                    ボタンを非活性にしてプログレスは表示
+                        ConfigViewにpublicメソッド
+
+
