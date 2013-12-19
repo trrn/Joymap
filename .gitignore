@@ -32,4 +32,4 @@ distribution/
 *Tests/
 .rbenv-gemsets
 .ruby-version
-
+.vimrc.local

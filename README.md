@@ -2,15 +2,15 @@
 
 ##Setup
 
-###1. setup cocoapods (http://beta.cocoapods.org/?q=)  
+####1. setup cocoapods (http://beta.cocoapods.org/?q=)  
 
-`$ sudo gem install cocoapods`  
-`$ pod install`
+    $ sudo gem install cocoapods
+    $ pod install
 
-###2. open project  
-`$ open Joymap.xcworkspace`
+####2. open project  
+    $ open Joymap.xcworkspace
 
-###3. edit Joymap/Env.plist
+####3. edit Joymap/Env.plist
 ![env_plist.png](env_plist.png)  
 
 |Key                    |Description                |Required|  
@@ -24,9 +24,9 @@
 |JDBIdentifyHeaderName  |look forward..             | |  
 |GoogleMapsImageAPIKey  |look forward..             | |  
 
-###4. put jdb file into "Supporting Files"  
+####4. put jdb file into "Supporting Files"  
 ![copy_jdb.png](copy_jdb.png)  
 
-###5. add jdb file into "Copy Bundle Resources"
+####5. add jdb file into "Copy Bundle Resources"
 ![copy_bundle.png](copy_bundle.png)  
 
