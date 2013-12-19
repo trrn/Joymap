@@ -15,14 +15,14 @@
 
 |Key                    |Description                |Required|  
 |:----------------------|:--------------------------|:------:|  
-|ManagerURL             |manager host URL           |o|  
-|DownloadAction         |jdb file will be downloaded from "ManagerURL / DownloadAction" |o|  
-|User                   |login user(e-mail) for manager |o|  
-|Map                    |registered map name        |o|  
-|GoogleMapsAPIKey       |https://developers.google.com/maps/documentation/ios/start  |o|  
-|HomeURL                |URL for Home tab           |o|  
-|JDBIdentifyHeaderName  |look forward..             | |  
-|GoogleMapsImageAPIKey  |look forward..             | |  
+|ManagerURL             |manager host URL           |Y|  
+|DownloadAction         |jdb file will be downloaded from "ManagerURL / DownloadAction" |Y|  
+|User                   |login user(e-mail) for manager |Y|  
+|Map                    |registered map name        |Y|  
+|GoogleMapsAPIKey       |https://developers.google.com/maps/documentation/ios/start  |Y|  
+|HomeURL                |URL for Home tab           |Y|  
+|JDBIdentifyHeaderName  |look forward..             |N|  
+|GoogleMapsImageAPIKey  |look forward..             |N|  
 
 ####4. put jdb file into "Supporting Files"  
 ![copy_jdb.png](copy_jdb.png)  
