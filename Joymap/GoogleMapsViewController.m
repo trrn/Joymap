@@ -298,7 +298,7 @@
         NavigationController *nvc = [self.storyboard instantiateViewControllerWithIdentifier:@"StreetViewNavigationController"];
         GoogleStreetViewController *gvc = nvc.viewControllers[0];
         gvc.coord = coordinate;
-        gvc.markers = _mapView.markers;
+        gvc.pins = pins_;
         gvc.searchedMarker = searchedMarker_;
         nvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:nvc animated:YES completion:nil];

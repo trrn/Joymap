@@ -14,7 +14,7 @@
 @interface GoogleStreetViewController : UIViewController
 
 @property (assign) CLLocationCoordinate2D coord;
-@property (nonatomic, weak) NSArray *markers;
+@property (nonatomic, weak) NSArray *pins;
 @property (nonatomic, weak) GMSMarker *searchedMarker;
 
 @end

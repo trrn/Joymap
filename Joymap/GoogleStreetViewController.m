@@ -8,6 +8,8 @@
 
 #import "GoogleStreetViewController.h"
 
+#import "Pin.h"
+
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface GoogleStreetViewController() <GMSPanoramaViewDelegate>
@@ -30,8 +32,11 @@
     self.view = panoView_;
     panoView_.delegate = self;
 
-    for (GMSMarker *m in self.markers) {
-        m.panoramaView = panoView_;
+    for (Pin *p in self.pins) {
+        if (p.marker) {
+            GMSMarker *marker = p.marker;
+            marker.panoramaView = panoView_;
+        }
     }
     if (_searchedMarker) {
         _searchedMarker.panoramaView = panoView_;

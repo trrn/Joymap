@@ -33,3 +33,5 @@ distribution/
 .rbenv-gemsets
 .ruby-version
 .vimrc.local
+
+Joymap/Env.plist

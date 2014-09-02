@@ -78,6 +78,7 @@
 		47F5C989185D5E4200399624 /* MGImageUtilities in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C981185D5E4200399624 /* MGImageUtilities */; };
 		47F5C98A185D5E4200399624 /* SVProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C982185D5E4200399624 /* SVProgressHUD */; };
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
+		DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */ = {isa = PBXBuildFile; fileRef = DCAE1EB619B5A849002B006E /* Datespot.jdb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,7 @@
 		47F5C983185D5E4200399624 /* UIView-Autolayout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIView-Autolayout"; sourceTree = "<group>"; };
 		608E473FACF44AEFB45A07AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		830491D7EE934B3D9C92317E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DCAE1EB619B5A849002B006E /* Datespot.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Datespot.jdb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +275,7 @@
 		470090C01817AAB3009FB810 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCAE1EB619B5A849002B006E /* Datespot.jdb */,
 				470090C51817AB9F009FB810 /* thumbnail_tv.png */,
 				470090C11817AAB3009FB810 /* thumbnail_loading.png */,
 				470090C21817AAB3009FB810 /* thumbnail_nothing.png */,
@@ -566,6 +569,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */,
 				47F5C985185D5E4200399624 /* DACircularProgress in Resources */,
 				47F5C986185D5E4200399624 /* FMDB in Resources */,
 				470090C61817AB9F009FB810 /* thumbnail_tv.png in Resources */,

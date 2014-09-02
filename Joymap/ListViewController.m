@@ -63,11 +63,11 @@
          [factory createImageForIcon:NIKFontAwesomeIconLocationArrow],
          [factory createImageForIcon:NIKFontAwesomeIconLocationArrow],].mutableCopy,
        @[@(YES),
-         [factory createImageForIcon:NIKFontAwesomeIconSortByAlphabet],
-         [factory createImageForIcon:NIKFontAwesomeIconSortByAlphabetAlt],].mutableCopy,
+         [factory createImageForIcon:NIKFontAwesomeIconSortAlphaAsc],
+         [factory createImageForIcon:NIKFontAwesomeIconSortAlphaDesc],].mutableCopy,
        @[@(YES),
-         [factory createImageForIcon:NIKFontAwesomeIconSortByOrder],
-         [factory createImageForIcon:NIKFontAwesomeIconSortByOrderAlt],].mutableCopy,
+         [factory createImageForIcon:NIKFontAwesomeIconSortNumericAsc],
+         [factory createImageForIcon:NIKFontAwesomeIconSortNumericDesc],].mutableCopy,
                    ].mutableCopy;
     [self.segmentedControl setImage:segImages_[0][1] forSegmentAtIndex:0];
     [self.segmentedControl setImage:segImages_[1][1] forSegmentAtIndex:1];
