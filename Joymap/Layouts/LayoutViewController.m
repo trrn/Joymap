@@ -24,6 +24,7 @@
     id              avplaybackObserver_;
     UIActionSheet  *photoActionSheet_;
     id              tapped_;
+    BOOL            stop_;
 }
 
 - (void)viewDidLoad
@@ -240,21 +241,28 @@
         return;
     }
 
+    DLog(@"%@", url);
+
     self.avplayer = [AVPlayer.alloc initWithURL:[NSURL URLWithString:url]];
 
     // enables UI if ready
     [ProcUtil asyncGlobalq:^{
-        while (1) {
-            switch (self.avplayer.currentItem.status) {
-                case AVPlayerItemStatusReadyToPlay: {
-                    [ProcUtil asyncMainq:^{
-                        self.soundButton.enabled = self.soundSlider.enabled = YES;
-                    }];
-                }         // fall through
-                case AVPlayerItemStatusFailed:
-                    break;
-            }
+        while (self.avplayer.currentItem.status == AVPlayerItemStatusUnknown && !stop_) {
             usleep(100 * 1000);
+        }
+        if (stop_) {
+            return;
+        }
+        switch (self.avplayer.currentItem.status) {
+            case AVPlayerItemStatusReadyToPlay: {
+                [ProcUtil asyncMainq:^{
+                    self.soundButton.enabled = self.soundSlider.enabled = YES;
+                }];
+                break;
+            }         // fall through
+            case AVPlayerItemStatusFailed:
+                DLog(@"error: %@", self.avplayer.currentItem.error);
+                break;
         }
     }];
 }
@@ -290,6 +298,7 @@
 {
     [self.avplayer pause];
     [self.soundButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
+    stop_ = YES;
 }
 
 - (void)endSound

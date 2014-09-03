@@ -79,6 +79,9 @@
 		47F5C98A185D5E4200399624 /* SVProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C982185D5E4200399624 /* SVProgressHUD */; };
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
 		DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */ = {isa = PBXBuildFile; fileRef = DCAE1EB619B5A849002B006E /* Datespot.jdb */; };
+		DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */; };
+		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
+		DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +223,9 @@
 		608E473FACF44AEFB45A07AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		830491D7EE934B3D9C92317E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DCAE1EB619B5A849002B006E /* Datespot.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Datespot.jdb; sourceTree = "<group>"; };
+		DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +233,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */,
+				DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */,
+				DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */,
 				479BA36C180AB2B5008E640F /* CoreGraphics.framework in Frameworks */,
 				479BA36E180AB2B5008E640F /* UIKit.framework in Frameworks */,
 				479BA36A180AB2B5008E640F /* Foundation.framework in Frameworks */,
@@ -338,6 +347,9 @@
 		479BA368180AB2B5008E640F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */,
+				DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */,
+				DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */,
 				479BA369180AB2B5008E640F /* Foundation.framework */,
 				479BA36B180AB2B5008E640F /* CoreGraphics.framework */,
 				479BA36D180AB2B5008E640F /* UIKit.framework */,

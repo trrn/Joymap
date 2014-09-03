@@ -73,7 +73,8 @@
     [self.segmentedControl setImage:segImages_[1][1] forSegmentAtIndex:1];
     [self.segmentedControl setImage:segImages_[2][1] forSegmentAtIndex:2];
 
-    didChangeIndex_ = self.segmentedControl.selectedSegmentIndex;
+    //didChangeIndex_ = self.segmentedControl.selectedSegmentIndex;
+    didChangeIndex_ = 1;
 
     // hide search bar
     [self.tableView setContentOffset:CGPointMake(0.0f, self.searchDisplayController.searchBar.frame.size.height)];
