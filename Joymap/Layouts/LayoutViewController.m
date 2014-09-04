@@ -27,6 +27,9 @@
     UIActionSheet  *photoActionSheet_;
     id              tapped_;
     BOOL            stop_;
+    
+    NSTimer *timer_;
+    NSString *soundURL_;
 }
 
 - (void)viewDidLoad
@@ -39,6 +42,13 @@
                                                              style:UIBarButtonItemStylePlain
                                                             target:self action:@selector(editDone)];
         self.navigationItem.rightBarButtonItem = ok;
+    }
+}
+
+- (void)dealloc
+{
+    if (self.audioPlayer) {
+        self.audioPlayer.delegate = nil;
     }
 }
 
@@ -157,12 +167,28 @@
 
 #pragma mark - page change
 
+- (void)fadeout
+{
+    [ProcUtil asyncMainq:^{
+        for (double i=1.0; i>0.0; i-=0.1) {
+            if (!self.audioPlayer)
+                break;
+            self.audioPlayer.volume = i;
+            usleep(50000);
+        }
+        if (self.audioPlayer) {
+            [self.audioPlayer stop];
+        }
+    }];
+}
+
 - (void)pageClosed
 {
     //DLog(@"%d", self.page);
 
     // sound
-    [self.audioPlayer stop];
+    [timer_ invalidate];
+    [self fadeout];
 
     // movie
     [self.mplayer pause];
@@ -199,18 +225,19 @@
 
 - (void)prepareSound:(NSString *)url
 {
-    if ([StringUtil empty:url]) {
+    if ([StringUtil empty:url] || self.audioPlayer) {
         return;
     }
 
     DLog(@"%@", url);
+    soundURL_ = url;
 
-    self.audioPlayer = STKAudioPlayer.new;
-    STKDataSource *dataSource = [STKAudioPlayer dataSourceFromURL:[NSURL URLWithString:url]];
-    [self.audioPlayer playDataSource:dataSource];
+    self.audioPlayer = [STKAudioPlayer.alloc initWithOptions:(STKAudioPlayerOptions){.enableVolumeMixer = YES}];
     self.audioPlayer.delegate = self;
-    
+    [self.audioPlayer queue:soundURL_];
+
     [self updateSoundControl];
+    [self setupTimer];
 }
 
 - (void)pushSoundButton;
@@ -243,19 +270,21 @@
 {
 	if (self.audioPlayer == nil)
 	{
-        self.soundButton.enabled = self.soundSlider.enabled = YES;
+        self.soundButton.enabled = self.soundSlider.enabled = NO;
 	}
 	else if (self.audioPlayer.state == STKAudioPlayerStatePaused)
 	{
+        self.soundButton.enabled = self.soundSlider.enabled = YES;
         [self.soundButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
 	}
 	else if (self.audioPlayer.state & STKAudioPlayerStatePlaying)
 	{
+        self.soundButton.enabled = self.soundSlider.enabled = YES;
         [self.soundButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
 	}
 	else
 	{
-        self.soundButton.enabled = self.soundSlider.enabled = YES;
+        self.soundButton.enabled = self.soundSlider.enabled = NO;
 	}
     
     [self tick];
@@ -274,6 +303,8 @@
 {
     DLog(@"Finish Buffering");
     
+    [audioPlayer queue:soundURL_];
+
 	[self updateSoundControl];
 }
 
@@ -281,13 +312,20 @@
 {
     DLog(@"State changed");
     
+//    // stop
+//    if (previousState == STKAudioPlayerStateBuffering && state == STKAudioPlayerStatePlaying) {
+//        [audioPlayer pause];
+//    }
+    
 	[self updateSoundControl];
 }
 
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
 {
     DLog(@"Finish Playing");
-    
+
+    [audioPlayer pause];
+
 	[self updateSoundControl];
 }
 
@@ -298,10 +336,11 @@
 	[self updateSoundControl];
 }
 
-- (void)audioPlayer:(STKAudioPlayer *)audioPlayer logInfo:(NSString *)line
-{
-    DLog(@"%@", line);
-}
+// debug
+//- (void)audioPlayer:(STKAudioPlayer *)audioPlayer logInfo:(NSString *)line
+//{
+//    DLog(@"%@", line);
+//}
 
 - (void)tick
 {
@@ -325,6 +364,17 @@
         self.soundSlider.enabled = NO;
         self.soundButton.enabled = NO;
     }
+}
+
+- (void)setupTimer
+{
+    if (timer_) {
+        [timer_ invalidate];
+    }
+    
+	timer_ = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(tick) userInfo:nil repeats:YES];
+	
+	[[NSRunLoop currentRunLoop] addTimer:timer_ forMode:NSRunLoopCommonModes];
 }
 
 #pragma mark - edit
