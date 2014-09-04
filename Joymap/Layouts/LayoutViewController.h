@@ -11,6 +11,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#import <STKAudioPlayer.h>
+
 @class Item, Layout;
 
 @interface LayoutViewController : UIViewController
@@ -21,7 +23,7 @@
 
 #pragma mark - sound
 
-@property (nonatomic) AVPlayer *avplayer;
+@property (nonatomic) STKAudioPlayer *audioPlayer;
 @property (nonatomic) UIButton *soundButton;
 @property (nonatomic) UISlider *soundSlider;
 

@@ -16,7 +16,9 @@
 #import <IDMPhotoBrowser.h>
 #import <UIView+AutoLayout.h>
 
-@interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+#import <STKDataSource.h>
+
+@interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, STKAudioPlayerDelegate>
 
 @end
 
@@ -144,36 +146,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
-    if (self.avplayer) {
-
-        // sound has finished, return to the start point with the slider
-        [NSNotificationCenter.defaultCenter removeObserver:self];
-        [NSNotificationCenter.defaultCenter addObserver:self
-                                               selector:@selector(endSound)
-                                                   name:AVPlayerItemDidPlayToEndTimeNotification
-                                                 object:nil];
-        // setup slider update
-        CMTime interval = CMTimeMake(1, 2); // 0.5 sec
-        if (avplaybackObserver_) {
-            [self.avplayer removeTimeObserver:avplaybackObserver_];
-        }
-        __weak typeof(self) _self = self;
-        avplaybackObserver_ = [self.avplayer addPeriodicTimeObserverForInterval:interval
-                                                                          queue:dispatch_get_main_queue()
-                                                                     usingBlock:^(CMTime time) {
-            if (_self) {
-                if (_self.avplayer.rate == 0.0) {   // stopped
-                    [_self pauseSound];
-                }
-                AVPlayerItem *item = _self.avplayer.currentItem;
-                //DLog(@"%f, %f", CMTimeGetSeconds(time), CMTimeGetSeconds(item.duration));
-                if (CMTimeGetSeconds(item.duration) > 0.0) {
-                    _self.soundSlider.value = CMTimeGetSeconds(time) / CMTimeGetSeconds(item.duration);
-                }
-            }
-        }];
-    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -190,20 +162,10 @@
     //DLog(@"%d", self.page);
 
     // sound
-    [self pauseSound];
+    [self.audioPlayer stop];
 
     // movie
     [self.mplayer pause];
-
-    if (self.avplayer) {
-        
-        [NSNotificationCenter.defaultCenter removeObserver:self];
-        
-        // stop slider update
-        if (avplaybackObserver_) {
-            [self.avplayer removeTimeObserver:avplaybackObserver_];
-        }
-    }
 }
 
 #pragma mark - UITapGestureRecognizer
@@ -243,71 +205,125 @@
 
     DLog(@"%@", url);
 
-    self.avplayer = [AVPlayer.alloc initWithURL:[NSURL URLWithString:url]];
-
-    // enables UI if ready
-    [ProcUtil asyncGlobalq:^{
-        while (self.avplayer.currentItem.status == AVPlayerItemStatusUnknown && !stop_) {
-            usleep(100 * 1000);
-        }
-        if (stop_) {
-            return;
-        }
-        switch (self.avplayer.currentItem.status) {
-            case AVPlayerItemStatusReadyToPlay: {
-                [ProcUtil asyncMainq:^{
-                    self.soundButton.enabled = self.soundSlider.enabled = YES;
-                }];
-                break;
-            }         // fall through
-            case AVPlayerItemStatusFailed:
-                DLog(@"error: %@", self.avplayer.currentItem.error);
-                break;
-        }
-    }];
+    self.audioPlayer = STKAudioPlayer.new;
+    STKDataSource *dataSource = [STKAudioPlayer dataSourceFromURL:[NSURL URLWithString:url]];
+    [self.audioPlayer playDataSource:dataSource];
+    self.audioPlayer.delegate = self;
+    
+    [self updateSoundControl];
 }
 
 - (void)pushSoundButton;
 {
-    if (self.avplayer.rate == 0.0) {    // stopped
-        [self playSound];
-    } else {
-        [self pauseSound];
+    if (!self.audioPlayer)
+    {
+        return;
+    }
+
+    if (self.audioPlayer.state == STKAudioPlayerStatePaused)
+    {
+        [self.audioPlayer resume];
+    }
+    else
+    {
+        [self.audioPlayer pause];
     }
 }
 
 - (void)changeSoundSlider;
 {
-    AVPlayerItem *item = self.avplayer.currentItem;
-    if (item) {
-        if (self.avplayer.currentItem.status == AVPlayerItemStatusReadyToPlay) {
-            [self.avplayer seekToTime:CMTimeMultiplyByFloat64(item.duration, self.soundSlider.value)];
-        }
+    if (!self.audioPlayer) {
+        return;
     }
+    
+    [self.audioPlayer seekToTime:self.soundSlider.value];
 }
 
-- (void)playSound
+- (void)updateSoundControl
 {
-    if (self.avplayer.currentItem.status == AVPlayerItemStatusReadyToPlay) {
+	if (self.audioPlayer == nil)
+	{
+        self.soundButton.enabled = self.soundSlider.enabled = YES;
+	}
+	else if (self.audioPlayer.state == STKAudioPlayerStatePaused)
+	{
+        [self.soundButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
+	}
+	else if (self.audioPlayer.state & STKAudioPlayerStatePlaying)
+	{
         [self.soundButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
-        [self.avplayer play];
+	}
+	else
+	{
+        self.soundButton.enabled = self.soundSlider.enabled = YES;
+	}
+    
+    [self tick];
+}
+
+#pragma mark - STKAudioPlayerDelegate
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didStartPlayingQueueItemId:(NSObject *)queueItemId
+{
+    DLog(@"Started: %@", [queueItemId description]);
+    
+	[self updateSoundControl];
+}
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishBufferingSourceWithQueueItemId:(NSObject *)queueItemId
+{
+    DLog(@"Finish Buffering");
+    
+	[self updateSoundControl];
+}
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
+{
+    DLog(@"State changed");
+    
+	[self updateSoundControl];
+}
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer didFinishPlayingQueueItemId:(NSObject *)queueItemId withReason:(STKAudioPlayerStopReason)stopReason andProgress:(double)progress andDuration:(double)duration
+{
+    DLog(@"Finish Playing");
+    
+	[self updateSoundControl];
+}
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer unexpectedError:(STKAudioPlayerErrorCode)errorCode
+{
+    DLog(@"Unexpected Error: %d", errorCode);
+    
+	[self updateSoundControl];
+}
+
+- (void)audioPlayer:(STKAudioPlayer *)audioPlayer logInfo:(NSString *)line
+{
+    DLog(@"%@", line);
+}
+
+- (void)tick
+{
+	if (!self.audioPlayer)
+	{
+		self.soundSlider.value = 0;
+		return;
+	}
+	
+    if (self.audioPlayer.duration != 0)
+    {
+        self.soundSlider.minimumValue = 0;
+        self.soundSlider.maximumValue = self.audioPlayer.duration;
+        self.soundSlider.value = self.audioPlayer.progress;
     }
-}
-
-- (void)pauseSound
-{
-    [self.avplayer pause];
-    [self.soundButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
-    stop_ = YES;
-}
-
-- (void)endSound
-{
-    DLog();
-    if (self.avplayer) {
-        [self pauseSound];
-        [self.avplayer seekToTime:kCMTimeZero];
-        [self.soundSlider setValue:0.0];
+    else
+    {
+        self.soundSlider.value = 0;
+        self.soundSlider.minimumValue = 0;
+        self.soundSlider.maximumValue = 0;
+        self.soundSlider.enabled = NO;
+        self.soundButton.enabled = NO;
     }
 }
 
