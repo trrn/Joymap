@@ -75,7 +75,7 @@
     switch (item.type) {
         case ITEM_TYPE_IMAGE: {
             UIImageView *v = UIImageView.autoLayoutView;
-            v.contentMode = UIViewContentModeScaleAspectFill;
+            v.contentMode = UIViewContentModeScaleAspectFit;
             v.userInteractionEnabled = YES;
             [superView addSubview:v];
             [v pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];

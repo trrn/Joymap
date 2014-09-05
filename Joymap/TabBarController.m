@@ -31,16 +31,15 @@
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     UITabBarItem *item;
     
-    item = self.tabBar.items[0];
-    item.image = [factory createImageForIcon:NIKFontAwesomeIconHome];
+    NSInteger i = 0;
     
-    item = self.tabBar.items[1];
+    item = self.tabBar.items[i++];
     item.image = [factory createImageForIcon:NIKFontAwesomeIconMapMarker];
     
-    item = self.tabBar.items[2];
+    item = self.tabBar.items[i++];
     item.image = [factory createImageForIcon:NIKFontAwesomeIconList];
     
-    item = self.tabBar.items[3];
+    item = self.tabBar.items[i++];
     item.image = [factory createImageForIcon:NIKFontAwesomeIconCog];
 }
 
@@ -52,8 +51,8 @@
 
 - (void)selectPin:(id)pin;
 {
-    self.selectedIndex = 1;
-    UINavigationController *nvc = self.viewControllers[1];
+    self.selectedIndex = 0; // map
+    UINavigationController *nvc = self.viewControllers[0];
     GoogleMapsViewController *gvc = (GoogleMapsViewController *)nvc.topViewController;
     [gvc selectPin:pin];
 }
