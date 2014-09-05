@@ -18,7 +18,7 @@
 
 #import <STKDataSource.h>
 
-@interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, STKAudioPlayerDelegate>
+@interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, STKAudioPlayerDelegate, STKDataSourceDelegate>
 
 @end
 
@@ -30,6 +30,7 @@
     
     NSTimer *timer_;
     NSString *soundURL_;
+    STKDataSource *soundDataSource_;
 }
 
 - (void)viewDidLoad
@@ -234,6 +235,7 @@
 
     self.audioPlayer = [STKAudioPlayer.alloc initWithOptions:(STKAudioPlayerOptions){.enableVolumeMixer = YES}];
     self.audioPlayer.delegate = self;
+    [self.audioPlayer mute]; // work around for prevent to autoplay
     [self.audioPlayer queue:soundURL_];
 
     [self updateSoundControl];
@@ -249,6 +251,7 @@
 
     if (self.audioPlayer.state == STKAudioPlayerStatePaused)
     {
+        [self.audioPlayer unmute];  // work around for prevent to autoplay
         [self.audioPlayer resume];
     }
     else
@@ -312,10 +315,10 @@
 {
     DLog(@"State changed");
     
-//    // stop
-//    if (previousState == STKAudioPlayerStateBuffering && state == STKAudioPlayerStatePlaying) {
-//        [audioPlayer pause];
-//    }
+    // work around for prevent to autoplay
+    if (previousState == STKAudioPlayerStateBuffering && state == STKAudioPlayerStatePlaying) {
+        [audioPlayer pause];
+    }
     
 	[self updateSoundControl];
 }
