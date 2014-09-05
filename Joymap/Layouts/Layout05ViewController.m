@@ -27,8 +27,14 @@
     [self setImageOrMovieView:self.v1 item:[self itemAtOrderNo:1]];
     self.soundButton = self.v2button;
     self.soundSlider = self.v2slider;
-    [super prepareSound:[self itemAtOrderNo:2].resource1];
     [self setTextView:self.v3 item:[self itemAtOrderNo:3] bottomPadding:20.0];
+
+    Item *soundItem = [self itemAtOrderNo:2];
+    if (soundItem.resource2) { // binary
+        [super prepareSoundWithData:soundItem.resource2];
+    } else {    // URL
+        [super prepareSoundWithURL:soundItem.resource1];
+    }
 }
 
 - (IBAction)pushV2button:(id)sender {

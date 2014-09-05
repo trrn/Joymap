@@ -27,7 +27,8 @@
 @property (nonatomic) UIButton *soundButton;
 @property (nonatomic) UISlider *soundSlider;
 
-- (void)prepareSound:(NSString *)url;
+- (void)prepareSoundWithURL:(NSString *)url;
+- (void)prepareSoundWithData:(NSData *)data;
 - (void)pushSoundButton;
 - (void)changeSoundSlider;
 

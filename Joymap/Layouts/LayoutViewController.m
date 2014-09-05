@@ -224,7 +224,7 @@
 
 #pragma mark - sound
 
-- (void)prepareSound:(NSString *)url
+- (void)prepareSoundWithURL:(NSString *)url
 {
     if ([StringUtil empty:url] || self.audioPlayer) {
         return;
@@ -240,6 +240,23 @@
 
     [self updateSoundControl];
     [self setupTimer];
+}
+
+- (void)prepareSoundWithData:(NSData *)data;
+{
+    if (!data) {
+        return;
+    }
+
+    // work around. StreamKit cannot play NSData, so read from local file as URL.
+
+    NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"sound"];
+    [data writeToFile:tmp atomically:NO];
+
+    NSURL *url = [NSURL fileURLWithPath:tmp];
+    DLog(@"%@", url.description);
+
+    [self prepareSoundWithURL:url.absoluteString];
 }
 
 - (void)pushSoundButton;
