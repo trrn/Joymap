@@ -132,6 +132,7 @@
     
     for (Pin *p in pins_) {
         GMSMarker *m = GMSMarker.new;
+        //m.icon = [GMSMarker markerImageWithColor:UIColor.magentaColor];
         m.position = CLLocationCoordinate2DMake(p.latitude, p.longitude);
         //m.icon = [GMSMarker markerImageWithColor:UIColor.blueColor];
         m.title = p.name;

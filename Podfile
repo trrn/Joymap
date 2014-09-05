@@ -7,3 +7,8 @@ pod 'UIView-Autolayout',        '~>0.0'
 pod 'MGImageUtilities',         '~>0.0'
 pod 'IDMPhotoBrowser',          '~>1.3'
 pod 'StreamingKit',             '~>0.1'
+
+post_install do | installer |
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Pods-acknowledgements.plist', 'Joymap/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+end

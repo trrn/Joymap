@@ -79,6 +79,7 @@
 		47F5C98A185D5E4200399624 /* SVProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C982185D5E4200399624 /* SVProgressHUD */; };
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
 		DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */; };
+		DC2EDA9519B9BE7A00EBC40A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */; };
 		DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */ = {isa = PBXBuildFile; fileRef = DCAE1EB619B5A849002B006E /* Datespot.jdb */; };
 		DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */; };
 		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
@@ -225,6 +226,7 @@
 		830491D7EE934B3D9C92317E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOnMap.h; sourceTree = "<group>"; };
 		DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOnMap.m; sourceTree = "<group>"; };
+		DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		DCAE1EB619B5A849002B006E /* Datespot.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Datespot.jdb; sourceTree = "<group>"; };
 		DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -412,6 +414,7 @@
 				479BA375180AB2B5008E640F /* main.m */,
 				479BA377180AB2B5008E640F /* Joymap-Prefix.pch */,
 				4700908C180ED79D009FB810 /* Env.plist */,
+				DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2EDA9519B9BE7A00EBC40A /* Settings.bundle in Resources */,
 				DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */,
 				47F5C985185D5E4200399624 /* DACircularProgress in Resources */,
 				47F5C986185D5E4200399624 /* FMDB in Resources */,
