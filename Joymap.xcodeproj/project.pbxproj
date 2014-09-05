@@ -78,6 +78,7 @@
 		47F5C989185D5E4200399624 /* MGImageUtilities in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C981185D5E4200399624 /* MGImageUtilities */; };
 		47F5C98A185D5E4200399624 /* SVProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C982185D5E4200399624 /* SVProgressHUD */; };
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
+		DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */; };
 		DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */ = {isa = PBXBuildFile; fileRef = DCAE1EB619B5A849002B006E /* Datespot.jdb */; };
 		DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */; };
 		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
@@ -222,6 +223,8 @@
 		47F5C983185D5E4200399624 /* UIView-Autolayout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIView-Autolayout"; sourceTree = "<group>"; };
 		608E473FACF44AEFB45A07AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		830491D7EE934B3D9C92317E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOnMap.h; sourceTree = "<group>"; };
+		DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOnMap.m; sourceTree = "<group>"; };
 		DCAE1EB619B5A849002B006E /* Datespot.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Datespot.jdb; sourceTree = "<group>"; };
 		DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -463,6 +466,8 @@
 				470090B618177ED6009FB810 /* JdbDownload.m */,
 				47BFBDFF182509BD00A2D7D3 /* GeoSearch.h */,
 				47BFBE00182509BD00A2D7D3 /* GeoSearch.m */,
+				DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */,
+				DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */,
 				478B5C591826C1150068E30A /* SegmentedControl.h */,
 				478B5C5A1826C1150068E30A /* SegmentedControl.m */,
 				478B5C5C182E3A370068E30A /* GoogleMapsHelper.h */,
@@ -689,6 +694,7 @@
 				47E68652180B87C80065B45B /* Pin.m in Sources */,
 				4700909F1812BABB009FB810 /* JdbDownloadController.m in Sources */,
 				4785902A182FE3B10087C55F /* Layout05ViewController.m in Sources */,
+				DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */,
 				470090AB1813AEFC009FB810 /* DefaultsUtil.m in Sources */,
 				4785903F183106080087C55F /* AdminHelper.m in Sources */,
 				4700909318100C1E009FB810 /* GoogleStreetViewController.m in Sources */,

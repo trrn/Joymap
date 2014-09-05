@@ -233,6 +233,26 @@ static NSDate *_date;
     return [self pinsOrderByID:YES];
 }
 
++ (NSArray *)searchPinsByKeyword:(NSString *)str;
+{
+    NSMutableArray *ret = @[].mutableCopy;
+    
+    return [self select:ret exe:^(FMDatabase *db) {
+        NSString *q = [NSString stringWithFormat:@"select * from pin where name like '%%%@%%' order by name", str];
+        DLog(@"%@", q);
+        return [db executeQuery:q];
+    } map:^(FMResultSet *rs, id ret) {
+        Pin *p = Pin.new;
+        p.id = [rs intForColumn:@"_id"];
+        p.latitude = [rs doubleForColumn:@"latitude"];
+        p.longitude = [rs doubleForColumn:@"longitude"];
+        p.name = [rs stringForColumn:@"name"];
+        p.kategoryId = [rs intForColumn:@"category_id"];
+        [ret addObject:p];
+        return YES;
+    }];
+}
+
 + (Pin *)pinByID:(NSInteger)iD;
 {
     NSMutableArray *ret = @[].mutableCopy;

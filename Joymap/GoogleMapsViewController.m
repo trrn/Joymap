@@ -17,6 +17,7 @@
 #import "JdbDownload.h"
 #import "PageViewController.h"
 #import "Pin.h"
+#import "SearchOnMap.h"
 
 #import <GoogleMaps/GoogleMaps.h>
 #import <UIView+AutoLayout.h>
@@ -33,8 +34,9 @@
 @implementation GoogleMapsViewController
 {
     NSArray    *pins_;
+    
 
-    GeoSearch  *geoSearch_;
+    SearchOnMap *searchOnMap_;
     GMSMarker  *searchedMarker_;
     BOOL        searchBarShouldBeginEditing_;   // search bar clear button control
 
@@ -51,7 +53,6 @@
 
     [GMSServices provideAPIKey:Env.googleMapsApiKey];
 
-    geoSearch_ = nil;
     searchedMarker_ = nil;
     searchBarShouldBeginEditing_ = YES;
 
@@ -83,40 +84,20 @@
     // register search table view's row tap action
     searchedMarker_ = GMSMarker.new;
     __weak typeof(self) _self = self;
-    __weak typeof(_mapView) _mv = _mapView;
-    __weak typeof(searchedMarker_) _mk = searchedMarker_;
-    geoSearch_ = GeoSearch.new;
-    geoSearch_.srcViewController = self;
-    geoSearch_.tableView = self.tableView;
-    self.tableView.delegate = geoSearch_;
-    self.tableView.dataSource = geoSearch_;
-    geoSearch_.didTapRowCallback = ^(CLLocationCoordinate2D co, NSString *addr) {
+    
+    searchOnMap_ = SearchOnMap.new;
+    searchOnMap_.srcViewController = self;
+    self.tableView.delegate = searchOnMap_;
+    self.tableView.dataSource = searchOnMap_;
+    searchOnMap_.tableView = self.tableView;
+    searchOnMap_.didTapRowCallback = ^(Pin *pin) {
         [_self mapViewGestures:YES];
         _self.searchBar.showsCancelButton = NO;
         [_self.searchBar resignFirstResponder];
         [_self setAdminControl];
-        _mk.icon = [GMSMarker markerImageWithColor:[UIColor cyanColor]],
-        _mk.position = co;
-        _mk.title = addr;
-        _mk.map = _mv;
-        _mk.appearAnimation = kGMSMarkerAnimationPop;
-        Pin *p;
-        p.latitude = co.latitude;
-        p.longitude = co.longitude;
-        p.name = addr;
-        _mk.userData = p;
-        CGFloat zoom = _mv.camera.zoom;
-        if (zoom < 16)
-            zoom = 16;
-        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:co.latitude
-                                                                longitude:co.longitude
-                                                                     zoom:zoom];
-        [_mv animateToCameraPosition:camera];
-        [ProcUtil asyncMainqDelay:1.0 block:^{
-            [_mv setSelectedMarker:_mk];
-        }];
+        [_self selectPin:pin];
     };
-    
+
     [self.view bringSubviewToFront:self.tableView];
     self.tableView.hidden = YES;
 
@@ -346,7 +327,7 @@
         searchBarShouldBeginEditing_ = NO;
     }
 
-    [geoSearch_ searchByStr:searchText];
+    [searchOnMap_ searchByStr:searchText];
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar

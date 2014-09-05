@@ -1,22 +1,22 @@
 //
-//  GeoSearch.m
+//  SearchOnMap.m
 //  Joymap
 //
-//  Created by gli on 2013/11/02.
-//  Copyright (c) 2013年 sekken. All rights reserved.
+//  Created by Faith on 2014/09/05.
+//  Copyright (c) 2014年 sekken. All rights reserved.
 //
 
-#import "GeoSearch.h"
+#import "SearchOnMap.h"
 
+#import "DataSource.h"
 #import "GoogleMapsViewController.h"
+#import "Pin.h"
 
-#import <CoreLocation/CLLocation.h>
-
-@interface GeoSearch()
+@interface SearchOnMap()
 @property NSArray *result;
 @end
 
-@implementation GeoSearch
+@implementation SearchOnMap
 {
     NSInteger seq_;
 }
@@ -46,8 +46,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell"];
     
-    cell.textLabel.text = _result[indexPath.row][@"addr"];
-
+    Pin *p = _result[indexPath.row];
+    
+    cell.textLabel.text = p.name;
+    
     return cell;
 }
 
@@ -56,13 +58,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     @synchronized(self) {
-        CLLocationCoordinate2D co = CLLocationCoordinate2DMake(0.0, 0.0);
-        if ([GeoUtil strToCoordinate2D:_result[indexPath.row][@"latlng"] co:&co]) {
-            tableView.hidden = YES;
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            if (_didTapRowCallback)
-                _didTapRowCallback(co, _result[indexPath.row][@"addr"]);
-        }
+        tableView.hidden = YES;
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        if (_didTapRowCallback)
+            _didTapRowCallback(_result[indexPath.row]);
     }
 }
 
@@ -80,26 +79,21 @@
 {
     ++seq_;
     __block NSInteger no = seq_;
-
+    
     if ([StringUtil empty:str]) {
         [self clear];
         return;
     }
 
-    [GeoUtil searchByStr:str handler:^(NSArray *res, NSError *err) {
-        if (err) {
-            ELog(@"%@", err);
-            return;
-        }
+    @synchronized(self) {
+        NSArray *res = [DataSource searchPinsByKeyword:str];
         if (no < seq_)      // newer request was sent
             return;
-        @synchronized(self) {
-            self.result = res ? res : @[];
-            [ProcUtil asyncMainq:^{
-                [self.tableView reloadData];
-            }];
-        }
-    }];
+        self.result = res ?: @[];
+        [ProcUtil asyncMainq:^{
+            [self.tableView reloadData];
+        }];
+    }
 }
 
 - (void)clear
