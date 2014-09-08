@@ -80,6 +80,14 @@
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
 		DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */; };
 		DC2EDA9519B9BE7A00EBC40A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */; };
+		DC2EDAA219BD567200EBC40A /* Layout06ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */; };
+		DC2EDAA419BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */; };
+		DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */; };
+		DC9177D119BD8FF50087DDF8 /* NSString+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C719BD8FF50087DDF8 /* NSString+Sekken.m */; };
+		DC9177D219BD8FF50087DDF8 /* NSURL+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C919BD8FF50087DDF8 /* NSURL+Sekken.m */; };
+		DC9177D319BD8FF50087DDF8 /* NSURLRequest+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177CB19BD8FF50087DDF8 /* NSURLRequest+Sekken.m */; };
+		DC9177D419BD8FF50087DDF8 /* UIStoryboard+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177CD19BD8FF50087DDF8 /* UIStoryboard+Sekken.m */; };
+		DC9177D519BD8FF50087DDF8 /* UIView+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177CF19BD8FF50087DDF8 /* UIView+Sekken.m */; };
 		DCAE1EB719B5A88A002B006E /* Datespot.jdb in Resources */ = {isa = PBXBuildFile; fileRef = DCAE1EB619B5A849002B006E /* Datespot.jdb */; };
 		DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */; };
 		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
@@ -227,6 +235,21 @@
 		DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOnMap.h; sourceTree = "<group>"; };
 		DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOnMap.m; sourceTree = "<group>"; };
 		DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		DC2EDAA019BD567200EBC40A /* Layout06ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout06ViewController.h; sourceTree = "<group>"; };
+		DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layout06ViewController.m; sourceTree = "<group>"; };
+		DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Download_on_iTunes_Badge_JP_110x40_1016.png; sourceTree = "<group>"; };
+		DC9177C419BD8FF50087DDF8 /* NSArray+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sekken.h"; sourceTree = "<group>"; };
+		DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sekken.m"; sourceTree = "<group>"; };
+		DC9177C619BD8FF50087DDF8 /* NSString+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Sekken.h"; sourceTree = "<group>"; };
+		DC9177C719BD8FF50087DDF8 /* NSString+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Sekken.m"; sourceTree = "<group>"; };
+		DC9177C819BD8FF50087DDF8 /* NSURL+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Sekken.h"; sourceTree = "<group>"; };
+		DC9177C919BD8FF50087DDF8 /* NSURL+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Sekken.m"; sourceTree = "<group>"; };
+		DC9177CA19BD8FF50087DDF8 /* NSURLRequest+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+Sekken.h"; sourceTree = "<group>"; };
+		DC9177CB19BD8FF50087DDF8 /* NSURLRequest+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+Sekken.m"; sourceTree = "<group>"; };
+		DC9177CC19BD8FF50087DDF8 /* UIStoryboard+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboard+Sekken.h"; sourceTree = "<group>"; };
+		DC9177CD19BD8FF50087DDF8 /* UIStoryboard+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+Sekken.m"; sourceTree = "<group>"; };
+		DC9177CE19BD8FF50087DDF8 /* UIView+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sekken.h"; sourceTree = "<group>"; };
+		DC9177CF19BD8FF50087DDF8 /* UIView+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sekken.m"; sourceTree = "<group>"; };
 		DCAE1EB619B5A849002B006E /* Datespot.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = Datespot.jdb; sourceTree = "<group>"; };
 		DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -289,6 +312,7 @@
 		470090C01817AAB3009FB810 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */,
 				DCAE1EB619B5A849002B006E /* Datespot.jdb */,
 				470090C51817AB9F009FB810 /* thumbnail_tv.png */,
 				470090C11817AAB3009FB810 /* thumbnail_loading.png */,
@@ -323,6 +347,8 @@
 				47859021182FE3B10087C55F /* Layout04ViewController.m */,
 				47859022182FE3B10087C55F /* Layout05ViewController.h */,
 				47859023182FE3B10087C55F /* Layout05ViewController.m */,
+				DC2EDAA019BD567200EBC40A /* Layout06ViewController.h */,
+				DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */,
 				47859024182FE3B10087C55F /* LayoutViewController.h */,
 				47859025182FE3B10087C55F /* LayoutViewController.m */,
 			);
@@ -367,6 +393,7 @@
 		479BA36F180AB2B5008E640F /* Joymap */ = {
 			isa = PBXGroup;
 			children = (
+				DC9177C319BD8FF50087DDF8 /* Category */,
 				479BA378180AB2B5008E640F /* AppDelegate.h */,
 				479BA379180AB2B5008E640F /* AppDelegate.m */,
 				479BA37B180AB2B5008E640F /* Main_iPhone.storyboard */,
@@ -500,6 +527,25 @@
 			path = Credit;
 			sourceTree = "<group>";
 		};
+		DC9177C319BD8FF50087DDF8 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				DC9177C419BD8FF50087DDF8 /* NSArray+Sekken.h */,
+				DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */,
+				DC9177C619BD8FF50087DDF8 /* NSString+Sekken.h */,
+				DC9177C719BD8FF50087DDF8 /* NSString+Sekken.m */,
+				DC9177C819BD8FF50087DDF8 /* NSURL+Sekken.h */,
+				DC9177C919BD8FF50087DDF8 /* NSURL+Sekken.m */,
+				DC9177CA19BD8FF50087DDF8 /* NSURLRequest+Sekken.h */,
+				DC9177CB19BD8FF50087DDF8 /* NSURLRequest+Sekken.m */,
+				DC9177CC19BD8FF50087DDF8 /* UIStoryboard+Sekken.h */,
+				DC9177CD19BD8FF50087DDF8 /* UIStoryboard+Sekken.m */,
+				DC9177CE19BD8FF50087DDF8 /* UIView+Sekken.h */,
+				DC9177CF19BD8FF50087DDF8 /* UIView+Sekken.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -595,6 +641,7 @@
 				47F5C986185D5E4200399624 /* FMDB in Resources */,
 				470090C61817AB9F009FB810 /* thumbnail_tv.png in Resources */,
 				470090C31817AAB3009FB810 /* thumbnail_loading.png in Resources */,
+				DC2EDAA419BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png in Resources */,
 				47F5C984185D5E4200399624 /* AFNetworking in Resources */,
 				47F5C987185D5E4200399624 /* FontAwesomeIconFactory in Resources */,
 				470090C41817AAB3009FB810 /* thumbnail_nothing.png in Resources */,
@@ -662,8 +709,11 @@
 				470090B718177ED6009FB810 /* JdbDownload.m in Sources */,
 				477E94A4180ACB86005E83D4 /* SettingViewController.m in Sources */,
 				479BA37A180AB2B5008E640F /* AppDelegate.m in Sources */,
+				DC9177D519BD8FF50087DDF8 /* UIView+Sekken.m in Sources */,
 				47859026182FE3B10087C55F /* Layout01ViewController.m in Sources */,
 				4785902B182FE3B10087C55F /* LayoutViewController.m in Sources */,
+				DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */,
+				DC9177D319BD8FF50087DDF8 /* NSURLRequest+Sekken.m in Sources */,
 				4762EB73181BADE100CB57D2 /* PageViewController.m in Sources */,
 				47E68662180B8DF80065B45B /* DataSource.m in Sources */,
 				47BFBE01182509BD00A2D7D3 /* GeoSearch.m in Sources */,
@@ -677,14 +727,18 @@
 				47F5C974185CCE3A00399624 /* RouteViewController.m in Sources */,
 				470090C91817B608009FB810 /* Cache.m in Sources */,
 				477E9498180AC793005E83D4 /* TabBarController.m in Sources */,
+				DC9177D219BD8FF50087DDF8 /* NSURL+Sekken.m in Sources */,
+				DC9177D419BD8FF50087DDF8 /* UIStoryboard+Sekken.m in Sources */,
 				479BA376180AB2B5008E640F /* main.m in Sources */,
 				47859027182FE3B10087C55F /* Layout02ViewController.m in Sources */,
 				47E68665180B8FD10065B45B /* Jdb.m in Sources */,
+				DC9177D119BD8FF50087DDF8 /* NSString+Sekken.m in Sources */,
 				470090B418157362009FB810 /* ListViewController.m in Sources */,
 				47009096181227B7009FB810 /* TimeUtil.m in Sources */,
 				477E949B180ACB56005E83D4 /* HomeViewController.m in Sources */,
 				47009085180ED69F009FB810 /* Env.m in Sources */,
 				478B5C5E182E3A370068E30A /* GoogleMapsHelper.m in Sources */,
+				DC2EDAA219BD567200EBC40A /* Layout06ViewController.m in Sources */,
 				47859029182FE3B10087C55F /* Layout04ViewController.m in Sources */,
 				47F5C97A185D50BA00399624 /* TextViewController.m in Sources */,
 				47241B5E1837925200B11C8B /* GMSMapViewController.m in Sources */,
@@ -805,6 +859,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -840,6 +895,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

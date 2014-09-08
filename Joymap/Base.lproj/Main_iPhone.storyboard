@@ -181,7 +181,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
                 <tabBarController id="8YX-ce-x5E" customClass="TabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
@@ -195,6 +194,7 @@
                         <segue destination="Kam-zc-QPT" kind="relationship" relationship="viewControllers" id="5V7-QR-9mg"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="180"/>
         </scene>
@@ -1786,7 +1786,118 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
             </objects>
             <point key="canvasLocation" x="3065" y="543"/>
         </scene>
+        <!--Layout06 View Controller-->
+        <scene sceneID="Emj-wK-rav">
+            <objects>
+                <viewController storyboardIdentifier="Layout06" id="dp4-OW-mPs" customClass="Layout06ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V4d-bh-WlT"/>
+                        <viewControllerLayoutGuide type="bottom" id="jGG-NV-v0t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B4C-sw-ez8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn8-BT-VQT">
+                                <rect key="frame" x="164" y="20" width="136" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="cgT-5z-tg8"/>
+                                    <constraint firstAttribute="height" constant="104" id="owm-MV-fc8"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-kt-Eok">
+                                <rect key="frame" x="20" y="251" width="280" height="253"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-u2-Jen">
+                                <rect key="frame" x="20" y="20" width="136" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="g7y-rg-MGg">
+                                <rect key="frame" x="72" y="156" width="230" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeV3slider:" destination="dp4-OW-mPs" eventType="valueChanged" id="S4C-lE-x5U"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTf-sj-wcA">
+                                <rect key="frame" x="20" y="155" width="46" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="6ia-dv-tAr"/>
+                                </constraints>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="pushV3btn:" destination="dp4-OW-mPs" eventType="touchUpInside" id="M7W-pf-2PF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQd-cj-oMW">
+                                <rect key="frame" x="20" y="197" width="124" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="ckf-QW-CoZ"/>
+                                </constraints>
+                                <state key="normal" image="Download_on_iTunes_Badge_JP_110x40_1016.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pushV5btn:" destination="dp4-OW-mPs" eventType="touchUpInside" id="psh-sb-GOD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="RQd-cj-oMW" secondAttribute="bottom" constant="5" id="0zf-h8-vmJ"/>
+                            <constraint firstItem="kn8-BT-VQT" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="trailing" constant="8" symbolic="YES" id="2JU-LQ-jvU"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="8xT-rJ-wul"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="62" id="EkP-wn-ktW"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="trailing" constant="8" symbolic="YES" id="J0X-Ps-bWU"/>
+                            <constraint firstItem="kn8-BT-VQT" firstAttribute="bottom" secondItem="fQT-u2-Jen" secondAttribute="bottom" id="LpP-2h-j8D"/>
+                            <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="kn8-BT-VQT" secondAttribute="top" id="MnU-iU-744"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="centerY" secondItem="g7y-rg-MGg" secondAttribute="centerY" constant="1" id="RZn-33-OUd"/>
+                            <constraint firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" constant="20" symbolic="YES" id="UgM-P0-W5v"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="31" id="W2u-kK-tZu"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="leading" id="X55-1J-FkG"/>
+                            <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="B4C-sw-ez8" secondAttribute="top" constant="20" symbolic="YES" id="XBC-Gu-qmV"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="8" symbolic="YES" id="YaP-0p-zj3"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="trailing" secondItem="g7y-rg-MGg" secondAttribute="trailing" id="ZbY-Up-tfk"/>
+                            <constraint firstItem="fQT-u2-Jen" firstAttribute="leading" secondItem="B4C-sw-ez8" secondAttribute="leading" constant="20" symbolic="YES" id="kJY-8g-clw"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="bottom" secondItem="g7y-rg-MGg" secondAttribute="bottom" constant="3" id="ljN-ID-ndh"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" id="mb8-0k-v5F"/>
+                            <constraint firstAttribute="bottom" secondItem="nBM-kt-Eok" secondAttribute="bottom" id="ofK-Ap-ApQ"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="y76-Yy-MVa"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="JAz-Rw-x3m"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="v1" destination="fQT-u2-Jen" id="slZ-gD-Wwt"/>
+                        <outlet property="v2" destination="kn8-BT-VQT" id="cyA-MC-te5"/>
+                        <outlet property="v3button" destination="YTf-sj-wcA" id="UFa-db-uNx"/>
+                        <outlet property="v3slider" destination="g7y-rg-MGg" id="WJa-wv-lgJ"/>
+                        <outlet property="v4" destination="nBM-kt-Eok" id="frK-Sg-OjZ"/>
+                        <outlet property="v5button" destination="RQd-cj-oMW" id="C2F-lF-FId"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="84f-Oz-UaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3190" y="1236"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Download_on_iTunes_Badge_JP_110x40_1016.png" width="110" height="40"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
