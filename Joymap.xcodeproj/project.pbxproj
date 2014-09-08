@@ -92,6 +92,7 @@
 		DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */; };
 		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
 		DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */; };
+		DCC4E36319BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,6 +255,7 @@
 		DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download_on_iTunes_Badge_JP_110x40_1016@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 		470090C01817AAB3009FB810 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */,
 				DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */,
 				DCAE1EB619B5A849002B006E /* Datespot.jdb */,
 				470090C51817AB9F009FB810 /* thumbnail_tv.png */,
@@ -644,6 +647,7 @@
 				DC2EDAA419BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png in Resources */,
 				47F5C984185D5E4200399624 /* AFNetworking in Resources */,
 				47F5C987185D5E4200399624 /* FontAwesomeIconFactory in Resources */,
+				DCC4E36319BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png in Resources */,
 				470090C41817AAB3009FB810 /* thumbnail_nothing.png in Resources */,
 				47859034183103090087C55F /* Localizable.strings in Resources */,
 				47F5C988185D5E4200399624 /* IDMPhotoBrowser in Resources */,
@@ -910,8 +914,8 @@
 				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
 				INFOPLIST_FILE = "Joymap/Joymap-Info.plist";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				PRODUCT_NAME = Joymap;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -926,8 +930,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
 				INFOPLIST_FILE = "Joymap/Joymap-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "armv7 armv7s";
+				PRODUCT_NAME = Joymap;
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -949,7 +953,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "JoymapTests/JoymapTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JoymapTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -968,7 +972,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
 				INFOPLIST_FILE = "JoymapTests/JoymapTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = JoymapTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

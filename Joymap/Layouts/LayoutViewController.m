@@ -100,7 +100,7 @@
             self.mplayer = [MPMoviePlayerController.alloc initWithContentURL:item.url];
             [self.mplayer prepareToPlay];
             self.mplayer.scalingMode = MPMovieScalingModeAspectFit;
-            self.mplayer.shouldAutoplay = NO;
+            self.mplayer.shouldAutoplay = [DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY];
             self.mplayer.view.clipsToBounds = YES;
             [superView addSubview:self.mplayer.view];
             self.mplayer.view.translatesAutoresizingMaskIntoConstraints = NO;
@@ -332,9 +332,13 @@
 {
     DLog(@"State changed");
     
-    // work around for prevent to autoplay
-    if (previousState == STKAudioPlayerStateBuffering && state == STKAudioPlayerStatePlaying) {
-        [audioPlayer pause];
+    if ([DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY]) {
+        [audioPlayer unmute];
+    } else {
+        // work around for prevent to autoplay
+        if (previousState == STKAudioPlayerStateBuffering && state == STKAudioPlayerStatePlaying) {
+            [audioPlayer pause];
+        }
     }
     
 	[self updateSoundControl];

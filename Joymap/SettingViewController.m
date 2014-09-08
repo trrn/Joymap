@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *jdbUpdateDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mapTypesLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *trafficSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *autoPlaySwitch;
 
 @end
 
@@ -43,6 +44,7 @@
     _jdbUpdateDateLabel.text = [self updateDateStr:[DefaultsUtil obj:DEF_SET_JDB_LAST_UPDATED]];
     _mapTypesLabel.text = NSLocalizedString(GoogleMapsHelper.mapTypeName, nil);
     _trafficSwitch.on = [DefaultsUtil bool:DEF_SET_MAP_TRAFFIC];
+    _autoPlaySwitch.on = [DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -89,6 +91,10 @@
 
 - (IBAction)debugRegions:(id)sender {
     [RegionMonitor debugOutRegions];
+}
+
+- (IBAction)tapAutoPlaySwitch:(id)sender {
+    [DefaultsUtil setBool:_autoPlaySwitch.on key:DEF_SET_ETC_AUTOPLAY];
 }
 
 #pragma mark - credit

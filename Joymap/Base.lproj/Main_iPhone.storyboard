@@ -601,10 +601,38 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Etc" id="cVc-Wg-vva">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Oc7-4c-QH5">
+                                        <rect key="frame" x="0.0" y="439" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Oc7-4c-QH5" id="yXo-eG-nuJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto play sound and movie" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLe-mV-h8H">
+                                                    <rect key="frame" x="20" y="11" width="267" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R72-2f-iOO">
+                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="tapAutoPlaySwitch:" destination="VXi-eg-pPq" eventType="valueChanged" id="ltU-C3-KgZ"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="About" id="1Wy-DH-Zae">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="YwP-0A-36I">
-                                        <rect key="frame" x="0.0" y="439" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="531" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YwP-0A-36I" id="Kij-HB-7dn">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -633,6 +661,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                     </tableView>
                     <navigationItem key="navigationItem" title="Setting" id="0zV-E6-Px7"/>
                     <connections>
+                        <outlet property="autoPlaySwitch" destination="R72-2f-iOO" id="duR-Xz-gjA"/>
                         <outlet property="jdbUpdateDateLabel" destination="HIQ-aQ-6Qi" id="5at-62-08x"/>
                         <outlet property="mapTypesLabel" destination="O83-MX-HCK" id="uvq-1l-KKR"/>
                         <outlet property="notifySwitch" destination="cQN-ct-TkX" id="bCn-am-rd9"/>
@@ -1824,17 +1853,17 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="g7y-rg-MGg">
-                                <rect key="frame" x="72" y="156" width="230" height="31"/>
+                                <rect key="frame" x="72" y="142" width="230" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="changeV3slider:" destination="dp4-OW-mPs" eventType="valueChanged" id="S4C-lE-x5U"/>
                                 </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTf-sj-wcA">
-                                <rect key="frame" x="20" y="155" width="46" height="34"/>
+                                <rect key="frame" x="20" y="141" width="46" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="6ia-dv-tAr"/>
+                                    <constraint firstAttribute="width" constant="46" id="hFJ-Ah-VzD"/>
                                 </constraints>
                                 <state key="normal" title="Play"/>
                                 <connections>
@@ -1842,10 +1871,11 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQd-cj-oMW">
-                                <rect key="frame" x="20" y="197" width="124" height="49"/>
+                                <rect key="frame" x="20" y="188" width="124" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="ckf-QW-CoZ"/>
+                                    <constraint firstAttribute="height" constant="49" id="Shk-zK-qIn"/>
+                                    <constraint firstAttribute="width" constant="124" id="Ulv-bG-g3y"/>
                                 </constraints>
                                 <state key="normal" image="Download_on_iTunes_Badge_JP_110x40_1016.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1857,25 +1887,24 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="RQd-cj-oMW" secondAttribute="bottom" constant="5" id="0zf-h8-vmJ"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="18" id="1lt-ob-PYD"/>
                             <constraint firstItem="kn8-BT-VQT" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="trailing" constant="8" symbolic="YES" id="2JU-LQ-jvU"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="8xT-rJ-wul"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="62" id="EkP-wn-ktW"/>
-                            <constraint firstItem="g7y-rg-MGg" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="trailing" constant="8" symbolic="YES" id="J0X-Ps-bWU"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="48D-ub-QfE"/>
+                            <constraint firstAttribute="bottom" secondItem="nBM-kt-Eok" secondAttribute="bottom" id="8Kb-7k-Fk6"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="B4C-sw-ez8" secondAttribute="top" constant="188" id="9kK-QV-fvd"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="trailing" constant="8" symbolic="YES" id="Dns-kf-50V"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="leading" id="I7Q-YJ-SiO"/>
                             <constraint firstItem="kn8-BT-VQT" firstAttribute="bottom" secondItem="fQT-u2-Jen" secondAttribute="bottom" id="LpP-2h-j8D"/>
                             <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="kn8-BT-VQT" secondAttribute="top" id="MnU-iU-744"/>
-                            <constraint firstItem="YTf-sj-wcA" firstAttribute="centerY" secondItem="g7y-rg-MGg" secondAttribute="centerY" constant="1" id="RZn-33-OUd"/>
                             <constraint firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" constant="20" symbolic="YES" id="UgM-P0-W5v"/>
-                            <constraint firstItem="YTf-sj-wcA" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="31" id="W2u-kK-tZu"/>
-                            <constraint firstItem="YTf-sj-wcA" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="leading" id="X55-1J-FkG"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="RQd-cj-oMW" secondAttribute="bottom" constant="14" id="Val-29-hFu"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="trailing" secondItem="g7y-rg-MGg" secondAttribute="trailing" id="Vwv-2I-I8h"/>
                             <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="B4C-sw-ez8" secondAttribute="top" constant="20" symbolic="YES" id="XBC-Gu-qmV"/>
-                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="8" symbolic="YES" id="YaP-0p-zj3"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="trailing" secondItem="g7y-rg-MGg" secondAttribute="trailing" id="ZbY-Up-tfk"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="leading" secondItem="RQd-cj-oMW" secondAttribute="leading" id="h2p-uw-LCv"/>
                             <constraint firstItem="fQT-u2-Jen" firstAttribute="leading" secondItem="B4C-sw-ez8" secondAttribute="leading" constant="20" symbolic="YES" id="kJY-8g-clw"/>
-                            <constraint firstItem="YTf-sj-wcA" firstAttribute="bottom" secondItem="g7y-rg-MGg" secondAttribute="bottom" constant="3" id="ljN-ID-ndh"/>
-                            <constraint firstItem="g7y-rg-MGg" firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" id="mb8-0k-v5F"/>
-                            <constraint firstAttribute="bottom" secondItem="nBM-kt-Eok" secondAttribute="bottom" id="ofK-Ap-ApQ"/>
-                            <constraint firstItem="RQd-cj-oMW" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="y76-Yy-MVa"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" id="mUi-Nz-PfN"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="13" id="tyw-Ig-Pn4"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="17" id="xiO-Cm-j7V"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
