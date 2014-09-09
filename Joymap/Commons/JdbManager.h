@@ -6,9 +6,7 @@
 //  Copyright (c) 2014年 sekken. All rights reserved.
 //
 
-#import "AFHTTPClient.h"
-
-@interface JdbManager : AFHTTPClient
+@interface JdbManager : AFURLSessionManager
 
 + (instancetype)shared;
 - (void)downloadWithProgress:(void(^)(double))progress finished:(void(^)())finished;

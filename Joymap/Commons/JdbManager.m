@@ -8,8 +8,6 @@
 
 #import "JdbManager.h"
 
-#import <AFJSONRequestOperation.h>
-
 @implementation JdbManager
 
 + (instancetype)shared;
@@ -19,7 +17,8 @@
 
     dispatch_once(&once, ^{
         if (!_shared) {
-            _shared = self.new;
+            NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+            _shared = [[self alloc] initWithSessionConfiguration:configuration];
         }
     });
     
@@ -28,32 +27,33 @@
 
 - (void)downloadWithProgress:(void(^)(double))progress finished:(void(^)())finished;
 {
-    AFHTTPRequestOperation *ope =[AFHTTPRequestOperation.alloc initWithRequest:Env.downloadRequest.noCache];
+    NSProgress* p = nil;
+    NSURLSessionDownloadTask *task =
+    [self downloadTaskWithRequest:Env.downloadRequest
+              progress:&p
+           destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+               NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+               return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+           } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
+               NSLog(@"File downloaded to: %@", filePath);
+           }];
     
-    [ope setDownloadProgressBlock:^(NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
-        if (progress) {
-            progress(totalBytesRead / totalBytesExpectedToRead);
-        }
-    }];
+    [task resume];
     
-    [ope setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        DLog(@"download size %@", responseObject);
+    [p addObserver:self
+               forKeyPath:@"fractionCompleted"
+                  options:NSKeyValueObservingOptionNew
+                  context:NULL];
+}
 
-        // TODO
-
-        
-        if (finished) {
-            finished();
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        ELog(@"download failed. %@", error);
-        if (finished) {
-            finished();
-        }
-    }];
-    
-    [self enqueueHTTPRequestOperation:ope];
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"fractionCompleted"]) {
+        NSProgress *progress = (NSProgress *)object;
+        NSLog(@"Progress… %f", progress.fractionCompleted);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 @end

@@ -83,7 +83,6 @@
 		DC2EDAA219BD567200EBC40A /* Layout06ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */; };
 		DC2EDAA419BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */; };
 		DC3C295019BE985300D189E3 /* JdbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3C294F19BE985300D189E3 /* JdbManager.m */; };
-		DC3C295219BEA48500D189E3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */; };
 		DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295319BEA4E200D189E3 /* Security.framework */; };
 		DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */; };
 		DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */; };
@@ -265,6 +264,8 @@
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download_on_iTunes_Badge_JP_110x40_1016@2x.png"; sourceTree = "<group>"; };
+		DCE5ED4B19BEB38C00728527 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		DCE5ED4D19BECBA500728527 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */,
-				DC3C295219BEA48500D189E3 /* MobileCoreServices.framework in Frameworks */,
 				DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */,
 				DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */,
 				DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */,
@@ -393,6 +393,8 @@
 		479BA368180AB2B5008E640F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCE5ED4D19BECBA500728527 /* QuartzCore.framework */,
+				DCE5ED4B19BEB38C00728527 /* CFNetwork.framework */,
 				DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */,
 				DC3C295319BEA4E200D189E3 /* Security.framework */,
 				DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */,
@@ -876,7 +878,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -911,7 +913,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -929,9 +931,10 @@
 				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
 				INFOPLIST_FILE = "Joymap/Joymap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Joymap;
-				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -944,10 +947,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = "Joymap/Joymap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Joymap;
-				VALID_ARCHS = armv7;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = "armv7 arm64 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

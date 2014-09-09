@@ -38,8 +38,10 @@
 
 // ---- Application Dependent ----
 
-// for AFNetworking
+// cocoapods
 #import <Security/Security.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <AFNetworking.h>
 
 #define JDB_FILE_NAME @"jdb.sqlite"
 

@@ -53,7 +53,7 @@
 #pragma mark - UIButton
 
 - (IBAction)cancel:(id)sender {
-    [JdbManager.shared cancelAllHTTPOperationsWithMethod:nil path:nil];
+    //[JdbManager.shared cancelAllHTTPOperationsWithMethod:nil path:nil];
 }
 
 @end

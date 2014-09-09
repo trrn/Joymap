@@ -1,14 +1,14 @@
 platform :ios, '7.1'
 
-pod 'AFNetworking',             '~>1.3'
-pod 'Google-Maps-iOS-SDK',      '~>1.5'
-pod 'FontAwesomeIconFactory',   '~>1.2'
+pod 'AFNetworking',             '~>2.4'
 pod 'FMDB',                     '~>2.3'
-pod 'UIView-Autolayout',        '~>0.0'
-#pod 'SDWebImage',               '~>3.5'
-pod 'MGImageUtilities',         '~>0.0'
+pod 'FontAwesomeIconFactory',   '~>1.2'
+pod 'Google-Maps-iOS-SDK',      '~>1.5'
 pod 'IDMPhotoBrowser',          '~>1.3'
+pod 'MGImageUtilities',         '~>0.0'
+pod 'SDWebImage',               '~>3.5'
 pod 'StreamingKit',             '~>0.1'
+pod 'UIView-Autolayout',        '~>0.0'
 
 post_install do | installer |
   require 'fileutils'
