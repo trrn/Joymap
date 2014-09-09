@@ -235,9 +235,11 @@
 
     self.audioPlayer = [STKAudioPlayer.alloc initWithOptions:(STKAudioPlayerOptions){.enableVolumeMixer = YES}];
     self.audioPlayer.delegate = self;
-    [self.audioPlayer mute]; // work around for prevent to autoplay
-    [self.audioPlayer queue:soundURL_];
 
+    if ([DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY]) {
+        [self.audioPlayer queue:soundURL_];
+    }
+    
     [self updateSoundControl];
     [self setupTimer];
 }
@@ -265,13 +267,15 @@
     {
         return;
     }
-
-    if (self.audioPlayer.state == STKAudioPlayerStatePaused)
+    
+    if (!self.audioPlayer.pendingQueueCount) {  // first tapped
+        [self.audioPlayer queue:soundURL_];
+    }
+    else if (self.audioPlayer.state == STKAudioPlayerStatePaused)  // pausing
     {
-        [self.audioPlayer unmute];  // work around for prevent to autoplay
         [self.audioPlayer resume];
     }
-    else
+    else    // playing
     {
         [self.audioPlayer pause];
     }
@@ -290,21 +294,19 @@
 {
 	if (self.audioPlayer == nil)
 	{
-        self.soundButton.enabled = self.soundSlider.enabled = NO;
+        ;
 	}
 	else if (self.audioPlayer.state == STKAudioPlayerStatePaused)
 	{
-        self.soundButton.enabled = self.soundSlider.enabled = YES;
         [self.soundButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
 	}
 	else if (self.audioPlayer.state & STKAudioPlayerStatePlaying)
 	{
-        self.soundButton.enabled = self.soundSlider.enabled = YES;
         [self.soundButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
 	}
 	else
 	{
-        self.soundButton.enabled = self.soundSlider.enabled = NO;
+        ;
 	}
     
     [self tick];
@@ -331,15 +333,6 @@
 - (void)audioPlayer:(STKAudioPlayer *)audioPlayer stateChanged:(STKAudioPlayerState)state previousState:(STKAudioPlayerState)previousState
 {
     DLog(@"State changed");
-    
-    if ([DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY]) {
-        [audioPlayer unmute];
-    } else {
-        // work around for prevent to autoplay
-        if (previousState == STKAudioPlayerStateBuffering && state == STKAudioPlayerStatePlaying) {
-            [audioPlayer pause];
-        }
-    }
     
 	[self updateSoundControl];
 }
@@ -385,8 +378,6 @@
         self.soundSlider.value = 0;
         self.soundSlider.minimumValue = 0;
         self.soundSlider.maximumValue = 0;
-        self.soundSlider.enabled = NO;
-        self.soundButton.enabled = NO;
     }
 }
 
