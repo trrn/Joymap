@@ -72,15 +72,6 @@
     _mapView.settings.myLocationButton = YES;
     _mapView.delegate = self;
     
-    // first location update
-    [_mapView addObserver:self
-               forKeyPath:@"myLocation"
-                  options:NSKeyValueObservingOptionNew
-                  context:NULL];
-    [ProcUtil asyncMainq:^{
-        _mapView.myLocationEnabled = YES;
-    }];
-    
     // register search table view's row tap action
     searchedMarker_ = GMSMarker.new;
     __weak typeof(self) _self = self;
@@ -106,6 +97,8 @@
     [self setAdminControl];
 
     [self reload];
+    
+    [self moveCameraToAnyPin];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,6 +116,18 @@
 
     _mapView.trafficEnabled = [DefaultsUtil bool:DEF_SET_MAP_TRAFFIC];
     _mapView.mapType = GoogleMapsHelper.mapType;
+}
+
+- (void)moveCameraToAnyPin
+{
+    if (pins_ && pins_.count) {
+        NSInteger idx = rand() % pins_.count;
+        Pin *p = pins_[idx];
+        GMSMarker *m = p.marker;
+        GMSCameraUpdate *upd =
+        [GMSCameraUpdate setTarget:m.position zoom:10];
+        [_mapView animateWithCameraUpdate:upd];
+    }
 }
 
 - (void)reload
@@ -175,23 +180,6 @@
 {
     for (UIGestureRecognizer *g in _mapView.gestureRecognizers) {
         g.enabled = enable;
-    }
-}
-
-#pragma mark - KVO
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    static BOOL _firstLocationUpdate = NO;
-
-    if (!_firstLocationUpdate) {
-        // If the first location update has not yet been recieved, then jump to that location.
-        _firstLocationUpdate = YES;
-        CLLocation *loc = [change objectForKey:NSKeyValueChangeNewKey];
-        _mapView.camera = [GMSCameraPosition cameraWithTarget:loc.coordinate zoom:14];
     }
 }
 

@@ -44,8 +44,12 @@
     __weak typeof(self) _self = self;
 
     [JdbManager.shared downloadWithProgress:^(double progress) {
-        _self.progressBar.hidden = NO;
-        _self.progressBar.progress = progress;
+        if (progress == 1.0)  // work around for when download starts
+            return;
+        [ProcUtil asyncMainq:^{
+            _self.progressBar.hidden = NO;
+            _self.progressBar.progress = progress;
+        }];
     } finished:^{
         [_self dismissViewControllerAnimated:YES completion:nil];
     }];
@@ -53,7 +57,7 @@
 #pragma mark - UIButton
 
 - (IBAction)cancel:(id)sender {
-    //[JdbManager.shared cancelAllHTTPOperationsWithMethod:nil path:nil];
+    [JdbManager.shared cancel];
 }
 
 @end

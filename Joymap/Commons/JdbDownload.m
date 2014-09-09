@@ -139,7 +139,7 @@
             return;
         }
         if (res.statusCode != 200) {
-            @throw Err(@"status code is not 200 but %d", res.statusCode);
+            @throw Err(@"status code is not 200 but %ld", (long)res.statusCode);
         }
         
         DLog(@"path [%@]. size %@", location.absoluteString, [self size:location.path]);

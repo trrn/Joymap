@@ -65,6 +65,8 @@ static NSDate *_date;
 {
     NSString *path = self.path;
 
+    //DLog(@"open db: %@", path);
+    
     if (!path) {
         return nil;
     }
@@ -258,7 +260,7 @@ static NSDate *_date;
     NSMutableArray *ret = @[].mutableCopy;
 
     ret = [self select:ret exe:^(FMDatabase *db) {
-        return [db executeQueryWithFormat:@"select * from pin where _id = %d", iD];
+        return [db executeQueryWithFormat:@"select * from pin where _id = %ld", iD];
     } map:^(FMResultSet *rs, id ret) {
         Pin *p = Pin.new;
         p.id = [rs intForColumn:@"_id"];
@@ -278,7 +280,7 @@ static NSDate *_date;
     NSMutableArray *ret = @[].mutableCopy;
 
     return [self select:ret exe:^(FMDatabase *db) {
-        return [db executeQueryWithFormat:@"select * from layout where pin_id = %d order by orderno", pin.id];
+        return [db executeQueryWithFormat:@"select * from layout where pin_id = %ld order by orderno", pin.id];
     } map:^(FMResultSet *rs, id ret) {
         Layout *p = Layout.new;
         p.id = [rs intForColumn:@"_id"];
@@ -297,7 +299,7 @@ static NSDate *_date;
     return [self select:ret exe:^(FMDatabase *db) {
         return [db executeQueryWithFormat:@"select a.*, b._id as layoutItemId, b.layout_id, b.orderno"
                 " from item a, layout_item b"
-                " where a._id = b.item_id and b.layout_id = %d order by b.orderno", layout.id];
+                " where a._id = b.item_id and b.layout_id = %ld order by b.orderno", layout.id];
     } map:^(FMResultSet *rs, id ret) {
         Item *p = Item.new;
         p.id = [rs intForColumn:@"_id"];
@@ -320,7 +322,7 @@ static NSDate *_date;
         return [db executeQueryWithFormat:
             @"select d.resource1 from pin a, layout b, layout_item c, item d"
              " where a._id = b.pin_id and b._id = c.layout_id and c.item_id = d._id"
-             " and a._id = %d and d.type in (1) order by b.orderno, c.orderno limit 1"
+             " and a._id = %ld and d.type in (1) order by b.orderno, c.orderno limit 1"
                 , pin.id];
     } map:^(FMResultSet *rs, id ret) {
         Item *p = Item.new;
@@ -338,7 +340,7 @@ static NSDate *_date;
         return [db executeQueryWithFormat:
                 @"select d.* from pin a, layout b, layout_item c, item d"
                 " where a._id = b.pin_id and b._id = c.layout_id"
-                " and c.item_id = d._id and a._id = %d and d.type in (2, 3, 7)"
+                " and c.item_id = d._id and a._id = %ld and d.type in (2, 3, 7)"
                 " order by b.orderno, c.orderno limit 1"
                 , pin.id];
     } map:^(FMResultSet *rs, id ret) {
@@ -364,13 +366,13 @@ static NSDate *_date;
                 @throw Err(@"%@", [db lastError]);
         } else {
             if (![db executeUpdateWithFormat:
-                  @"insert into layout_item values( %d, %d, %d, %d )",
+                  @"insert into layout_item values( %ld, %ld, %ld, %ld )",
                   item.layoutItemId, item.layoutId, item.id, item.orderNo])
                 @throw Err(@"%@", [db lastError]);
         }
     } else {
         if (![db executeUpdateWithFormat:
-              @"insert into layout_item values( null, %d, %d, %d )",
+              @"insert into layout_item values( null, %ld, %ld, %ld )",
               item.layoutId, item.id, item.orderNo])
             @throw Err(@"%@", [db lastError]);
 
@@ -440,13 +442,13 @@ static NSDate *_date;
                 @throw Err(@"%@", [db lastError]);
         } else {
             if (![db executeUpdateWithFormat:
-                  @"insert into layout values( %d, %d, %d, %d )",
+                  @"insert into layout values( %ld, %ld, %ld, %ld )",
                   lay.id, lay.pinId, lay.kind, lay.orderNo])
                 @throw Err(@"%@", [db lastError]);
         }
     } else {
         if (![db executeUpdateWithFormat:
-              @"insert into layout values( null, %d, %d, %d )",
+              @"insert into layout values( null, %ld, %ld, %ld )",
               lay.pinId, lay.kind, lay.orderNo])
             @throw Err(@"%@", [db lastError]);
         
@@ -481,14 +483,14 @@ static NSDate *_date;
                 @throw Err(@"%@", [db lastError]);
         } else {
             if (![db executeUpdateWithFormat:
-                  @"insert into pin values( %d, %f, %f, %@, %d )",
-                  pin.id, pin.latitude, pin.longitude, pin.name, pin.kategoryId])
+                  @"insert into pin values( %ld, %f, %f, %@, %ld )",
+                  (long)pin.id, pin.latitude, pin.longitude, pin.name, (long)pin.kategoryId])
                 @throw Err(@"%@", [db lastError]);
         }
     } else {
         if (![db executeUpdateWithFormat:
-              @"insert into pin values( null, %f, %f, %@, %d )",
-              pin.latitude, pin.longitude, pin.name, pin.kategoryId])
+              @"insert into pin values( null, %f, %f, %@, %ld )",
+              pin.latitude, pin.longitude, pin.name, (long)pin.kategoryId])
             @throw Err(@"%@", [db lastError]);
 
         [self select:db ret:pin exe:^(FMDatabase *db) {
@@ -513,30 +515,30 @@ static NSDate *_date;
              "  from"
              "    layout a, layout_item b, item e"
              "  where"
-             "    a.pin_id = %d and a._id = b.layout_id and"
+             "    a.pin_id = %ld and a._id = b.layout_id and"
              "    b.item_id = e._id and not exists"
              "    ( select"
              "        'x'"
              "      from"
              "        layout a1, layout_item b1"
              "      where"
-             "        a1.pin_id <> %d and"
+             "        a1.pin_id <> %ld and"
              "        a1._id = b1.layout_id and"
              "        b1.item_id = e._id"
              "    )"
-             ")", pin.id, pin.id])
+             ")", (long)pin.id, (long)pin.id])
         @throw Err(@"%@", [db lastError]);
 }
 
 + (void)deleteLayouts:(Pin *)pin db:(FMDatabase *)db
 {
-    if (![db executeUpdateWithFormat:@"delete from layout where pin_id = %d", pin.id])
+    if (![db executeUpdateWithFormat:@"delete from layout where pin_id = %ld", (long)pin.id])
         @throw Err(@"%@", [db lastError]);
 }
 
 + (void)deletePin:(Pin *)pin db:(FMDatabase *)db
 {
-    if (![db executeUpdateWithFormat:@"delete from pin where _id = %d", pin.id])
+    if (![db executeUpdateWithFormat:@"delete from pin where _id = %ld", (long)pin.id])
         @throw Err(@"%@", [db lastError]);
 }
 

@@ -52,10 +52,12 @@
 {
     NSMutableURLRequest *req = self.downloadURL.request.mutableCopy;
     req.HTTPMethod = @"POST";
-    NSString *param = [NSString stringWithFormat:@"?user=%@&map=%@",
+    NSString *param = [NSString stringWithFormat:@"user=%@&map=%@",
                        [HttpUtil encodeURI:self.dict[@"User"]],
                        [HttpUtil encodeURI:self.dict[@"Map"]]];
 
+    DLog(@"param:%@", param);
+    
     req.HTTPBody = [param dataUsingEncoding:NSUTF8StringEncoding];
     return req;
 }
