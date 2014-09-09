@@ -48,10 +48,10 @@
 
 - (void)start
 {
-#ifdef DEBUG
-    // TODO TEST
-    [DefaultsUtil setObj:@"test" key:JDBID];
-#endif
+//#ifdef DEBUG
+//    // TODO TEST
+//    [DefaultsUtil setObj:@"test" key:JDBID];
+//#endif
     
     if (task_) {
         return;

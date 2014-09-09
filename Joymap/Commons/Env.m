@@ -48,6 +48,32 @@
     return [url absoluteString];
 }
 
++ (NSURLRequest *)downloadRequest
+{
+    NSMutableURLRequest *req = self.downloadURL.request.mutableCopy;
+    req.HTTPMethod = @"POST";
+    NSString *param = [NSString stringWithFormat:@"?user=%@&map=%@",
+                       [HttpUtil encodeURI:self.dict[@"User"]],
+                       [HttpUtil encodeURI:self.dict[@"Map"]]];
+
+    req.HTTPBody = [param dataUsingEncoding:NSUTF8StringEncoding];
+    return req;
+}
+
++ (NSURL *)downloadURL
+{
+    NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];
+    return [url URLByAppendingPathComponent:self.dict[@"DownloadAction"]];
+}
+
++ (NSDictionary *)downloadParam
+{
+    return @{
+             @"user":self.dict[@"User"],
+             @"map":self.dict[@"Map"]
+             };
+}
+
 + (NSString *)jdbIdHeader
 {
     return self.dict[@"JDBIdentifyHeaderName"];

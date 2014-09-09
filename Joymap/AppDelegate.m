@@ -10,6 +10,8 @@
 
 #import "RegionMonitor.h"
 
+#import <AFNetworkActivityIndicatorManager.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -20,6 +22,8 @@
     //[UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 
     [self firstlaunched];
+    
+    AFNetworkActivityIndicatorManager.sharedManager.enabled = YES;
     
     [RegionMonitor refresh];
 

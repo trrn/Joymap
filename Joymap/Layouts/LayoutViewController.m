@@ -15,10 +15,11 @@
 
 #import <IDMPhotoBrowser.h>
 #import <UIView+AutoLayout.h>
-
 #import <STKDataSource.h>
 
-@interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, STKAudioPlayerDelegate, STKDataSourceDelegate>
+#import <MobileCoreServices/MobileCoreServices.h>
+
+@interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, STKAudioPlayerDelegate>
 
 @end
 

@@ -38,6 +38,9 @@
 
 // ---- Application Dependent ----
 
+// for AFNetworking
+#import <Security/Security.h>
+
 #define JDB_FILE_NAME @"jdb.sqlite"
 
 // user defalut keys

@@ -22,4 +22,7 @@
 
 + (BOOL)enableEdit;
 
+
++ (NSURLRequest *)downloadRequest;
+
 @end

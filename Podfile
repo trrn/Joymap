@@ -1,4 +1,6 @@
-platform :ios, '7.0'
+platform :ios, '7.1'
+
+pod 'AFNetworking',             '~>1.3'
 pod 'Google-Maps-iOS-SDK',      '~>1.5'
 pod 'FontAwesomeIconFactory',   '~>1.2'
 pod 'FMDB',                     '~>2.3'

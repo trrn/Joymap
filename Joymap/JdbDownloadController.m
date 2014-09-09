@@ -8,7 +8,7 @@
 
 #import "JdbDownloadController.h"
 
-#import "JdbDownload.h"
+#import "JdbManager.h"
 
 #import <UIView+AutoLayout.h>
 
@@ -19,9 +19,6 @@
 @end
 
 @implementation JdbDownloadController
-{
-    JdbDownload *dl_;
-}
 
 - (void)viewDidLoad
 {
@@ -46,20 +43,17 @@
 
     __weak typeof(self) _self = self;
 
-    dl_ = JdbDownload.singleton;
-    dl_.progressHandler = ^(double progress){
+    [JdbManager.shared downloadWithProgress:^(double progress) {
         _self.progressBar.hidden = NO;
         _self.progressBar.progress = progress;
-    };
-    dl_.completionHandler = ^{
+    } finished:^{
         [_self dismissViewControllerAnimated:YES completion:nil];
-    };
-    [dl_ start];
+    }];
 }
 #pragma mark - UIButton
 
 - (IBAction)cancel:(id)sender {
-    [dl_ cancel];
+    [JdbManager.shared cancelAllHTTPOperationsWithMethod:nil path:nil];
 }
 
 @end

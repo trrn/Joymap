@@ -82,6 +82,10 @@
 		DC2EDA9519B9BE7A00EBC40A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */; };
 		DC2EDAA219BD567200EBC40A /* Layout06ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */; };
 		DC2EDAA419BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */; };
+		DC3C295019BE985300D189E3 /* JdbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3C294F19BE985300D189E3 /* JdbManager.m */; };
+		DC3C295219BEA48500D189E3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */; };
+		DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295319BEA4E200D189E3 /* Security.framework */; };
+		DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */; };
 		DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */; };
 		DC9177D119BD8FF50087DDF8 /* NSString+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C719BD8FF50087DDF8 /* NSString+Sekken.m */; };
 		DC9177D219BD8FF50087DDF8 /* NSURL+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C919BD8FF50087DDF8 /* NSURL+Sekken.m */; };
@@ -239,6 +243,11 @@
 		DC2EDAA019BD567200EBC40A /* Layout06ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Layout06ViewController.h; sourceTree = "<group>"; };
 		DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layout06ViewController.m; sourceTree = "<group>"; };
 		DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Download_on_iTunes_Badge_JP_110x40_1016.png; sourceTree = "<group>"; };
+		DC3C294E19BE985300D189E3 /* JdbManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JdbManager.h; sourceTree = "<group>"; };
+		DC3C294F19BE985300D189E3 /* JdbManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JdbManager.m; sourceTree = "<group>"; };
+		DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DC3C295319BEA4E200D189E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DC9177C419BD8FF50087DDF8 /* NSArray+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sekken.h"; sourceTree = "<group>"; };
 		DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sekken.m"; sourceTree = "<group>"; };
 		DC9177C619BD8FF50087DDF8 /* NSString+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Sekken.h"; sourceTree = "<group>"; };
@@ -263,6 +272,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */,
+				DC3C295219BEA48500D189E3 /* MobileCoreServices.framework in Frameworks */,
+				DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */,
 				DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */,
 				DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */,
 				DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */,
@@ -381,6 +393,9 @@
 		479BA368180AB2B5008E640F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */,
+				DC3C295319BEA4E200D189E3 /* Security.framework */,
+				DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */,
 				DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */,
 				DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */,
 				DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */,
@@ -511,6 +526,8 @@
 				4785903E183106080087C55F /* AdminHelper.m */,
 				47F5C978185D50BA00399624 /* TextViewController.h */,
 				47F5C979185D50BA00399624 /* TextViewController.m */,
+				DC3C294E19BE985300D189E3 /* JdbManager.h */,
+				DC3C294F19BE985300D189E3 /* JdbManager.m */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -595,7 +612,7 @@
 		479BA35E180AB2B5008E640F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = sekken;
 				TargetAttributes = {
 					479BA365180AB2B5008E640F = {
@@ -726,6 +743,7 @@
 				478B5C5B1826C1150068E30A /* SegmentedControl.m in Sources */,
 				470090A81813AB92009FB810 /* FileUtil.m in Sources */,
 				47009090180EDF7B009FB810 /* NavigationController.m in Sources */,
+				DC3C295019BE985300D189E3 /* JdbManager.m in Sources */,
 				47BFBE0418250B4600A2D7D3 /* GeoUtil.m in Sources */,
 				47009080180D8D56009FB810 /* HttpUtil.m in Sources */,
 				47F5C974185CCE3A00399624 /* RouteViewController.m in Sources */,
@@ -829,7 +847,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -871,7 +888,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -907,7 +923,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 830491D7EE934B3D9C92317E /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -925,7 +940,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 830491D7EE934B3D9C92317E /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -941,7 +955,6 @@
 		479BA3A2180AB2B5008E640F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Joymap.app/Joymap";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -964,7 +977,6 @@
 		479BA3A3180AB2B5008E640F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Joymap.app/Joymap";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
