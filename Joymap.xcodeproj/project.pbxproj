@@ -19,7 +19,6 @@
 		470090A81813AB92009FB810 /* FileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 470090A71813AB92009FB810 /* FileUtil.m */; };
 		470090AB1813AEFC009FB810 /* DefaultsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 470090AA1813AEFB009FB810 /* DefaultsUtil.m */; };
 		470090B418157362009FB810 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 470090B318157362009FB810 /* ListViewController.m */; };
-		470090B718177ED6009FB810 /* JdbDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 470090B618177ED6009FB810 /* JdbDownload.m */; };
 		470090BA1817970F009FB810 /* ImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 470090B91817970F009FB810 /* ImageUtil.m */; };
 		470090C31817AAB3009FB810 /* thumbnail_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 470090C11817AAB3009FB810 /* thumbnail_loading.png */; };
 		470090C41817AAB3009FB810 /* thumbnail_nothing.png in Resources */ = {isa = PBXBuildFile; fileRef = 470090C21817AAB3009FB810 /* thumbnail_nothing.png */; };
@@ -132,8 +131,6 @@
 		470090AA1813AEFB009FB810 /* DefaultsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultsUtil.m; sourceTree = "<group>"; };
 		470090B218157362009FB810 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		470090B318157362009FB810 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		470090B518177ED6009FB810 /* JdbDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JdbDownload.h; sourceTree = "<group>"; };
-		470090B618177ED6009FB810 /* JdbDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JdbDownload.m; sourceTree = "<group>"; };
 		470090B81817970F009FB810 /* ImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtil.h; sourceTree = "<group>"; };
 		470090B91817970F009FB810 /* ImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtil.m; sourceTree = "<group>"; };
 		470090C11817AAB3009FB810 /* thumbnail_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbnail_loading.png; sourceTree = "<group>"; };
@@ -512,8 +509,6 @@
 				4700908F180EDF7B009FB810 /* NavigationController.m */,
 				470090C71817B608009FB810 /* Cache.h */,
 				470090C81817B608009FB810 /* Cache.m */,
-				470090B518177ED6009FB810 /* JdbDownload.h */,
-				470090B618177ED6009FB810 /* JdbDownload.m */,
 				47BFBDFF182509BD00A2D7D3 /* GeoSearch.h */,
 				47BFBE00182509BD00A2D7D3 /* GeoSearch.m */,
 				DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */,
@@ -729,7 +724,6 @@
 			files = (
 				478B5C56182616420068E30A /* LocationUtil.m in Sources */,
 				47859028182FE3B10087C55F /* Layout03ViewController.m in Sources */,
-				470090B718177ED6009FB810 /* JdbDownload.m in Sources */,
 				477E94A4180ACB86005E83D4 /* SettingViewController.m in Sources */,
 				479BA37A180AB2B5008E640F /* AppDelegate.m in Sources */,
 				DC9177D519BD8FF50087DDF8 /* UIView+Sekken.m in Sources */,

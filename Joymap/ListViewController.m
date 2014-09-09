@@ -10,7 +10,6 @@
 
 #import "AdminHelper.h"
 #import "DataSource.h"
-#import "JdbDownload.h"
 #import "PageViewController.h"
 #import "PinViewController.h"
 

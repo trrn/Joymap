@@ -23,11 +23,6 @@
 {
     [super awakeFromNib];
 
-//    UIEdgeInsets insets = { 0.0, -10.0, -10.0, -5.0 };
-//    for (UIBarItem *i in self.tabBar.items) {
-//        i.imageInsets = insets;
-//    }
-
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     UITabBarItem *item;
     

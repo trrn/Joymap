@@ -268,8 +268,8 @@
     {
         return;
     }
-    
-    if (!self.audioPlayer.pendingQueueCount) {  // first tapped
+
+    if (!self.audioPlayer.currentlyPlayingQueueItemId) {  // first tapped
         [self.audioPlayer queue:soundURL_];
     }
     else if (self.audioPlayer.state == STKAudioPlayerStatePaused)  // pausing

@@ -60,10 +60,6 @@
         vc.selectHandler = ^(NSInteger idx) {
             [GoogleMapsHelper setMapType:idx];
         };
-    } else if ([[segue identifier] isEqualToString:@"credit"]) {
-        TextViewController *vc = segue.destinationViewController;
-        vc.title = NSLocalizedString(@"Credit", nil);
-        vc.text = [self credit];
     }
 }
 
@@ -95,52 +91,6 @@
 
 - (IBAction)tapAutoPlaySwitch:(id)sender {
     [DefaultsUtil setBool:_autoPlaySwitch.on key:DEF_SET_ETC_AUTOPLAY];
-}
-
-#pragma mark - credit
-
-- (NSAttributedString *)credit {
-
-    NSMutableAttributedString *str = NSMutableAttributedString.new;
-    [str appendAttributedString:[self creditFromTitle:@"Google Maps SDK for iOS" text:GMSServices.openSourceLicenseInfo]];
-    [str appendAttributedString:[self creditFromFile:@"AFNetworking"]];
-    [str appendAttributedString:[self creditFromFile:@"DACircularProgress"]];
-    [str appendAttributedString:[self creditFromFile:@"FMDB"]];
-    [str appendAttributedString:[self creditFromFile:@"FontAwesomeIconFactory"]];
-    [str appendAttributedString:[self creditFromFile:@"IDMPhotoBrowser"]];
-    [str appendAttributedString:[self creditFromFile:@"MGImageUtilities"]];
-    [str appendAttributedString:[self creditFromFile:@"SVProgressHUD"]];
-    [str appendAttributedString:[self creditFromFile:@"UIView-Autolayout"]];
-
-    return str;
-}
-
-- (NSAttributedString *)creditFromFile:(NSString *)title {
-
-    NSMutableAttributedString *str = NSMutableAttributedString.new;
-    NSError *err = nil;
-    NSString *text = [NSString stringWithContentsOfFile:
-                      [NSBundle.mainBundle pathForResource:title ofType:nil] encoding:NSUTF8StringEncoding error:&err];
-    if (err) {
-        DLog(@"%@ %@", title, err);
-        return str;
-    }
-
-    [str appendAttributedString:[NSAttributedString.alloc initWithString:@"\n\n"]];
-    [str appendAttributedString:[self creditFromTitle:title text:text]];;
-    return str;
-}
-
-- (NSAttributedString *)creditFromTitle:(NSString *)title text:(NSString *)text {
-
-    NSMutableAttributedString *str = NSMutableAttributedString.new;
-    NSDictionary *attr = @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f] };
-
-    [str appendAttributedString:[NSAttributedString.alloc initWithString:title attributes:attr]];
-    [str appendAttributedString:[NSAttributedString.alloc initWithString:@"\n\n"]];
-    [str appendAttributedString:[NSAttributedString.alloc initWithString:text]];
-
-    return str;
 }
 
 @end

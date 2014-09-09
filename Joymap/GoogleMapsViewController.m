@@ -14,7 +14,6 @@
 #import "GeoSearch.h"
 #import "GoogleMapsHelper.h"
 #import "GoogleStreetViewController.h"
-#import "JdbDownload.h"
 #import "PageViewController.h"
 #import "Pin.h"
 #import "SearchOnMap.h"
