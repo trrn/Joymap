@@ -101,7 +101,7 @@
         }
         case ITEM_TYPE_MOVIE: {
             
-            if (item.isYouTube) {
+            if (item.isYouTube) {   // url must be embed format. eg. http://www.youtube.com/embed/cvj3-MZO9Tw
                 [indicator stopAnimating];
                 webView_ = UIWebView.autoLayoutView;
                 [superView addSubview:webView_];
@@ -152,7 +152,7 @@
     NSURL *url = nil;
 
     if (item.resource2 && item.resource2.length) {  // binary
-        NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"play_movie_by_nsdata.mp4"];
+        NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"play_movie_by_nsdata.mp4"];    // need any extension
         if ([item.resource2 writeToFile:tmp atomically:NO]) {
             url = tmp.fileURL;
         } else {
