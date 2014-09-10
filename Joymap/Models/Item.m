@@ -76,11 +76,11 @@
             return [UIImage imageWithData:self.resource2];
 
         } else if (self.resource1 && self.resource1.length) {   // url
-            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.resource1]];
+            NSData *data = [NSData dataWithContentsOfURL:self.resource1.URL];
             return [UIImage.alloc initWithData:data];
 
         } else {
-            ELog(@"no image resource %d", self.id);
+            ELog(@"no image resource %ld", self.id);
         }
     }
 
@@ -90,12 +90,12 @@
 - (NSURL *)url
 {
     if (_localUrl)
-        return [NSURL URLWithString:_localUrl];
+        return _localUrl.fileURL;
 
     if ([self isImageOrMovie]) {
         if (!_resource2 || !_resource2.length) {
             if (_resource1 && _resource1.length)
-                return [NSURL URLWithString:_resource1];
+                return _resource1.URL;
         }
     }
 

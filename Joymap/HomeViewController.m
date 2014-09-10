@@ -21,7 +21,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-    NSURL *url = [NSURL URLWithString:Env.homeUrl];
+    NSURL *url = Env.homeUrl.URL;
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:req];
 }

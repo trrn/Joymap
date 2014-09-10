@@ -49,7 +49,7 @@
                        NSString *to = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
                        to = [to stringByAppendingPathComponent:JDB_FILE_NAME];
                        [NSFileManager.defaultManager removeItemAtPath:to error:nil];
-                       return [NSURL.alloc initFileURLWithPath:to];
+                       return to.fileURL;
                    }
                }
                @catch (NSException *e) {

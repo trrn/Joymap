@@ -163,7 +163,7 @@
     DLog(@"%@", urlstr);
 
     NSURLSession *session = NSURLSession.sharedSession;
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlstr]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:urlstr.URL];
     NSURLSessionTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!handler)
             return;

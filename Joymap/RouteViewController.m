@@ -86,8 +86,7 @@
     
     DLog(@"direction start %@", path);
     
-    [UIApplication.sharedApplication openURL:[NSURL URLWithString:path]];
-    
+    [UIApplication.sharedApplication openURL:path.URL];
 }
 
 - (IBAction)routeByGoogleMaps:(id)sender {

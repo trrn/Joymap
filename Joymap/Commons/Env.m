@@ -36,7 +36,7 @@
 
 + (NSString *)downloadUrl
 {
-    NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];
+    NSURL *url = ((NSString *)self.dict[@"ManagerURL"]).URL;
     url = [url URLByAppendingPathComponent:self.dict[@"DownloadAction"]];
 
     NSString *param = [NSString stringWithFormat:@"?user=%@&map=%@",

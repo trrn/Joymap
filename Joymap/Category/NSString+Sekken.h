@@ -12,6 +12,8 @@
 
 - (NSURL *)URL;
 
+- (NSURL *)fileURL;
+
 - (NSString *)encodeURI;
 
 - (NSString *)decodeURI;

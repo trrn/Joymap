@@ -89,7 +89,7 @@
     [self.view endEditing:YES];
 
     if ([segue.identifier isEqualToString:@"AddPage"]) {
-        DLog(@"%d", self.pin.layouts.count);
+        DLog(@"%ld", self.pin.layouts.count);
     } else if ([segue.identifier isEqualToString:@"ChangeLocation"]) {
         [segue.destinationViewController setPin:_pin];
     }

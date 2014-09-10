@@ -11,7 +11,12 @@
 
 - (NSURL *)URL;
 {
-    return [NSURL URLWithString:self];
+    return [NSURL URLWithString:[self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
+
+- (NSURL *)fileURL;
+{
+    return [NSURL fileURLWithPath:[self stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (NSString *)encodeURI

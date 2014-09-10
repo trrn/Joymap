@@ -98,7 +98,7 @@
             break;
         }
         case ITEM_TYPE_MOVIE: {
-            self.mplayer = [MPMoviePlayerController.alloc initWithContentURL:item.url];
+            self.mplayer = [self mplayerWithItem:item];
             [self.mplayer prepareToPlay];
             self.mplayer.scalingMode = MPMovieScalingModeAspectFit;
             self.mplayer.shouldAutoplay = [DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY];
@@ -129,6 +129,23 @@
             break;
         }
     }
+}
+
+- (MPMoviePlayerController *)mplayerWithItem:(Item *)item
+{
+    NSURL *url = nil;
+
+    if (item.resource2 && item.resource2.length) {  // binary
+        NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"play_movie_by_nsdata.tmp"];
+        [item.resource2 writeToFile:tmp atomically:NO];
+        url = tmp.fileURL;
+    } else if (item.url) { // url
+        url = item.url;
+    } else {
+        ELog(@"no movie resouce %ld", item.id);
+    }
+
+    return [MPMoviePlayerController.alloc initWithContentURL:url];
 }
 
 - (void)setTextView:(UITextView *)textView item:(Item *)item
@@ -253,10 +270,10 @@
 
     // work around. StreamKit cannot play NSData, so read from local file as URL.
 
-    NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"sound"];
+    NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"play_sound_by_nsdata.tmp"];
     [data writeToFile:tmp atomically:NO];
 
-    NSURL *url = [NSURL fileURLWithPath:tmp];
+    NSURL *url = tmp.fileURL;
     DLog(@"%@", url.description);
 
     [self prepareSoundWithURL:url.absoluteString];
