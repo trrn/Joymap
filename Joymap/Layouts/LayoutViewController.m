@@ -32,6 +32,8 @@
     NSTimer *timer_;
     NSString *soundURL_;
     STKDataSource *soundDataSource_;
+    
+    UIWebView *webView_;
 }
 
 - (void)viewDidLoad
@@ -98,15 +100,41 @@
             break;
         }
         case ITEM_TYPE_MOVIE: {
-            self.mplayer = [self mplayerWithItem:item];
-            [self.mplayer prepareToPlay];
-            self.mplayer.scalingMode = MPMovieScalingModeAspectFit;
-            self.mplayer.shouldAutoplay = [DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY];
-            self.mplayer.view.clipsToBounds = YES;
-            [superView addSubview:self.mplayer.view];
-            self.mplayer.view.translatesAutoresizingMaskIntoConstraints = NO;
-            [self.mplayer.view pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];
+            
+            if (item.isYouTube) {
+                [indicator stopAnimating];
+                webView_ = UIWebView.autoLayoutView;
+                [superView addSubview:webView_];
+                [webView_ pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];
+                
+                webView_.backgroundColor = [UIColor yellowColor];
+                [superView bringSubviewToFront:webView_];
+                [webView_ loadRequest:item.resource1.URL.request];
 
+            } else {
+                self.mplayer = [self mplayerWithItem:item];
+                [self.mplayer prepareToPlay];
+                self.mplayer.scalingMode = MPMovieScalingModeAspectFit;
+                self.mplayer.shouldAutoplay = [DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY];
+                self.mplayer.view.clipsToBounds = YES;
+                [superView addSubview:self.mplayer.view];
+                self.mplayer.view.translatesAutoresizingMaskIntoConstraints = NO;
+                [self.mplayer.view pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];
+                
+                [superView bringSubviewToFront:indicator];
+                indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+                
+                [ProcUtil asyncGlobalq:^{
+                    while (!self.mplayer.isPreparedToPlay) {
+                        usleep(100 * 1000);
+                    }
+                    [ProcUtil asyncMainq:^{
+                        [indicator stopAnimating];
+                        [indicator removeFromSuperview];
+                    }];
+                }];
+            }
+            
             if (_edit) {
                 UITapGestureRecognizer *tap = UITapGestureRecognizer.new;
                 [tap addTarget:self action:@selector(tapImage:)];
@@ -114,18 +142,6 @@
                 superView.userInteractionEnabled = YES;
             }
 
-            [superView bringSubviewToFront:indicator];
-            indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-
-            [ProcUtil asyncGlobalq:^{
-                while (!self.mplayer.isPreparedToPlay) {
-                    usleep(100 * 1000);
-                }
-                [ProcUtil asyncMainq:^{
-                    [indicator stopAnimating];
-                    [indicator removeFromSuperview];
-                }];
-            }];
             break;
         }
     }
@@ -136,15 +152,19 @@
     NSURL *url = nil;
 
     if (item.resource2 && item.resource2.length) {  // binary
-        NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"play_movie_by_nsdata.tmp"];
-        [item.resource2 writeToFile:tmp atomically:NO];
-        url = tmp.fileURL;
+        NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:@"play_movie_by_nsdata.mp4"];
+        if ([item.resource2 writeToFile:tmp atomically:NO]) {
+            url = tmp.fileURL;
+        } else {
+            ELog(@"error");
+        }
     } else if (item.url) { // url
         url = item.url;
     } else {
         ELog(@"no movie resouce %ld", item.id);
     }
 
+    DLog(@"movie url=%@",url);
     return [MPMoviePlayerController.alloc initWithContentURL:url];
 }
 

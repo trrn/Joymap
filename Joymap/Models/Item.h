@@ -43,6 +43,8 @@
 - (BOOL)isWebPage;
 - (UIImage *)image;
 
+- (BOOL)isYouTube;
+
 #pragma mark - persistence
 
 - (void)beforeSave;

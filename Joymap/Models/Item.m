@@ -102,6 +102,19 @@
     return nil;
 }
 
+- (BOOL)isYouTube;
+{
+    NSURL *url = self.url;
+    
+    if (url) {
+        if ([url.host rangeOfString:@"www.youtube.com"].location != NSNotFound) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+
 #pragma mark - persistence
 
 - (void)beforeSave
