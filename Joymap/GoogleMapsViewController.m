@@ -120,7 +120,8 @@
 - (void)moveCameraToAnyPin
 {
     if (pins_ && pins_.count) {
-        NSInteger idx = rand() % pins_.count;
+//        NSInteger idx = rand() % pins_.count;
+        NSInteger idx = 0;
         Pin *p = pins_[idx];
         GMSMarker *m = p.marker;
         GMSCameraUpdate *upd =
