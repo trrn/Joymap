@@ -12,6 +12,7 @@
 #import "Cache.h"
 
 #import <UIImage+ProportionalFill.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 static Cache *thumbnailCache_ = nil;
 static Cache *subtitleCache_ = nil;
@@ -42,40 +43,42 @@ static Cache *subtitleCache_ = nil;
     dispatch_once(&once, ^{
         thumbnailCache_ = Cache.new;
     });
-
+    
     cell.imageView.image = [UIImage imageNamed:@"thumbnail_nothing.png"];
     
     [ProcUtil asyncGlobalq:^{
-        UIImage *img = thumbnailCache_[@(self.id)];
-        if (img) {
-            //DLog(@"image cache hit %@", self.name);
-        } else {
+        UIImage *image = thumbnailCache_[@(self.id)];;
+        if (!image) {
             Item *item = [DataSource itemForThumbnail:self];
             if (!item) {
                 return;
             }
             switch (item.type) {
-                case 2:     // image
-                    img = [item image];
+                case ITEM_TYPE_IMAGE: {
+                    if (item.resource2 && item.resource2.length) {  // binary
+                        image = [UIImage imageWithData:item.resource2];
+                        thumbnailCache_[@(self.id)] = image;
+                    } else if (item.resource1 && item.resource1.length) {   // url
+                        [ProcUtil asyncMainq:^{
+                            [cell.imageView sd_setImageWithURL:item.resource1.URL
+                                              placeholderImage:[UIImage imageNamed:@"thumbnail_nothing.png"]];
+                        }];
+                        return;
+                    } else {
+                        ELog(@"no image resource %ld", (long)self.id);
+                    }
                     break;
-                case 3:     // movie
-                    img = [UIImage imageNamed:@"thumbnail_tv.png"];
+                }
+                case ITEM_TYPE_MOVIE:     // movie
+                    image = [UIImage imageNamed:@"thumbnail_tv.png"];
                     break;
                 default:
                     break;
             }
-            if (img) {
-                img = [img imageToFitSize:THUMBNAIL_CGSZ method:MGImageResizeCrop];
-                thumbnailCache_[@(self.id)] = img;
-            }
         }
-        if (img) {
-            [ProcUtil asyncMainq:^{
-                if (cell) {
-                    cell.imageView.image = img;
-                }
-            }];
-        }
+        [ProcUtil asyncMainq:^{
+            cell.imageView.image = image;
+        }];
     }];
 }
 

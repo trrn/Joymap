@@ -80,7 +80,7 @@
             return [UIImage.alloc initWithData:data];
 
         } else {
-            ELog(@"no image resource %ld", self.id);
+            ELog(@"no image resource %ld", (long)self.id);
         }
     }
 

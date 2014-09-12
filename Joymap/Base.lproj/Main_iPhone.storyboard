@@ -231,7 +231,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListViewCell" textLabel="J66-1a-yCA" detailTextLabel="u1k-h3-tet" style="IBUITableViewCellStyleSubtitle" id="MJH-0s-cGo">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ListViewCell" textLabel="J66-1a-yCA" detailTextLabel="u1k-h3-tet" style="IBUITableViewCellStyleSubtitle" id="MJH-0s-cGo" customClass="JMTableViewCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MJH-0s-cGo" id="kKb-7g-1im">

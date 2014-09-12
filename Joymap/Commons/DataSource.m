@@ -323,7 +323,7 @@ static NSDate *_date;
             @"select d.resource1 from pin a, layout b, layout_item c, item d"
              " where a._id = b.pin_id and b._id = c.layout_id and c.item_id = d._id"
              " and a._id = %ld and d.type in (1) order by b.orderno, c.orderno limit 1"
-                , pin.id];
+                , (long)pin.id];
     } map:^(FMResultSet *rs, id ret) {
         Item *p = Item.new;
         p.resource1 = [rs stringForColumn:@"resource1"];
@@ -342,7 +342,7 @@ static NSDate *_date;
                 " where a._id = b.pin_id and b._id = c.layout_id"
                 " and c.item_id = d._id and a._id = %ld and d.type in (2, 3, 7)"
                 " order by b.orderno, c.orderno limit 1"
-                , pin.id];
+                , (long)pin.id];
     } map:^(FMResultSet *rs, id ret) {
         Item *p = Item.new;
         p.id = [rs intForColumn:@"_id"];

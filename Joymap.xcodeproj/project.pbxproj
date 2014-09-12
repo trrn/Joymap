@@ -95,6 +95,7 @@
 		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
 		DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */; };
 		DCC4E36319BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */; };
+		DCDC321E19C2F36A00D4B46C /* JMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDC321D19C2F36A00D4B46C /* JMTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -261,6 +262,8 @@
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Download_on_iTunes_Badge_JP_110x40_1016@2x.png"; sourceTree = "<group>"; };
+		DCDC321C19C2F36A00D4B46C /* JMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTableViewCell.h; sourceTree = "<group>"; };
+		DCDC321D19C2F36A00D4B46C /* JMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTableViewCell.m; sourceTree = "<group>"; };
 		DCE5ED4B19BEB38C00728527 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DCE5ED4D19BECBA500728527 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -410,6 +413,7 @@
 		479BA36F180AB2B5008E640F /* Joymap */ = {
 			isa = PBXGroup;
 			children = (
+				DCDC321B19C2F36A00D4B46C /* View */,
 				DC9177C319BD8FF50087DDF8 /* Category */,
 				479BA378180AB2B5008E640F /* AppDelegate.h */,
 				479BA379180AB2B5008E640F /* AppDelegate.m */,
@@ -561,6 +565,15 @@
 				DC9177CF19BD8FF50087DDF8 /* UIView+Sekken.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		DCDC321B19C2F36A00D4B46C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DCDC321C19C2F36A00D4B46C /* JMTableViewCell.h */,
+				DCDC321D19C2F36A00D4B46C /* JMTableViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -768,6 +781,7 @@
 				477E949E180ACB6B005E83D4 /* GoogleMapsViewController.m in Sources */,
 				4700909C18126330009FB810 /* ProcUtil.m in Sources */,
 				47E68652180B87C80065B45B /* Pin.m in Sources */,
+				DCDC321E19C2F36A00D4B46C /* JMTableViewCell.m in Sources */,
 				4700909F1812BABB009FB810 /* JdbDownloadController.m in Sources */,
 				4785902A182FE3B10087C55F /* Layout05ViewController.m in Sources */,
 				DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */,
