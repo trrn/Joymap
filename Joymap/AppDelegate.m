@@ -25,7 +25,7 @@
     
     AFNetworkActivityIndicatorManager.sharedManager.enabled = YES;
     
-    [RegionMonitor refresh];
+    [RegionMonitor.shared refresh];
 
     return YES;
 }
@@ -34,12 +34,16 @@
 {
     static NSString *_key = @"FIRST_LAUNCHED";
     
+    DLog(@"%d", [DefaultsUtil bool:_key]);
+    
     if (![DefaultsUtil bool:_key]) {
         
         // initialize
      
         [DefaultsUtil setBool:YES key:DEF_SET_ETC_AUTOPLAY];
         
+        [LocationUtil setup];
+
         [DefaultsUtil setBool:YES key:_key];
     }
 }

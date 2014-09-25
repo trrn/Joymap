@@ -76,7 +76,7 @@
                        NSLog(@"File downloaded to: %@", filePath);
                        
                        if (filePath) {
-                           [RegionMonitor refresh];
+                           [RegionMonitor.shared refresh];
                            [DefaultsUtil setObj:NSDate.date key:DEF_SET_JDB_LAST_UPDATED];
                            [DataSource needReload];
                        }

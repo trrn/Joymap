@@ -78,7 +78,7 @@
 
     [DefaultsUtil setBool:_notifySwitch.on key:DEF_SET_NOTIFY_SPOT];
 
-    [RegionMonitor refreshWithAlertIfCannot];
+    [RegionMonitor.shared refreshWithAlertIfCannot];
 }
 
 - (IBAction)tapTrafficSwitch:(id)sender {

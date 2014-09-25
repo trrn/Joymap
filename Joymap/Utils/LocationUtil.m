@@ -41,7 +41,7 @@ static CLLocationCoordinate2D _lastCoordinate;
                     handler(&_lastCoordinate);
                     return;
                 }
-                usleep(100 * 1000); // 0.1 sec
+                usleep(100 * 1000); // 0.1 se
             }
             DLog(@"time out");
             handler(NULL);
@@ -68,18 +68,27 @@ static CLLocationCoordinate2D _lastCoordinate;
 
 + (CLLocationManager *)manager
 {
-    static dispatch_once_t once;
-    static CLLocationManager *manager = nil;
-
     if (!CLLocationManager.locationServicesEnabled)
         return nil;
+
+    static dispatch_once_t once;
+    static CLLocationManager *manager = nil;
 
     dispatch_once(&once, ^{
         manager = CLLocationManager.new;
         manager.delegate = self.singleton;
+        if ([Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+            [manager requestAlwaysAuthorization];
+        }
     });
 
     return manager;
+}
+
++ (void)setup;
+{
+    self.singleton;
+    self.manager;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations

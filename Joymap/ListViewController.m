@@ -261,7 +261,7 @@
     pins_ = @[];
     [self.tableView reloadData];
 
-    [LocationUtil currentLocationWithTimeout:10.0 handler:^(CLLocationCoordinate2D *co) {
+    [LocationUtil currentLocationWithTimeout:0.5 handler:^(CLLocationCoordinate2D *co) { // TOOD
         if (self.segmentedControl.selectedSegmentIndex == 0) {
             pins_ = [DataSource pinsOrderByDistanceFrom:co];
             [ProcUtil asyncMainq:^{

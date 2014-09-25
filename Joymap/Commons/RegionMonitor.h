@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @interface RegionMonitor : NSObject
-+ (void)refresh;
-+ (void)refreshWithAlertIfCannot;
-+ (BOOL)deviceSupported;
 
++ (instancetype)shared;
+
+- (void)refresh;
+- (void)refreshWithAlertIfCannot;
+
++ (BOOL)deviceSupported;
 + (void)debugOutRegions;
 
 @end

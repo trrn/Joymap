@@ -24,6 +24,7 @@
     #import "GeoUtil.h"
     #import "LocationUtil.h"
     #import "TimeUtil.h"
+    #import "Version.h"
 
     #import "NavigationController.h"
 

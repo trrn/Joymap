@@ -84,6 +84,7 @@
 		DC3C295019BE985300D189E3 /* JdbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3C294F19BE985300D189E3 /* JdbManager.m */; };
 		DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295319BEA4E200D189E3 /* Security.framework */; };
 		DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */; };
+		DC8B7A0D19D40B2F00B0EE21 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8B7A0C19D40B2F00B0EE21 /* Version.m */; };
 		DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */; };
 		DC9177D119BD8FF50087DDF8 /* NSString+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C719BD8FF50087DDF8 /* NSString+Sekken.m */; };
 		DC9177D219BD8FF50087DDF8 /* NSURL+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C919BD8FF50087DDF8 /* NSURL+Sekken.m */; };
@@ -245,6 +246,8 @@
 		DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DC3C295319BEA4E200D189E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DC8B7A0B19D40B2F00B0EE21 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		DC8B7A0C19D40B2F00B0EE21 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		DC9177C419BD8FF50087DDF8 /* NSArray+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sekken.h"; sourceTree = "<group>"; };
 		DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sekken.m"; sourceTree = "<group>"; };
 		DC9177C619BD8FF50087DDF8 /* NSString+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Sekken.h"; sourceTree = "<group>"; };
@@ -301,6 +304,8 @@
 		4700907D180D8D56009FB810 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DC8B7A0B19D40B2F00B0EE21 /* Version.h */,
+				DC8B7A0C19D40B2F00B0EE21 /* Version.m */,
 				4700909A18126330009FB810 /* ProcUtil.h */,
 				4700909B18126330009FB810 /* ProcUtil.m */,
 				47009094181227B7009FB810 /* TimeUtil.h */,
@@ -740,6 +745,7 @@
 				477E94A4180ACB86005E83D4 /* SettingViewController.m in Sources */,
 				479BA37A180AB2B5008E640F /* AppDelegate.m in Sources */,
 				DC9177D519BD8FF50087DDF8 /* UIView+Sekken.m in Sources */,
+				DC8B7A0D19D40B2F00B0EE21 /* Version.m in Sources */,
 				47859026182FE3B10087C55F /* Layout01ViewController.m in Sources */,
 				4785902B182FE3B10087C55F /* LayoutViewController.m in Sources */,
 				DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */,

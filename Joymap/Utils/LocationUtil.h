@@ -12,4 +12,6 @@
 
 + (void)currentLocationWithTimeout:(NSTimeInterval)sec handler:(void (^)(CLLocationCoordinate2D *))handler;
 
++ (void)setup;
+
 @end

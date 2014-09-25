@@ -15,22 +15,34 @@
 #define REGION_MONITORING_MAX 10
 #define REGION_MONITORING_RADIUS_METERS 30.0
 
-static CLLocationManager *_manager;
-static RegionMonitor *_instance;
-
 @interface RegionMonitor() <CLLocationManagerDelegate>
 @end
 
 @implementation RegionMonitor
 
-+ (void)refresh;
++ (instancetype)shared;
 {
-    [self runSilently:YES];
+    static RegionMonitor *_shared = nil;
+    static dispatch_once_t once;
+    
+    dispatch_once(&once, ^{
+        if (!_shared) {
+            _shared = self.new;
+        }
+    });
+    
+    return _shared;
 }
 
-+ (void)refreshWithAlertIfCannot;
+
+- (void)refresh;
 {
-    [self runSilently:NO];
+    [RegionMonitor.shared runSilently:YES];
+}
+
+- (void)refreshWithAlertIfCannot;
+{
+    [RegionMonitor.shared runSilently:NO];
 }
 
 + (BOOL)deviceSupported
@@ -38,79 +50,89 @@ static RegionMonitor *_instance;
     return [CLLocationManager isMonitoringAvailableForClass:CLCircularRegion.class];
 }
 
-+ (void)runSilently:(BOOL)silently
+- (void)runSilently:(BOOL)silently
 {
     DLog();
 
-    if (([DefaultsUtil bool:DEF_SET_NOTIFY_SPOT]) && ([self canRunSilently:silently])) {
-        [self start];
+    if ([DefaultsUtil bool:DEF_SET_NOTIFY_SPOT]) {
+        if (self.authorized) {
+            [RegionMonitor.shared start];
+        } else {
+            if (!silently) {
+                Alert(nil, NSLocalizedString(@"This application is not authorized to use location services.", nil));
+            }
+        }
     } else {
-        [self stop];
+        [RegionMonitor.shared stop];
     }
 }
 
-+ (void)start
+- (BOOL)authorized
 {
-    if (!_manager)
-        _manager = CLLocationManager.new;
-
-    DLog("monitoring %d regions", _manager.monitoredRegions.count)
-
-    if (!_instance) {
-        _instance = self.new;
+    if (CLLocationManager.locationServicesEnabled) {
+        if ([Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+            return CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways;
+        } else {
+            return CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorized;
+        }
     }
+    
+    return NO;
+}
 
-    _manager.delegate = _instance;
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        [RegionMonitor.shared runSilently:YES];
+    }
+}
 
-    _manager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    _manager.distanceFilter = kCLDistanceFilterNone;
-    [_manager startMonitoringSignificantLocationChanges];
++ (CLLocationManager *)manager
+{
+    static dispatch_once_t once;
+    static CLLocationManager *_manager;
+
+    dispatch_once(&once, ^{
+        if (!_manager) {
+            _manager = CLLocationManager.new;
+            _manager.delegate = self.shared;
+            if ([Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+                [_manager requestAlwaysAuthorization];
+            }
+        }
+    });
+
+    return _manager;
+}
+
+- (void)start
+{
+    CLLocationManager *manager = RegionMonitor.manager;
+    
+    DLog("monitoring %ld regions", (unsigned long)manager.monitoredRegions.count)
+    
+    manager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    manager.distanceFilter = kCLDistanceFilterNone;
+    [manager startMonitoringSignificantLocationChanges];
     DLog(@"startMonitoringSignificantLocationChanges");
-    [_manager startUpdatingLocation];
+    [manager startUpdatingLocation];
     DLog(@"startUpdatingLocation");
 }
 
-+ (void)stop;
+- (void)stop;
 {
-    if (!_manager)
-        _manager = CLLocationManager.new;
+    CLLocationManager *manager = RegionMonitor.manager;
+    
+    DLog("monitoring %ld regions", (unsigned long)manager.monitoredRegions.count)
 
-    DLog("monitoring %d regions", _manager.monitoredRegions.count)
-
-    [_manager stopUpdatingLocation];
+    [manager stopUpdatingLocation];
     DLog(@"stopUpdatingLocation");
-    [_manager stopMonitoringSignificantLocationChanges];
+    [manager stopMonitoringSignificantLocationChanges];
     DLog(@"stopMonitoringSignificantLocationChanges");
-    for (CLRegion *region in _manager.monitoredRegions) {
-        [_manager stopMonitoringForRegion:region];
+    for (CLRegion *region in manager.monitoredRegions) {
+        [manager stopMonitoringForRegion:region];
     }
     DLog(@"delete regions");
-}
-
-+ (BOOL)canRunSilently:(BOOL)silently
-{
-    if (!self.deviceSupported) {
-        if (!silently) {
-            Alert(nil, NSLocalizedString(@"This device do not support region monitoring.", nil));
-        }
-        return NO;
-    }
-    
-    if (CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorized) {
-        if (!silently) {
-            Alert(nil, NSLocalizedString(@"This application is not authorized to use location services.", nil));
-        }
-        return NO;
-    }
-    
-    if (!CLLocationManager.locationServicesEnabled) {
-        if (!silently) {
-            Alert(nil, NSLocalizedString(@"Location services are not enabled on this device.", nil));
-        }
-        return NO;
-    }
-
-    return YES;
 }
 
 - (void)notify:(Pin *)pin
@@ -129,12 +151,12 @@ static RegionMonitor *_instance;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     @synchronized(self) {
-        [_manager stopUpdatingLocation];
+        [manager stopUpdatingLocation];
         DLog(@"stopUpdatingLocation");
         
         // delete all
-        for (CLRegion *region in _manager.monitoredRegions) {
-            [_manager stopMonitoringForRegion:region];
+        for (CLRegion *region in manager.monitoredRegions) {
+            [manager stopMonitoringForRegion:region];
         }
         DLog(@"delete regions");
         
@@ -143,14 +165,14 @@ static RegionMonitor *_instance;
         NSArray *pins = [DataSource pinsOrderByDistanceFrom:&co];
         NSInteger n = 0;
         for (Pin *pin in [pins objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, REGION_MONITORING_MAX)]]) {
-            CLCircularRegion *region = [CLCircularRegion.alloc initWithCenter:pin.coordinate radius:REGION_MONITORING_RADIUS_METERS identifier:[NSString stringWithFormat:@"%d", pin.id]];
-            [_manager startMonitoringForRegion:region];
+            CLCircularRegion *region = [CLCircularRegion.alloc initWithCenter:pin.coordinate radius:REGION_MONITORING_RADIUS_METERS identifier:[NSString stringWithFormat:@"%ld", (unsigned  long)pin.id]];
+            [manager startMonitoringForRegion:region];
             ++n;
         }
-        DLog(@"add %d regions", n);
+        DLog(@"add %ld regions", (unsigned long)n);
         
-        for (CLRegion *region in _manager.monitoredRegions) {
-            [_manager requestStateForRegion:region];
+        for (CLRegion *region in manager.monitoredRegions) {
+            [manager requestStateForRegion:region];
         }
     }
 }
@@ -169,14 +191,6 @@ static RegionMonitor *_instance;
     ELog(@"%@", error);
 }
 
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
-    DLog();
-    if (UIApplication.sharedApplication.applicationState == UIApplicationStateBackground) {
-        [self.class runSilently:YES];
-    }
-}
-
 #pragma mark - Debug
 
 + (void)debugOutRegions;
@@ -187,7 +201,7 @@ static RegionMonitor *_instance;
     NSInteger n = 0;
     for (CLRegion *region in manager.monitoredRegions) {
         Pin *pin = [DataSource pinByID:region.identifier.integerValue];
-        NSString *tmp = [NSString stringWithFormat:@"%d:%@\n", n, pin.name];
+        NSString *tmp = [NSString stringWithFormat:@"%ld:%@\n", (unsigned long)n, pin.name];
         str = [str stringByAppendingString:tmp];
         ++n;
     }
