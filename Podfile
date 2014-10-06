@@ -1,4 +1,4 @@
-platform :ios, '7.1'
+platform :ios, '7.0'
 
 pod 'AFNetworking',             '~>2.4'
 pod 'FMDB',                     '~>2.3'

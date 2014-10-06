@@ -44,6 +44,18 @@
               progress:&p
            destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
                @try {
+                   if (!targetPath) {
+                       return nil;
+                   }
+                   
+                   NSFileManager *manager = NSFileManager.defaultManager;
+                   NSDictionary *attribute = [manager attributesOfItemAtPath:targetPath.path error:nil];
+                   if (attribute) {
+                       if ([[attribute objectForKey:NSFileSize] integerValue] == 0) {
+                           return nil;
+                       }
+                   }
+
                    if (targetPath) {
                        [DataSource validateSqliteFile:targetPath.absoluteString];
                        NSString *to = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
@@ -79,6 +91,8 @@
                            [RegionMonitor.shared refresh];
                            [DefaultsUtil setObj:NSDate.date key:DEF_SET_JDB_LAST_UPDATED];
                            [DataSource needReload];
+                       } else {
+                           NSLog(@"size 0");
                        }
                    }
                }
