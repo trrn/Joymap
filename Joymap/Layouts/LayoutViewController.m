@@ -47,6 +47,10 @@
                                                             target:self action:@selector(editDone)];
         self.navigationItem.rightBarButtonItem = ok;
     }
+    
+    if (![Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+        DLog(@"-----------------");
+    }
 }
 
 - (void)dealloc

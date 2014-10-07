@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *v3slider;
 @property (weak, nonatomic) IBOutlet UITextView *v4;
 @property (weak, nonatomic) IBOutlet UIButton *v5button;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topMargin;
 @end
 
 @implementation Layout06ViewController
@@ -37,6 +38,10 @@
         [super prepareSoundWithData:soundItem.resource2];
     } else {    // URL
         [super prepareSoundWithURL:soundItem.resource1];
+    }
+    
+    if (![Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+        self.topMargin.constant = 64;
     }
 }
 
