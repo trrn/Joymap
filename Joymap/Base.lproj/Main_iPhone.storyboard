@@ -3,7 +3,6 @@
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home-->
@@ -305,7 +304,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SR-BL-YVw">
-                                <rect key="frame" x="20" y="196" width="280" height="372"/>
+                                <rect key="frame" x="20" y="260" width="280" height="308"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.
 Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -314,11 +313,11 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOk-9F-dEC">
-                                <rect key="frame" x="20" y="84" width="136" height="104"/>
+                                <rect key="frame" x="20" y="148" width="136" height="104"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exZ-Lz-oSp">
-                                <rect key="frame" x="164" y="84" width="136" height="104"/>
+                                <rect key="frame" x="164" y="148" width="136" height="104"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="SGw-AK-nmI"/>
@@ -336,11 +335,11 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                             <constraint firstItem="0SR-BL-YVw" firstAttribute="bottom" secondItem="THr-pH-0ii" secondAttribute="bottom" id="9JC-Ml-S1a"/>
                             <constraint firstItem="0SR-BL-YVw" firstAttribute="top" secondItem="exZ-Lz-oSp" secondAttribute="bottom" constant="8" symbolic="YES" id="HaX-fB-aSI"/>
                             <constraint firstItem="exZ-Lz-oSp" firstAttribute="leading" secondItem="ZOk-9F-dEC" secondAttribute="trailing" constant="8" symbolic="YES" id="HjT-qH-Mpa"/>
-                            <constraint firstItem="ZOk-9F-dEC" firstAttribute="top" secondItem="RXJ-K6-V1A" secondAttribute="bottom" constant="20" id="UbR-f7-4F5"/>
+                            <constraint firstItem="ZOk-9F-dEC" firstAttribute="top" secondItem="RXJ-K6-V1A" secondAttribute="top" constant="84" id="UbR-f7-4F5"/>
                             <constraint firstItem="0SR-BL-YVw" firstAttribute="centerX" secondItem="wZH-Dc-wNY" secondAttribute="centerX" id="dWe-vY-YwT"/>
                             <constraint firstItem="exZ-Lz-oSp" firstAttribute="trailing" secondItem="0SR-BL-YVw" secondAttribute="trailing" id="k2G-Na-iad"/>
                             <constraint firstItem="0SR-BL-YVw" firstAttribute="leading" secondItem="ZOk-9F-dEC" secondAttribute="leading" id="qVw-tj-nl0"/>
-                            <constraint firstItem="ZOk-9F-dEC" firstAttribute="leading" secondItem="wZH-Dc-wNY" secondAttribute="leadingMargin" constant="4" id="t7t-vb-GKb"/>
+                            <constraint firstItem="ZOk-9F-dEC" firstAttribute="leading" secondItem="wZH-Dc-wNY" secondAttribute="leading" constant="20" id="t7t-vb-GKb"/>
                             <constraint firstItem="ZOk-9F-dEC" firstAttribute="top" secondItem="exZ-Lz-oSp" secondAttribute="top" id="tqF-VB-bUH"/>
                         </constraints>
                     </view>
