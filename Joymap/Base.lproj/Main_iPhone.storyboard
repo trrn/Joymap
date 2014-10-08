@@ -1622,7 +1622,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z72-Qb-FYU">
-                                <rect key="frame" x="20" y="84" width="280" height="175"/>
+                                <rect key="frame" x="20" y="148" width="280" height="111"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -1634,9 +1634,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                             <constraint firstItem="5p4-Y0-Jpo" firstAttribute="top" secondItem="bAP-me-bns" secondAttribute="top" id="RwU-7h-jmS"/>
                             <constraint firstItem="5p4-Y0-Jpo" firstAttribute="leading" secondItem="ckE-Yd-zxw" secondAttribute="leading" id="a1B-bz-OkY"/>
                             <constraint firstItem="ckE-Yd-zxw" firstAttribute="top" secondItem="5p4-Y0-Jpo" secondAttribute="bottom" constant="31" id="aCU-PE-Jqi"/>
-                            <constraint firstItem="z72-Qb-FYU" firstAttribute="top" secondItem="vxQ-CG-YoL" secondAttribute="bottom" constant="20" id="akZ-bZ-e9W"/>
+                            <constraint firstItem="z72-Qb-FYU" firstAttribute="top" secondItem="vxQ-CG-YoL" secondAttribute="top" constant="84" id="akZ-bZ-e9W"/>
                             <constraint firstItem="z72-Qb-FYU" firstAttribute="trailing" secondItem="bAP-me-bns" secondAttribute="trailing" id="e7Y-7n-nEX"/>
-                            <constraint firstItem="z72-Qb-FYU" firstAttribute="leading" secondItem="vpa-Ae-gzN" secondAttribute="leadingMargin" constant="4" id="eNW-U2-YsS"/>
+                            <constraint firstItem="z72-Qb-FYU" firstAttribute="leading" secondItem="vpa-Ae-gzN" secondAttribute="leading" constant="20" id="eNW-U2-YsS"/>
                             <constraint firstItem="ckE-Yd-zxw" firstAttribute="top" secondItem="bAP-me-bns" secondAttribute="bottom" constant="32" id="fVb-pD-lK4"/>
                             <constraint firstItem="z72-Qb-FYU" firstAttribute="leading" secondItem="5p4-Y0-Jpo" secondAttribute="leading" id="nA5-r5-w3X"/>
                             <constraint firstItem="z72-Qb-FYU" firstAttribute="centerX" secondItem="vpa-Ae-gzN" secondAttribute="centerX" id="wql-Y9-Zkn"/>
