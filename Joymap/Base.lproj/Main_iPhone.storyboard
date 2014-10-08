@@ -1541,7 +1541,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Bw-oE-YZd">
-                                <rect key="frame" x="20" y="84" width="280" height="175"/>
+                                <rect key="frame" x="20" y="148" width="280" height="111"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0rz-Gb-IWi">
@@ -1560,10 +1560,10 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <constraints>
                             <constraint firstItem="0rz-Gb-IWi" firstAttribute="trailing" secondItem="2Bw-oE-YZd" secondAttribute="trailing" id="806-pz-72F"/>
                             <constraint firstItem="0rz-Gb-IWi" firstAttribute="bottom" secondItem="3LI-2Z-iKp" secondAttribute="bottom" id="GgQ-IM-Tbv"/>
-                            <constraint firstItem="2Bw-oE-YZd" firstAttribute="leading" secondItem="lfO-J0-qeD" secondAttribute="leadingMargin" constant="4" id="Mb8-4k-GdN"/>
+                            <constraint firstItem="2Bw-oE-YZd" firstAttribute="leading" secondItem="lfO-J0-qeD" secondAttribute="leading" constant="20" id="Mb8-4k-GdN"/>
                             <constraint firstItem="0rz-Gb-IWi" firstAttribute="centerX" secondItem="lfO-J0-qeD" secondAttribute="centerX" id="SQc-hn-UEN"/>
                             <constraint firstItem="2Bw-oE-YZd" firstAttribute="leading" secondItem="0rz-Gb-IWi" secondAttribute="leading" id="beG-A8-ute"/>
-                            <constraint firstItem="2Bw-oE-YZd" firstAttribute="top" secondItem="Yzv-fB-MeV" secondAttribute="bottom" constant="20" id="e2p-cK-7M9"/>
+                            <constraint firstItem="2Bw-oE-YZd" firstAttribute="top" secondItem="Yzv-fB-MeV" secondAttribute="top" constant="84" id="e2p-cK-7M9"/>
                             <constraint firstItem="0rz-Gb-IWi" firstAttribute="top" secondItem="2Bw-oE-YZd" secondAttribute="bottom" constant="8" symbolic="YES" id="zG4-LY-mdg"/>
                         </constraints>
                     </view>
