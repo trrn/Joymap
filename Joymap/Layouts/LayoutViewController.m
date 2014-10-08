@@ -82,7 +82,6 @@
             v.contentMode = UIViewContentModeScaleAspectFit;
             v.userInteractionEnabled = YES;
             v.clipsToBounds = YES;
-            v.backgroundColor = UIColor.yellowColor;
             
             [superView addSubview:v];
             [v pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];
