@@ -40,9 +40,9 @@
         [super prepareSoundWithURL:soundItem.resource1];
     }
     
-    if (![Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
-        self.topMargin.constant = 64;
-    }
+//    if (![Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+//        self.topMargin.constant = 64;
+//    }
 }
 
 - (IBAction)pushV3btn:(id)sender {
