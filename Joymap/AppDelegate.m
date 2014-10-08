@@ -40,7 +40,7 @@
         
         // initialize
      
-        [DefaultsUtil setBool:YES key:DEF_SET_ETC_AUTOPLAY];
+        [DefaultsUtil setBool:NO key:DEF_SET_ETC_AUTOPLAY];
         
         [LocationUtil setup];
 

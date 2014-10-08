@@ -47,10 +47,6 @@
                                                             target:self action:@selector(editDone)];
         self.navigationItem.rightBarButtonItem = ok;
     }
-    
-    if (![Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
-        DLog(@"-----------------");
-    }
 }
 
 - (void)dealloc
@@ -85,6 +81,9 @@
             UIImageView *v = UIImageView.autoLayoutView;
             v.contentMode = UIViewContentModeScaleAspectFit;
             v.userInteractionEnabled = YES;
+            v.clipsToBounds = YES;
+            v.backgroundColor = UIColor.yellowColor;
+            
             [superView addSubview:v];
             [v pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];
 
@@ -111,7 +110,7 @@
                 [superView addSubview:webView_];
                 [webView_ pinToSuperviewEdges:JRTViewPinAllEdges inset:0.0];
                 
-                webView_.backgroundColor = [UIColor yellowColor];
+                //webView_.backgroundColor = [UIColor yellowColor];
                 [superView bringSubviewToFront:webView_];
                 [webView_ loadRequest:item.resource1.URL.request];
 

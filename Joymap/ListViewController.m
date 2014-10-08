@@ -77,7 +77,7 @@
     didChangeIndex_ = 1;
 
     // hide search bar
-    [self.tableView setContentOffset:CGPointMake(0.0f, self.searchDisplayController.searchBar.frame.size.height)];
+    //[self.tableView setContentOffset:CGPointMake(0.0f, self.searchDisplayController.searchBar.frame.size.height)];
 
     [self setAdminControl];
 
