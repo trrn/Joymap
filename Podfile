@@ -9,6 +9,7 @@ pod 'MGImageUtilities',         '~>0.0'
 pod 'SDWebImage',               '~>3.5'
 pod 'StreamingKit',             '~>0.1'
 pod 'UIView-Autolayout',        '~>0.2'
+pod 'UIImage-Categories',       '~>0.0'
 
 post_install do | installer |
   require 'fileutils'

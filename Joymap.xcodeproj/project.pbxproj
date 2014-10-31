@@ -85,6 +85,7 @@
 		DC3C295019BE985300D189E3 /* JdbManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC3C294F19BE985300D189E3 /* JdbManager.m */; };
 		DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295319BEA4E200D189E3 /* Security.framework */; };
 		DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */; };
+		DC66849B1A02520400AA0011 /* Theme.m in Sources */ = {isa = PBXBuildFile; fileRef = DC66849A1A02520400AA0011 /* Theme.m */; };
 		DC8B7A0D19D40B2F00B0EE21 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8B7A0C19D40B2F00B0EE21 /* Version.m */; };
 		DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C519BD8FF50087DDF8 /* NSArray+Sekken.m */; };
 		DC9177D119BD8FF50087DDF8 /* NSString+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177C719BD8FF50087DDF8 /* NSString+Sekken.m */; };
@@ -247,6 +248,8 @@
 		DC3C295119BEA48500D189E3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DC3C295319BEA4E200D189E3 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DC6684991A02520400AA0011 /* Theme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theme.h; sourceTree = "<group>"; };
+		DC66849A1A02520400AA0011 /* Theme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theme.m; sourceTree = "<group>"; };
 		DC8B7A0B19D40B2F00B0EE21 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		DC8B7A0C19D40B2F00B0EE21 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
 		DC9177C419BD8FF50087DDF8 /* NSArray+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sekken.h"; sourceTree = "<group>"; };
@@ -577,6 +580,8 @@
 			children = (
 				DCDC321C19C2F36A00D4B46C /* JMTableViewCell.h */,
 				DCDC321D19C2F36A00D4B46C /* JMTableViewCell.m */,
+				DC6684991A02520400AA0011 /* Theme.h */,
+				DC66849A1A02520400AA0011 /* Theme.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 				477E949E180ACB6B005E83D4 /* GoogleMapsViewController.m in Sources */,
 				4700909C18126330009FB810 /* ProcUtil.m in Sources */,
 				47E68652180B87C80065B45B /* Pin.m in Sources */,
+				DC66849B1A02520400AA0011 /* Theme.m in Sources */,
 				DCDC321E19C2F36A00D4B46C /* JMTableViewCell.m in Sources */,
 				4700909F1812BABB009FB810 /* JdbDownloadController.m in Sources */,
 				4785902A182FE3B10087C55F /* Layout05ViewController.m in Sources */,
