@@ -36,6 +36,8 @@
     
     item = self.tabBar.items[i++];
     item.image = [factory createImageForIcon:NIKFontAwesomeIconCog];
+    
+    [Theme setTabBarColor:self.tabBar];
 }
 
 - (void)didReceiveMemoryWarning

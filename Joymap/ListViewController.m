@@ -53,6 +53,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.searchDisplayController.searchResultsTableView.rowHeight = self.tableView.rowHeight;
+    
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     segImages_ = @[
        // 0 asc/desc,
@@ -72,14 +74,17 @@
     [self.segmentedControl setImage:segImages_[0][1] forSegmentAtIndex:0];
     [self.segmentedControl setImage:segImages_[1][1] forSegmentAtIndex:1];
     [self.segmentedControl setImage:segImages_[2][1] forSegmentAtIndex:2];
-
-    //didChangeIndex_ = self.segmentedControl.selectedSegmentIndex;
-    didChangeIndex_ = 1;
+    
+    didChangeIndex_ = Setting.lastSelectedSortIndexForList;
 
     // hide search bar
-    //[self.tableView setContentOffset:CGPointMake(0.0f, self.searchDisplayController.searchBar.frame.size.height)];
+    if (self.tableView.contentOffset.y == 0.0) {
+        [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
+    }
 
-    [self setAdminControl];
+    [Theme setListSegmentedControl:_segmentedControl];
+    
+    //[self setAdminControl];
 
     [self reload];
 }
@@ -181,25 +186,23 @@
 
 #pragma mark - UISearchDisplayDelegate, UISearchBarDelegate
 
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    [controller.searchBar setShowsCancelButton:YES animated:NO];
+    [Theme setSearchBarNavigationButton:controller.searchBar];
+}
+
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     NSString *kw = searchString;
 
     if ([StringUtil empty:kw]) {
-        searchedPins_ = @[].mutableCopy;
+        searchedPins_ = pins_.mutableCopy;
         return YES;
     }
 
-    NSMutableArray *matches = @[].mutableCopy;
-
-    for (Pin *p in pins_) {
-        if ([p.name rangeOfString:kw options:NSCaseInsensitiveSearch].location != NSNotFound) {
-            [matches addObject:p];
-        }
-    }
-
-    searchedPins_ = matches;
-
+    searchedPins_ = [DataSource searchPinsByKeyword:searchString].mutableCopy;
+    
     return YES;
 }
 
@@ -212,6 +215,8 @@
 
 - (IBAction)tapSegment:(id)sender {
 
+    DLog(@"");
+    
     UISegmentedControl *seg = sender;
 
     if (preChangeIndex_ == seg.selectedSegmentIndex) {

@@ -77,6 +77,9 @@
 		47F5C989185D5E4200399624 /* MGImageUtilities in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C981185D5E4200399624 /* MGImageUtilities */; };
 		47F5C98A185D5E4200399624 /* SVProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C982185D5E4200399624 /* SVProgressHUD */; };
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
+		DC1813131A03AAB5009F5C14 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813101A03AAB5009F5C14 /* BaseTableViewController.m */; };
+		DC1813141A03AAB5009F5C14 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813121A03AAB5009F5C14 /* BaseViewController.m */; };
+		DC1813171A03AAEA009F5C14 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813161A03AAEA009F5C14 /* Setting.m */; };
 		DC20EB5919E4D8E9007E1F58 /* layout_test.jdb in Resources */ = {isa = PBXBuildFile; fileRef = DC20EB5719E4D6D5007E1F58 /* layout_test.jdb */; };
 		DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */; };
 		DC2EDA9519B9BE7A00EBC40A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */; };
@@ -236,6 +239,12 @@
 		47F5C983185D5E4200399624 /* UIView-Autolayout */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIView-Autolayout"; sourceTree = "<group>"; };
 		608E473FACF44AEFB45A07AB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		830491D7EE934B3D9C92317E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		DC18130F1A03AAB5009F5C14 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		DC1813101A03AAB5009F5C14 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		DC1813111A03AAB5009F5C14 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		DC1813121A03AAB5009F5C14 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		DC1813151A03AAEA009F5C14 /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
+		DC1813161A03AAEA009F5C14 /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		DC20EB5719E4D6D5007E1F58 /* layout_test.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = layout_test.jdb; sourceTree = "<group>"; };
 		DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOnMap.h; sourceTree = "<group>"; };
 		DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOnMap.m; sourceTree = "<group>"; };
@@ -421,6 +430,7 @@
 		479BA36F180AB2B5008E640F /* Joymap */ = {
 			isa = PBXGroup;
 			children = (
+				DC18130E1A03AAB5009F5C14 /* Base */,
 				DCDC321B19C2F36A00D4B46C /* View */,
 				DC9177C319BD8FF50087DDF8 /* Category */,
 				479BA378180AB2B5008E640F /* AppDelegate.h */,
@@ -537,6 +547,8 @@
 				47F5C979185D50BA00399624 /* TextViewController.m */,
 				DC3C294E19BE985300D189E3 /* JdbManager.h */,
 				DC3C294F19BE985300D189E3 /* JdbManager.m */,
+				DC1813151A03AAEA009F5C14 /* Setting.h */,
+				DC1813161A03AAEA009F5C14 /* Setting.m */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -554,6 +566,17 @@
 				47F5C983185D5E4200399624 /* UIView-Autolayout */,
 			);
 			path = Credit;
+			sourceTree = "<group>";
+		};
+		DC18130E1A03AAB5009F5C14 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DC18130F1A03AAB5009F5C14 /* BaseTableViewController.h */,
+				DC1813101A03AAB5009F5C14 /* BaseTableViewController.m */,
+				DC1813111A03AAB5009F5C14 /* BaseViewController.h */,
+				DC1813121A03AAB5009F5C14 /* BaseViewController.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		DC9177C319BD8FF50087DDF8 /* Category */ = {
@@ -746,6 +769,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				478B5C56182616420068E30A /* LocationUtil.m in Sources */,
+				DC1813141A03AAB5009F5C14 /* BaseViewController.m in Sources */,
 				47859028182FE3B10087C55F /* Layout03ViewController.m in Sources */,
 				477E94A4180ACB86005E83D4 /* SettingViewController.m in Sources */,
 				479BA37A180AB2B5008E640F /* AppDelegate.m in Sources */,
@@ -755,11 +779,13 @@
 				4785902B182FE3B10087C55F /* LayoutViewController.m in Sources */,
 				DC9177D019BD8FF50087DDF8 /* NSArray+Sekken.m in Sources */,
 				DC9177D319BD8FF50087DDF8 /* NSURLRequest+Sekken.m in Sources */,
+				DC1813171A03AAEA009F5C14 /* Setting.m in Sources */,
 				4762EB73181BADE100CB57D2 /* PageViewController.m in Sources */,
 				47E68662180B8DF80065B45B /* DataSource.m in Sources */,
 				47BFBE01182509BD00A2D7D3 /* GeoSearch.m in Sources */,
 				470090BA1817970F009FB810 /* ImageUtil.m in Sources */,
 				478B5C61182E43B20068E30A /* SelectViewController.m in Sources */,
+				DC1813131A03AAB5009F5C14 /* BaseTableViewController.m in Sources */,
 				478B5C5B1826C1150068E30A /* SegmentedControl.m in Sources */,
 				470090A81813AB92009FB810 /* FileUtil.m in Sources */,
 				47009090180EDF7B009FB810 /* NavigationController.m in Sources */,

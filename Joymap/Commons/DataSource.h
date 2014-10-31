@@ -23,6 +23,7 @@
 + (NSArray *)pinsOrderByDistanceFrom:(CLLocationCoordinate2D *)co;
 + (Pin *)pinByID:(NSInteger)iD;
 
++ (NSArray *)searchPinsByName:(NSString *)str;
 + (NSArray *)searchPinsByKeyword:(NSString *)str;
 
 + (NSMutableArray *)layouts:(Pin *)pin;

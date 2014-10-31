@@ -10,7 +10,7 @@
 
 @class Pin;
 
-@interface PageViewController : UIViewController
+@interface PageViewController : BaseViewController
 @property (nonatomic) Pin *pin;
 
 @end

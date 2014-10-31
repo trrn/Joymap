@@ -10,7 +10,7 @@
 
 @class Pin;
 
-@interface RouteViewController : UITableViewController
+@interface RouteViewController : BaseTableViewController
 @property (nonatomic) Pin *from;
 @property (nonatomic) Pin *to;
 @end

@@ -10,12 +10,13 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <QuartzCore/QuartzCore.h>
 
 #import <STKAudioPlayer.h>
 
 @class Item, Layout;
 
-@interface LayoutViewController : UIViewController
+@interface LayoutViewController : BaseViewController
 
 @property (nonatomic) NSInteger page;
 @property (nonatomic) Layout *layout;

@@ -10,9 +10,11 @@
 
 #import "DataSource.h"
 #import "Cache.h"
+#import "JMTableViewCell.h"
 
-#import <UIImage+ProportionalFill.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <UIImage+Resize.h>
+#import <UIImage+RoundedCorner.h>
 
 static Cache *thumbnailCache_ = nil;
 static Cache *subtitleCache_ = nil;
@@ -57,11 +59,22 @@ static Cache *subtitleCache_ = nil;
                 case ITEM_TYPE_IMAGE: {
                     if (item.resource2 && item.resource2.length) {  // binary
                         image = [UIImage imageWithData:item.resource2];
+                        image = [image thumbnailImage:JM_LIST_THUMBNAIL_SIZE*2 transparentBorder:0 cornerRadius:10 interpolationQuality:kCGInterpolationHigh];
                         thumbnailCache_[@(self.id)] = image;
                     } else if (item.resource1 && item.resource1.length) {   // url
+                        cell.imageView.image = [UIImage imageNamed:@"thumbnail_nothing.png"];
                         [ProcUtil asyncMainq:^{
-                            [cell.imageView sd_setImageWithURL:item.resource1.URL
-                                              placeholderImage:[UIImage imageNamed:@"thumbnail_nothing.png"]];
+                            [SDWebImageDownloader.sharedDownloader
+                             downloadImageWithURL:item.resource1.URL
+                             options:0
+                             progress:nil
+                             completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                                 if (!error) {
+                                     image = [image thumbnailImage:JM_LIST_THUMBNAIL_SIZE*2 transparentBorder:0 cornerRadius:10 interpolationQuality:kCGInterpolationHigh];
+                                     thumbnailCache_[@(self.id)] = image;
+                                     cell.imageView.image = image;
+                                 }
+                             }];
                         }];
                         return;
                     } else {
@@ -71,6 +84,7 @@ static Cache *subtitleCache_ = nil;
                 }
                 case ITEM_TYPE_MOVIE:     // movie
                     image = [UIImage imageNamed:@"thumbnail_tv.png"];
+                    image = [image thumbnailImage:JM_LIST_THUMBNAIL_SIZE*2 transparentBorder:0 cornerRadius:10 interpolationQuality:kCGInterpolationHigh];
                     break;
                 default:
                     break;

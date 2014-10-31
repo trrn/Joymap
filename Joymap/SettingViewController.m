@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch *trafficSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *autoPlaySwitch;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *notifyCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *updateCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *autoPlayCell;
+
 @end
 
 @implementation SettingViewController
@@ -45,6 +49,10 @@
     _mapTypesLabel.text = NSLocalizedString(GoogleMapsHelper.mapTypeName, nil);
     _trafficSwitch.on = [DefaultsUtil bool:DEF_SET_MAP_TRAFFIC];
     _autoPlaySwitch.on = [DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY];
+    
+    [Theme setTableViewCellBackgroundColor:_notifyCell];
+    [Theme setTableViewCellBackgroundColor:_updateCell];
+    [Theme setTableViewCellBackgroundColor:_autoPlayCell];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -69,7 +77,9 @@
         return @"--";
     }
 
-    return [TimeUtil format:@"yyyy/MM/dd HH:mm:ss" date:date];
+    NSString *str = [NSString stringWithFormat:@"%@ %@", [TimeUtil format:@"yyyy/MM/dd HH:mm:ss" date:date], NSLocalizedString(@"updated", nil)];
+    
+    return str;
 }
 
 #pragma mark - action

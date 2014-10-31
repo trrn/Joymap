@@ -17,6 +17,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *googleMapsButton;
 @property (weak, nonatomic) IBOutlet UIButton *appleMapsButton;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *fromCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *toCell;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+
 @end
 
 @implementation RouteViewController
@@ -24,6 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [Theme setTableViewCellBackgroundColor:_fromCell];
+    [Theme setTableViewCellBackgroundColor:_toCell];
+    [Theme setTableViewCellSelectedBackgroundColor:_fromCell];
+    [Theme setTableViewCellSelectedBackgroundColor:_toCell];
     
     if (![self googleMapInstalled]) {
         _googleMapsButton.enabled = NO;
@@ -46,6 +56,43 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
     DLog();
+}
+
+#pragma mark - TableView
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 3: {
+            UIView *v = UIView.new;
+            v.frame = CGRectMake(0, 0, tableView.width, tableView.rowHeight);
+            UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            b.translatesAutoresizingMaskIntoConstraints = NO;
+            b.titleLabel.font = [UIFont systemFontOfSize:19];
+            [b setTitle:NSLocalizedString(@"Route in Google Maps",nil) forState:UIControlStateNormal];
+            [b addTarget:self action:@selector(routeByGoogleMaps:) forControlEvents:UIControlEventTouchUpInside];
+            [b sizeToFit];
+            [v addSubview:b];
+            [b centerInView:v];
+            b.enabled = [self googleMapInstalled];
+            return v;
+        }
+        case 4: {
+            UIView *v = UIView.new;
+            v.frame = CGRectMake(0, 0, tableView.width, tableView.rowHeight * 3);
+            UIButton *b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            b.translatesAutoresizingMaskIntoConstraints = NO;
+            b.titleLabel.font = [UIFont systemFontOfSize:19];
+            [b setTitle:NSLocalizedString(@"Route in Apple Maps",nil) forState:UIControlStateNormal];
+            [b addTarget:self action:@selector(routeByAppleMaps:) forControlEvents:UIControlEventTouchUpInside];
+            [b sizeToFit];
+            [v addSubview:b];
+            [b centerInView:v];
+            return v;
+        }
+    }
+    
+    return [super tableView:tableView viewForHeaderInSection:section];
 }
 
 #pragma mark - Navigation

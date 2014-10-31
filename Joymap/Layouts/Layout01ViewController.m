@@ -26,6 +26,9 @@
     [self setImageOrMovieView:self.v1 item:[self itemAtOrderNo:1]];
     [self setTextView:self.v2 item:[self itemAtOrderNo:2]];
     [self setTextView:self.v3 item:[self itemAtOrderNo:3] bottomPadding:20.0];
+    
+    self.v3.layer.cornerRadius = 5;
+    self.v3.clipsToBounds = true;
 }
 
 - (void)editDone

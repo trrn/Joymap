@@ -96,17 +96,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="WhQ-uR-sh1" style="IBUITableViewCellStyleDefault" id="YzI-6Z-1vD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="WhQ-uR-sh1" detailTextLabel="gJv-XA-5LV" style="IBUITableViewCellStyleSubtitle" id="YzI-6Z-1vD">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YzI-6Z-1vD" id="wVF-mN-3mN">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="WhQ-uR-sh1">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="WhQ-uR-sh1">
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gJv-XA-5LV">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -134,7 +140,6 @@
                             <subviews>
                                 <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="jAi-dS-Ir4">
                                     <rect key="frame" x="0.0" y="-5" width="304" height="44"/>
-                                    <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
                                         <outlet property="delegate" destination="QUy-BD-bpt" id="l7o-ID-qUL"/>
@@ -144,7 +149,7 @@
                                     <rect key="frame" x="20" y="6" width="264" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
+                                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -208,11 +213,11 @@
             </objects>
             <point key="canvasLocation" x="653" y="1236"/>
         </scene>
-        <!--List View Controller-->
+        <!--List-->
         <scene sceneID="cos-Df-NeG">
             <objects>
                 <tableViewController id="asH-WZ-mFX" customClass="ListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eu4-Ic-4mT">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eu4-Ic-4mT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -255,22 +260,23 @@
                             <outlet property="delegate" destination="asH-WZ-mFX" id="Tob-NW-9ah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="VRG-55-yDt">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Pgm-QO-fyd" customClass="SegmentedControl">
-                            <rect key="frame" x="50" y="6" width="220" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title=""/>
-                                <segment title=""/>
-                                <segment title=""/>
-                            </segments>
-                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="changeSortType:" destination="asH-WZ-mFX" eventType="valueChanged" id="oHh-Jp-rp8"/>
-                                <action selector="tapSegment:" destination="asH-WZ-mFX" eventType="touchUpInside" id="nrH-i0-zvl"/>
-                            </connections>
-                        </segmentedControl>
+                    <navigationItem key="navigationItem" title="List" id="VRG-55-yDt">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="4OI-AM-G1M">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Pgm-QO-fyd" customClass="SegmentedControl">
+                                <rect key="frame" x="117" y="5" width="86" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="changeSortType:" destination="asH-WZ-mFX" eventType="valueChanged" id="oHh-Jp-rp8"/>
+                                    <action selector="tapSegment:" destination="asH-WZ-mFX" eventType="touchUpInside" id="nrH-i0-zvl"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="j1B-3p-oD1" id="WwC-B4-bSQ"/>
@@ -289,7 +295,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1173" y="1236"/>
+            <point key="canvasLocation" x="1239" y="1236.5"/>
         </scene>
         <!--Layout01 View Controller-->
         <scene sceneID="BuA-D2-BwG">
@@ -318,7 +324,6 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exZ-Lz-oSp">
                                 <rect key="frame" x="164" y="148" width="136" height="104"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="SGw-AK-nmI"/>
                                     <constraint firstAttribute="height" constant="104" id="WWZ-XF-t3q"/>
@@ -512,13 +517,13 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="yyyy/MM/dd HH:mm:ss" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIQ-aQ-6Qi">
-                                                    <rect key="frame" x="20" y="11" width="184" height="21"/>
+                                                    <rect key="frame" x="20" y="12" width="200" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zL-66-hw8">
-                                                    <rect key="frame" x="212" y="7" width="88" height="30"/>
+                                                    <rect key="frame" x="228" y="8" width="72" height="30"/>
                                                     <state key="normal" title="Update">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -565,14 +570,17 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                     </tableView>
                     <navigationItem key="navigationItem" title="Setting" id="0zV-E6-Px7"/>
                     <connections>
+                        <outlet property="autoPlayCell" destination="Oc7-4c-QH5" id="2wn-bd-wu9"/>
                         <outlet property="autoPlaySwitch" destination="R72-2f-iOO" id="duR-Xz-gjA"/>
                         <outlet property="jdbUpdateDateLabel" destination="HIQ-aQ-6Qi" id="5at-62-08x"/>
+                        <outlet property="notifyCell" destination="Gnt-PM-Xjm" id="Pfu-RY-PfD"/>
                         <outlet property="notifySwitch" destination="cQN-ct-TkX" id="bCn-am-rd9"/>
+                        <outlet property="updateCell" destination="drY-bY-DZF" id="Al7-xq-uio"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vnu-A2-0fG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1173" y="1924"/>
+            <point key="canvasLocation" x="1173" y="1922"/>
         </scene>
         <!--Pin View Controller-->
         <scene sceneID="Igd-q9-znw">
@@ -1275,50 +1283,13 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle=" " id="A3H-fm-Mkg">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fJo-Ez-ebM">
-                                        <rect key="frame" x="0.0" y="303" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fJo-Ez-ebM" id="6Re-Bf-aYQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pt3-AM-exF">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                                    <state key="normal" title="Google Maps Route">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="routeByGoogleMaps:" destination="nry-LK-hXB" eventType="touchUpInside" id="wUu-tb-N9Q"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
+                                <cells/>
                             </tableViewSection>
-                            <tableViewSection id="UVS-yn-geg">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="npD-41-JrO">
-                                        <rect key="frame" x="0.0" y="367" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="npD-41-JrO" id="BX0-dz-t5e">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6f-Ix-rmx">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                                    <state key="normal" title="Apple Maps Route">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="routeByAppleMaps:" destination="nry-LK-hXB" eventType="touchUpInside" id="6l8-V9-aE4"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
+                            <tableViewSection headerTitle=" " id="WoY-sx-c4u">
+                                <cells/>
+                            </tableViewSection>
+                            <tableViewSection headerTitle=" " id="lKb-Bn-SYv">
+                                <cells/>
                             </tableViewSection>
                         </sections>
                     </tableView>
@@ -1330,9 +1301,10 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="appleMapsButton" destination="D6f-Ix-rmx" id="Xtg-hh-KQh"/>
+                        <outlet property="cancelButton" destination="G3e-r0-PGa" id="6eN-Cn-yd6"/>
+                        <outlet property="fromCell" destination="8QW-KK-CsB" id="9fT-zW-JBG"/>
                         <outlet property="fromLabel" destination="Zg8-Iq-f33" id="PoA-wP-i2Y"/>
-                        <outlet property="googleMapsButton" destination="pt3-AM-exF" id="Tq3-Mz-QcU"/>
+                        <outlet property="toCell" destination="aEF-S8-0yP" id="e6Z-ma-cGt"/>
                         <outlet property="toLabel" destination="0Wn-Pn-6vD" id="u6e-C3-dvs"/>
                     </connections>
                 </tableViewController>
@@ -1452,21 +1424,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-hw-spD">
-                                <rect key="frame" x="164" y="148" width="136" height="104"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="104" id="8U4-16-R48"/>
-                                    <constraint firstAttribute="width" constant="136" id="tRk-5L-8sI"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </textView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Do-Wz-nao">
                                 <rect key="frame" x="20" y="148" width="136" height="104"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hyZ-SB-N4p">
                                 <rect key="frame" x="72" y="283" width="230" height="31"/>
@@ -1487,6 +1447,17 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJl-ZH-Cx6">
                                 <rect key="frame" x="20" y="345" width="280" height="223"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2q-hw-spD">
+                                <rect key="frame" x="164" y="148" width="136" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="8U4-16-R48"/>
+                                    <constraint firstAttribute="width" constant="136" id="tRk-5L-8sI"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1654,7 +1625,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdS-fE-afr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2621" y="1236"/>
+            <point key="canvasLocation" x="2511" y="777"/>
         </scene>
         <!--Layout03 View Controller-->
         <scene sceneID="rjK-AY-g8Q">
@@ -1690,46 +1661,52 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kn8-BT-VQT">
-                                <rect key="frame" x="164" y="148" width="136" height="104"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="164" y="148" width="130" height="81"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="136" id="cIJ-c9-e3L"/>
-                                    <constraint firstAttribute="height" constant="104" id="pgG-Hf-wqe"/>
+                                    <constraint firstAttribute="height" constant="81" id="Fxj-jV-gaG"/>
+                                    <constraint firstAttribute="width" constant="130" id="eSf-Xy-8Om"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-kt-Eok">
-                                <rect key="frame" x="20" y="375" width="280" height="193"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </textView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="g7y-rg-MGg">
-                                <rect key="frame" x="72" y="270" width="230" height="31"/>
-                                <connections>
-                                    <action selector="changeV3slider:" destination="dp4-OW-mPs" eventType="valueChanged" id="S4C-lE-x5U"/>
-                                </connections>
-                            </slider>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTf-sj-wcA">
-                                <rect key="frame" x="20" y="269" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTf-sj-wcA">
+                                <rect key="frame" x="20" y="298" width="46" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="iAG-cX-t6l"/>
+                                    <constraint firstAttribute="height" constant="46" id="fzu-r5-uPW"/>
+                                    <constraint firstAttribute="width" constant="46" id="zfr-Bv-bax"/>
                                 </constraints>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="pushV3btn:" destination="dp4-OW-mPs" eventType="touchUpInside" id="M7W-pf-2PF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQd-cj-oMW">
-                                <rect key="frame" x="20" y="312" width="124" height="49"/>
+                            <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-u2-Jen">
+                                <rect key="frame" x="20" y="148" width="130" height="130"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="DUK-vA-IP9"/>
-                                    <constraint firstAttribute="height" constant="49" id="gcC-1d-PAs"/>
+                                    <constraint firstAttribute="height" constant="130" id="mLj-iB-OJc"/>
+                                    <constraint firstAttribute="width" constant="130" id="nJQ-kX-dBP"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBM-kt-Eok">
+                                <rect key="frame" x="20" y="364" width="280" height="184"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </textView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="g7y-rg-MGg">
+                                <rect key="frame" x="80" y="306" width="226" height="31"/>
+                                <connections>
+                                    <action selector="changeV3slider:" destination="dp4-OW-mPs" eventType="valueChanged" id="S4C-lE-x5U"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQd-cj-oMW">
+                                <rect key="frame" x="168" y="237" width="136" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="g3w-cn-p2k"/>
                                 </constraints>
                                 <state key="normal" image="Download_on_iTunes_Badge_JP_110x40_1016.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1738,37 +1715,35 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <action selector="pushV5btn:" destination="dp4-OW-mPs" eventType="touchUpInside" id="psh-sb-GOD"/>
                                 </connections>
                             </button>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-u2-Jen">
-                                <rect key="frame" x="20" y="148" width="136" height="104"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="bottom" secondItem="jGG-NV-v0t" secondAttribute="bottom" id="7pf-5f-vmF"/>
-                            <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="kn8-BT-VQT" secondAttribute="top" id="Agx-7o-aIc"/>
-                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="g7y-rg-MGg" secondAttribute="bottom" constant="12" id="LDU-sk-vBf"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="trailing" secondItem="g7y-rg-MGg" secondAttribute="trailing" id="M3m-mT-Pej"/>
-                            <constraint firstItem="fQT-u2-Jen" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="Qjk-X3-k9a"/>
-                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="13" id="RND-FN-ZtY"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="RQd-cj-oMW" secondAttribute="bottom" constant="14" id="W7h-7C-tGl"/>
-                            <constraint firstItem="kn8-BT-VQT" firstAttribute="bottom" secondItem="fQT-u2-Jen" secondAttribute="bottom" id="XNr-jk-zHH"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="centerX" secondItem="B4C-sw-ez8" secondAttribute="centerX" id="dF2-h5-Jcj"/>
-                            <constraint firstItem="RQd-cj-oMW" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="leading" id="nc8-8B-0de"/>
-                            <constraint firstItem="fQT-u2-Jen" firstAttribute="leading" secondItem="B4C-sw-ez8" secondAttribute="leading" constant="20" id="nci-sZ-VeY"/>
-                            <constraint firstItem="g7y-rg-MGg" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="trailing" constant="8" symbolic="YES" id="sRX-hd-9TG"/>
-                            <constraint firstItem="kn8-BT-VQT" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="trailing" constant="8" symbolic="YES" id="vSb-3T-sLw"/>
-                            <constraint firstItem="YTf-sj-wcA" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="17" id="xQa-FE-WhY"/>
-                            <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="V4d-bh-WlT" secondAttribute="top" constant="84" id="xUS-OO-uHi"/>
-                            <constraint firstItem="g7y-rg-MGg" firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" id="xqc-6a-9Cq"/>
-                            <constraint firstItem="nBM-kt-Eok" firstAttribute="leading" secondItem="RQd-cj-oMW" secondAttribute="leading" id="zc1-I0-qez"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="trailing" secondItem="nBM-kt-Eok" secondAttribute="trailing" constant="4" id="Aw8-XV-Hfg"/>
+                            <constraint firstItem="nBM-kt-Eok" firstAttribute="top" secondItem="YTf-sj-wcA" secondAttribute="bottom" constant="20" id="DRW-Zg-j88"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="centerY" secondItem="g7y-rg-MGg" secondAttribute="centerY" id="FoW-hd-FNk"/>
+                            <constraint firstAttribute="centerX" secondItem="nBM-kt-Eok" secondAttribute="centerX" id="QxX-8E-hpm"/>
+                            <constraint firstItem="kn8-BT-VQT" firstAttribute="trailing" secondItem="g7y-rg-MGg" secondAttribute="trailing" constant="-10" id="Sdv-Gk-One"/>
+                            <constraint firstItem="g7y-rg-MGg" firstAttribute="leading" secondItem="YTf-sj-wcA" secondAttribute="trailing" constant="16" id="TBJ-Ab-UoP"/>
+                            <constraint firstItem="kn8-BT-VQT" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="trailing" constant="14" id="TED-wx-fHp"/>
+                            <constraint firstItem="jGG-NV-v0t" firstAttribute="bottom" secondItem="nBM-kt-Eok" secondAttribute="bottom" constant="20" id="Xhq-lG-zGU"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="20" id="Z3r-GX-6jJ"/>
+                            <constraint firstItem="fQT-u2-Jen" firstAttribute="leading" secondItem="B4C-sw-ez8" secondAttribute="leading" constant="20" id="ZY1-GD-Ccr"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="leading" secondItem="nBM-kt-Eok" secondAttribute="leading" id="bsq-rp-NSk"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="top" secondItem="kn8-BT-VQT" secondAttribute="bottom" constant="8" id="ikB-OX-Mq2"/>
+                            <constraint firstItem="kn8-BT-VQT" firstAttribute="leading" secondItem="RQd-cj-oMW" secondAttribute="leading" constant="-4" id="jO9-rh-5Av"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="trailing" secondItem="kn8-BT-VQT" secondAttribute="trailing" constant="10" id="nZv-Bg-xa2"/>
+                            <constraint firstItem="fQT-u2-Jen" firstAttribute="top" secondItem="V4d-bh-WlT" secondAttribute="top" constant="84" id="qPx-lw-tTL"/>
+                            <constraint firstItem="RQd-cj-oMW" firstAttribute="bottom" secondItem="fQT-u2-Jen" secondAttribute="bottom" constant="-1" id="vnP-rg-chN"/>
+                            <constraint firstItem="YTf-sj-wcA" firstAttribute="leading" secondItem="fQT-u2-Jen" secondAttribute="leading" id="vu0-76-IvB"/>
+                            <constraint firstItem="kn8-BT-VQT" firstAttribute="top" secondItem="fQT-u2-Jen" secondAttribute="top" id="xsh-Ap-dbF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JAz-Rw-x3m"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="topMargin" destination="xUS-OO-uHi" id="vHF-4G-GGF"/>
+                        <outlet property="baseViewHeightConstraint" destination="mLj-iB-OJc" id="14c-tV-vqZ"/>
+                        <outlet property="baseViewWidthContstraint" destination="nJQ-kX-dBP" id="cZF-is-4O7"/>
                         <outlet property="v1" destination="fQT-u2-Jen" id="slZ-gD-Wwt"/>
                         <outlet property="v2" destination="kn8-BT-VQT" id="cyA-MC-te5"/>
                         <outlet property="v3button" destination="YTf-sj-wcA" id="UFa-db-uNx"/>
@@ -1779,7 +1754,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84f-Oz-UaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3190" y="1236"/>
+            <point key="canvasLocation" x="2702" y="1236"/>
         </scene>
     </scenes>
     <resources>

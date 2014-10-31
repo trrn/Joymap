@@ -16,10 +16,14 @@
 #import <IDMPhotoBrowser.h>
 #import <UIView+AutoLayout.h>
 #import <STKDataSource.h>
+#import <UIImage+RoundedCorner.h>
 
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface LayoutViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, STKAudioPlayerDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *baseViewWidthContstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *baseViewHeightConstraint;
 
 @end
 
@@ -96,7 +100,7 @@
                 [ProcUtil asyncMainq:^{
                     [indicator stopAnimating];
                     [indicator removeFromSuperview];
-                    v.image = img;
+                    v.image = [img roundedCornerImage:MIN(img.size.height,img.size.width)*0.04 borderSize:0];
                 }];
             }];
             break;
@@ -269,13 +273,16 @@
     if ([StringUtil empty:url] || self.audioPlayer) {
         return;
     }
-
+    
     DLog(@"%@", url);
     soundURL_ = url;
 
     self.audioPlayer = [STKAudioPlayer.alloc initWithOptions:(STKAudioPlayerOptions){.enableVolumeMixer = YES}];
     self.audioPlayer.delegate = self;
 
+    [Theme setSoundButtonPlay:self.soundButton];
+    self.soundButton.showsTouchWhenHighlighted = YES;
+    
     if ([DefaultsUtil bool:DEF_SET_ETC_AUTOPLAY]) {
         [self.audioPlayer queue:soundURL_];
     }
@@ -339,10 +346,12 @@
 	else if (self.audioPlayer.state == STKAudioPlayerStatePaused)
 	{
         [self.soundButton setTitle:NSLocalizedString(@"Play", nil) forState:UIControlStateNormal];
+        [Theme setSoundButtonPlay:self.soundButton];
 	}
 	else if (self.audioPlayer.state & STKAudioPlayerStatePlaying)
 	{
         [self.soundButton setTitle:NSLocalizedString(@"Pause", nil) forState:UIControlStateNormal];
+        [Theme setSoundButtonPause:self.soundButton];
 	}
 	else
 	{

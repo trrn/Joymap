@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define JM_LIST_THUMBNAIL_SIZE 52
+
 @interface JMTableViewCell : UITableViewCell
 
 @end

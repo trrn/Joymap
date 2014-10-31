@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JdbDownloadController : UIViewController
+@interface JdbDownloadController : BaseViewController
 
 @end

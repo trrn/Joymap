@@ -10,7 +10,7 @@
 
 @class Pin;
 
-@interface GoogleMapsViewController : UIViewController
+@interface GoogleMapsViewController : BaseViewController
 
 - (void)selectPin:(Pin *)pin;
 - (void)hideKeyboard;

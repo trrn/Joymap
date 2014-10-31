@@ -93,6 +93,8 @@
 
     searchBarShouldBeginEditing_ = YES;
 
+    [Theme setSearchBarTextFieldBackground:self.searchBar];
+    
     [self setAdminControl];
 
     [self reload];
@@ -119,15 +121,9 @@
 
 - (void)moveCameraToAnyPin
 {
-    if (pins_ && pins_.count) {
-//        NSInteger idx = rand() % pins_.count;
-        NSInteger idx = 0;
-        Pin *p = pins_[idx];
-        GMSMarker *m = p.marker;
-        GMSCameraUpdate *upd =
-        [GMSCameraUpdate setTarget:m.position zoom:10];
-        [_mapView animateWithCameraUpdate:upd];
-    }
+    GMSCameraUpdate *upd =
+    [GMSCameraUpdate setTarget:(CLLocationCoordinate2D){35.681382,139.766084} zoom:13];
+    [_mapView animateWithCameraUpdate:upd];
 }
 
 - (void)reload
@@ -143,11 +139,30 @@
         m.title = p.name;
         m.map = _mapView;
         m.userData = p;
+        m.icon = [UIImage imageNamed:@"pin"];
         p.marker = m;
     }
     
     lastReloaded_ = NSDate.date;
 }
+
+// customize marker info window
+//- (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+//
+//    UIView *view = UIView.new;
+//    view.frame = CGRectMake(0, 0, 170, 70);
+//
+//    UIImageView *iv = UIImageView.new;
+//    UIImage *balloon = [UIImage imageNamed:@"balloon"];
+//    UIImage *strechableBalloon = [balloon resizableImageWithCapInsets:UIEdgeInsetsMake(38, 5, 38, 5) resizingMode:UIImageResizingModeStretch];
+//
+//    iv.image = strechableBalloon;
+//
+//    iv.frame = view.bounds;
+//    [view addSubview:iv];
+//
+//    return view;
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -298,6 +313,10 @@
     BOOL ret = searchBarShouldBeginEditing_;
     searchBarShouldBeginEditing_ = YES;
 
+    if ([StringUtil empty:searchBar.text]) {
+        [searchOnMap_ searchByStr:@""];
+    }
+    
     return ret;
 }
 

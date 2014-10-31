@@ -11,7 +11,7 @@
 
 @class GMSMarker;
 
-@interface GoogleStreetViewController : UIViewController
+@interface GoogleStreetViewController : BaseViewController
 
 @property (assign) CLLocationCoordinate2D coord;
 @property (nonatomic, weak) NSArray *pins;

@@ -235,12 +235,32 @@ static NSDate *_date;
     return [self pinsOrderByID:YES];
 }
 
-+ (NSArray *)searchPinsByKeyword:(NSString *)str;
++ (NSArray *)searchPinsByName:(NSString *)str;
 {
     NSMutableArray *ret = @[].mutableCopy;
     
     return [self select:ret exe:^(FMDatabase *db) {
         NSString *q = [NSString stringWithFormat:@"select * from pin where name like '%%%@%%' order by name", str];
+        DLog(@"%@", q);
+        return [db executeQuery:q];
+    } map:^(FMResultSet *rs, id ret) {
+        Pin *p = Pin.new;
+        p.id = [rs intForColumn:@"_id"];
+        p.latitude = [rs doubleForColumn:@"latitude"];
+        p.longitude = [rs doubleForColumn:@"longitude"];
+        p.name = [rs stringForColumn:@"name"];
+        p.kategoryId = [rs intForColumn:@"category_id"];
+        [ret addObject:p];
+        return YES;
+    }];
+}
+
++ (NSArray *)searchPinsByKeyword:(NSString *)str;
+{
+    NSMutableArray *ret = @[].mutableCopy;
+    
+    return [self select:ret exe:^(FMDatabase *db) {
+        NSString *q = [NSString stringWithFormat:@"select p.* from pin p inner join layout l on p._id = l.pin_id inner join layout_item li on l._id = li.layout_id inner join item i on li.item_id = i._id and i.type = 1 and i.resource1 like '%%%@%%' group by p._id order by 1", str];
         DLog(@"%@", q);
         return [db executeQuery:q];
     } map:^(FMResultSet *rs, id ret) {
@@ -320,7 +340,7 @@ static NSDate *_date;
 
     return [[self select:ret exe:^(FMDatabase *db) {
         return [db executeQueryWithFormat:
-            @"select d.resource1 from pin a, layout b, layout_item c, item d"
+            @"select replace(replace(replace(d.resource1, '\n', ' '), '\r', ''), '\t', '') as resource1 from pin a, layout b, layout_item c, item d"
              " where a._id = b.pin_id and b._id = c.layout_id and c.item_id = d._id"
              " and a._id = %ld and d.type in (1) order by b.orderno, c.orderno limit 1"
                 , (long)pin.id];

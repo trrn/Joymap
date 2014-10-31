@@ -10,6 +10,6 @@
 
 @class Pin;
 
-@interface RouteSelectViewController : UITableViewController
+@interface RouteSelectViewController : BaseTableViewController
 @property (nonatomic, copy) void (^selectHandler)(Pin *);
 @end

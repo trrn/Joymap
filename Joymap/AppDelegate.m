@@ -23,6 +23,8 @@
 
     [self firstlaunched];
     
+    [Theme setup];
+    
     AFNetworkActivityIndicatorManager.sharedManager.enabled = YES;
     
     [RegionMonitor.shared refresh];

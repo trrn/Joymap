@@ -74,6 +74,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
+    //[Theme setTableViewCellBackgroundColor:cell];
+    [Theme setTableViewCellSelectedBackgroundColor:cell];
+
     Pin *p = nil;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         p = searchedPins_[indexPath.row];

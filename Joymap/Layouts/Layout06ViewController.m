@@ -39,10 +39,19 @@
     } else {    // URL
         [super prepareSoundWithURL:soundItem.resource1];
     }
+
+    self.v4.layer.cornerRadius = 20;
+    self.v4.clipsToBounds = true;
+    [self.v4 setTextContainerInset:UIEdgeInsetsMake(14, 12, 12, 14)];
     
-//    if (![Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
-//        self.topMargin.constant = 64;
-//    }
+//    UIBezierPath *maskPath;
+//    maskPath = [UIBezierPath bezierPathWithRoundedRect:self.v4.bounds
+//                                     byRoundingCorners:(UIRectCornerTopLeft | UIRectCornerTopRight)
+//                                           cornerRadii:CGSizeMake(20.0, 20.0)];
+//    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+//    maskLayer.frame = self.v4.bounds;
+//    maskLayer.path = maskPath.CGPath;
+//    self.v4.layer.mask = maskLayer;
 }
 
 - (IBAction)pushV3btn:(id)sender {

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectViewController : UITableViewController
+@interface SelectViewController : BaseTableViewController
 @property (nonatomic) NSArray *dataSource;
 @property (nonatomic) NSInteger initialSelectedIndex;
 @property (nonatomic, copy) void (^selectHandler)(NSInteger);

@@ -45,10 +45,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell"];
-    
+    //[Theme setTableViewCellBackgroundColor:cell];
+    [Theme setTableViewCellSelectedBackgroundColor:cell];
+
     Pin *p = _result[indexPath.row];
     
     cell.textLabel.text = p.name;
+    [p subtitle:cell];
     
     return cell;
 }
@@ -81,8 +84,7 @@
     __block NSInteger no = seq_;
     
     if ([StringUtil empty:str]) {
-        [self clear];
-        return;
+        str = @"%";
     }
 
     @synchronized(self) {

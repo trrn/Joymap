@@ -57,6 +57,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SelectViewCell"];
+    [Theme setTableViewCellBackgroundColor:cell];
+    [Theme setTableViewCellSelectedBackgroundColor:cell];
 
     NSDictionary *e = _dataSource[indexPath.row];
     cell.imageView.image = e[@"image"];
