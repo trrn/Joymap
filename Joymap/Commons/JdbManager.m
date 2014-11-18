@@ -10,6 +10,9 @@
 
 #import "DataSource.h"
 #import "RegionMonitor.h"
+#import "UpdateCheckManager.h"
+
+#define JDB_VERSION_HEDAER @"X-Joymap-JDB-Version"
 
 @interface JdbManager ()
 @property (nonatomic, copy) void (^progressHandler)(double);
@@ -87,6 +90,14 @@
                    } else {  // success
                        NSLog(@"File downloaded to: %@", filePath);
                        
+                       // save jdb version
+                       NSNumber *ver = httpResponse.allHeaderFields[JDB_VERSION_HEDAER];
+                       if (ver) {
+                           [DefaultsUtil setInt:[ver integerValue] key:JDB_VERSION];
+                       }
+                       
+                       [self notifySuccess];
+                       
                        if (filePath) {
                            [RegionMonitor.shared refresh];
                            [DefaultsUtil setObj:NSDate.date key:DEF_SET_JDB_LAST_UPDATED];
@@ -125,6 +136,15 @@
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+}
+
+- (void)notifySuccess
+{
+    NSNotification *notification =
+    [NSNotification notificationWithName:JDB_DOWNLOAD_SUCCEEDED
+                                  object:nil
+                                userInfo:nil];
+    [NSNotificationCenter.defaultCenter postNotification:notification];
 }
 
 - (void)cancel

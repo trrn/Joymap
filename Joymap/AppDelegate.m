@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "RegionMonitor.h"
+#import "UpdateCheckManager.h"
 
 #import <AFNetworkActivityIndicatorManager.h>
 
@@ -69,16 +70,28 @@
     self.backgroundSessionCompletionHandler = completionHandler;
 }
 
-//- (void)application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-//
-//    DLog();
-//
-//    if (self.settingViewController) {
-//        // TODO present self.settingViewController
-////        [self.settingViewController jdbUpdateFromBackground];
-//    }
-//
-//    completionHandler(UIBackgroundFetchResultNoData);
-//}
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    //[GAI sharedInstance].optOut = !Setting.trackingEnable;
+#ifndef DEBUG
+    //Crittercism.optOutStatus = !Setting.trackingEnable;
+#endif
+    
+    [self onceSomeInterval];
+}
+
+- (void)onceSomeInterval
+{
+    static NSString *kLastLaunched = @"kLastLaunched";
+
+    NSDate *last = [DefaultsUtil obj:kLastLaunched];
+    NSDate *now = NSDate.date;
+    
+    if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {
+        //DLog(@"### once");
+        [UpdateCheckManager check];
+        [DefaultsUtil setObj:now key:kLastLaunched];
+    }
+}
 
 @end

@@ -96,6 +96,7 @@
 		DC9177D319BD8FF50087DDF8 /* NSURLRequest+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177CB19BD8FF50087DDF8 /* NSURLRequest+Sekken.m */; };
 		DC9177D419BD8FF50087DDF8 /* UIStoryboard+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177CD19BD8FF50087DDF8 /* UIStoryboard+Sekken.m */; };
 		DC9177D519BD8FF50087DDF8 /* UIView+Sekken.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9177CF19BD8FF50087DDF8 /* UIView+Sekken.m */; };
+		DCA7529F1A1B2598007282B1 /* UpdateCheckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCA7529E1A1B2598007282B1 /* UpdateCheckManager.m */; };
 		DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */; };
 		DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */; };
 		DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */; };
@@ -273,6 +274,8 @@
 		DC9177CD19BD8FF50087DDF8 /* UIStoryboard+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboard+Sekken.m"; sourceTree = "<group>"; };
 		DC9177CE19BD8FF50087DDF8 /* UIView+Sekken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sekken.h"; sourceTree = "<group>"; };
 		DC9177CF19BD8FF50087DDF8 /* UIView+Sekken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sekken.m"; sourceTree = "<group>"; };
+		DCA7529D1A1B2598007282B1 /* UpdateCheckManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCheckManager.h; sourceTree = "<group>"; };
+		DCA7529E1A1B2598007282B1 /* UpdateCheckManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateCheckManager.m; sourceTree = "<group>"; };
 		DCAE1EB819B5BBCF002B006E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DCAE1EBA19B6EA1A002B006E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DCAE1EBC19B6EA23002B006E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -549,6 +552,8 @@
 				DC3C294F19BE985300D189E3 /* JdbManager.m */,
 				DC1813151A03AAEA009F5C14 /* Setting.h */,
 				DC1813161A03AAEA009F5C14 /* Setting.m */,
+				DCA7529D1A1B2598007282B1 /* UpdateCheckManager.h */,
+				DCA7529E1A1B2598007282B1 /* UpdateCheckManager.m */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				DC9177D319BD8FF50087DDF8 /* NSURLRequest+Sekken.m in Sources */,
 				DC1813171A03AAEA009F5C14 /* Setting.m in Sources */,
 				4762EB73181BADE100CB57D2 /* PageViewController.m in Sources */,
+				DCA7529F1A1B2598007282B1 /* UpdateCheckManager.m in Sources */,
 				47E68662180B8DF80065B45B /* DataSource.m in Sources */,
 				47BFBE01182509BD00A2D7D3 /* GeoSearch.m in Sources */,
 				470090BA1817970F009FB810 /* ImageUtil.m in Sources */,

@@ -25,4 +25,8 @@
 
 + (NSURLRequest *)downloadRequest;
 
++ (NSString *)user;
++ (NSString *)map;
++ (NSString *)updateCheckActionUrl;
+
 @end

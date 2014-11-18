@@ -9,6 +9,8 @@
 #import "TabBarController.h"
 
 #import "GoogleMapsViewController.h"
+#import "JdbManager.h"
+#import "UpdateCheckManager.h"
 
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
@@ -38,6 +40,23 @@
     item.image = [factory createImageForIcon:NIKFontAwesomeIconCog];
     
     [Theme setTabBarColor:self.tabBar];
+
+    [NSNotificationCenter.defaultCenter
+     addObserver:self
+     selector:@selector(jdbNeedUpdate)
+     name:JDB_NEED_UPDATE
+     object:nil];
+    
+    [NSNotificationCenter.defaultCenter
+     addObserver:self
+     selector:@selector(jdbUpdated)
+     name:JDB_DOWNLOAD_SUCCEEDED
+     object:nil];
+}
+
+- (void)dealloc
+{
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +71,22 @@
     UINavigationController *nvc = self.viewControllers[0];
     GoogleMapsViewController *gvc = (GoogleMapsViewController *)nvc.topViewController;
     [gvc selectPin:pin];
+}
+
+- (void)jdbNeedUpdate
+{
+    [ProcUtil asyncMainqDelay:1 block:^{
+        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
+        item.badgeValue = @"Update";
+    }];
+}
+
+- (void)jdbUpdated
+{
+    [ProcUtil asyncMainqDelay:1 block:^{
+        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
+        item.badgeValue = nil;
+    }];    
 }
 
 @end
