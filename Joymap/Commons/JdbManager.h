@@ -8,6 +8,8 @@
 
 @interface JdbManager : AFHTTPSessionManager
 
+#define JDB_DOWNLOAD_SUCCEEDED @"JDB_DOWNLOAD_SUCCEEDED"
+
 + (instancetype)shared;
 - (void)downloadWithProgress:(void(^)(double))progress finished:(void(^)())finished;
 - (void)cancel;

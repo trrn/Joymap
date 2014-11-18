@@ -68,14 +68,6 @@
     return [url URLByAppendingPathComponent:self.dict[@"DownloadAction"]];
 }
 
-+ (NSDictionary *)downloadParam
-{
-    return @{
-             @"user":self.dict[@"User"],
-             @"map":self.dict[@"Map"]
-             };
-}
-
 + (NSString *)jdbIdHeader
 {
     return self.dict[@"JDBIdentifyHeaderName"];
@@ -95,6 +87,22 @@
 {
     return NO;
 //    return [self.dict[@"EnableEdit"] boolValue];
+}
+
++ (NSString *)user
+{
+    return self.dict[@"User"];
+}
+
++ (NSString *)map
+{
+    return self.dict[@"Map"];
+}
+
++ (NSString *)updateCheckActionUrl
+{
+    NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];
+    return [url URLByAppendingPathComponent:self.dict[@"UpdateCheckAction"]].absoluteString;
 }
 
 @end
