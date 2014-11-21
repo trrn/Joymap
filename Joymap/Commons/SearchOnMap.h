@@ -14,7 +14,7 @@
 
 @property (nonatomic, weak) id srcViewController;
 @property (nonatomic, weak) UITableView *tableView;
-@property (nonatomic, copy) void (^didTapRowCallback)(Pin *);
+@property (nonatomic, copy) void (^didTapRowCallback)(id);
 
 - (void)searchByStr:(NSString *)str;
 

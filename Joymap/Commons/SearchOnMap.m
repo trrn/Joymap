@@ -14,6 +14,7 @@
 
 @interface SearchOnMap()
 @property NSArray *result;
+@property NSArray *resultGeo;
 @end
 
 @implementation SearchOnMap
@@ -26,6 +27,8 @@
     self = [super init];
     if (self) {
         seq_ = 0;
+        _result = @[];
+        _resultGeo = @[];
     }
     return self;
 }
@@ -34,12 +37,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _result.count;
+    if (section == 0) {
+        return _result.count;
+    } else {
+        return _resultGeo.count;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return _result.count == 0 ? nil : NSLocalizedString(@"Spot", nil);
+    } else {
+        return _resultGeo.count == 0 ? nil : NSLocalizedString(@"Address", nil);
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -48,15 +64,35 @@
     //[Theme setTableViewCellBackgroundColor:cell];
     [Theme setTableViewCellSelectedBackgroundColor:cell];
 
-    Pin *p = _result[indexPath.row];
-    
-    cell.textLabel.text = p.name;
-    [p subtitle:cell];
+    if (indexPath.section == 0) {
+        Pin *p = _result[indexPath.row];
+        cell.textLabel.text = p.name;
+        [p subtitle:cell];
+    } else {
+        NSDictionary *r = _resultGeo[indexPath.row];
+        DLog(@"%@", r);
+        if (r[@"title"]) {
+            cell.textLabel.text = r[@"title"];
+            cell.detailTextLabel.text = r[@"addr"];
+        } else {
+            cell.textLabel.text = r[@"addr"];
+            cell.detailTextLabel.text = @" ";
+        }
+    }
     
     return cell;
 }
 
 #pragma mark - Table view delegate
+
+- (id)resultFromIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return _result[indexPath.row];
+    } else {
+        return _resultGeo[indexPath.row];
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -64,7 +100,7 @@
         tableView.hidden = YES;
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (_didTapRowCallback)
-            _didTapRowCallback(_result[indexPath.row]);
+            _didTapRowCallback([self resultFromIndexPath:indexPath]);
     }
 }
 
@@ -78,17 +114,11 @@
 
 #pragma mark - public
 
-- (void)searchByStr:(NSString *)str
+- (void)searchPin:(NSString *)str no:(NSInteger)no
 {
-    ++seq_;
-    __block NSInteger no = seq_;
-    
-    if ([StringUtil empty:str]) {
-        str = @"%";
-    }
+    NSArray *res = [DataSource searchPinsByKeyword:str];
 
     @synchronized(self) {
-        NSArray *res = [DataSource searchPinsByKeyword:str];
         if (no < seq_)      // newer request was sent
             return;
         self.result = res ?: @[];
@@ -98,10 +128,47 @@
     }
 }
 
+- (void)searchAddr:(NSString *)str no:(NSInteger)no
+{
+    [GeoUtil searchByStr:str handler:^(NSArray *results, NSError *error) {
+        if (error) {
+            ELog(@"%@", error);
+            return;
+        }
+        @synchronized(self) {
+            if (no < seq_)      // newer request was sent
+                return;
+            _resultGeo = results ?: @[];
+            [ProcUtil asyncMainq:^{
+                [self.tableView reloadData];
+            }];
+        }
+    }];
+}
+
+- (void)searchByStr:(NSString *)str
+{
+    @synchronized(self) {
+        ++seq_;
+    }
+
+    __block NSInteger no = seq_;
+
+    if ([StringUtil empty:str]) {
+        [self clear];
+        str = @"%";
+        [self searchPin:str no:no];
+    } else {
+        [self searchPin:str no:no];
+        [self searchAddr:str no:no];
+    }
+}
+
 - (void)clear
 {
     @synchronized(self) {
         self.result = @[];
+        self.resultGeo = @[];
         [ProcUtil asyncMainq:^{
             [self.tableView reloadData];
         }];

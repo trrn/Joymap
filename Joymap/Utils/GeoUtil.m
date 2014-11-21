@@ -152,7 +152,7 @@
     return [NSString stringWithFormat:@"%f,%f", co.latitude, co.longitude];
 }
 
-+ (void)searchByStr:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
++ (void)searchByStrOld:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
 {
     NSString *code = self.GoogleGeoLangCodeByLang;
     NSString *lang = @"";
@@ -189,29 +189,121 @@
             return;
         }
 
-        NSMutableArray *res = @[].mutableCopy;
-
-        for (NSDictionary *result in json[@"results"]) {
-            id addr = result[@"formatted_address"];
-            if (![addr isKindOfClass:NSString.class])
-                continue;
-            if ([StringUtil empty:addr])
-                continue;
-            id lat = [result valueForKeyPath:@"geometry.location.lat"];
-            id lng = [result valueForKeyPath:@"geometry.location.lng"];
-            if (![lat isKindOfClass:NSNumber.class] || ![lng isKindOfClass:NSNumber.class])
-                continue;
-            NSString *latlng = [NSString stringWithFormat:@"%@,%@", lat, lng];
-            [res addObject:@{
-                 @"addr"   : addr,
-                 @"latlng" : latlng,
-            }];
-        }
+        NSArray *res = [self resultsToArray:json[@"results"]];
 
         handler(res, nil);
     }];
     
     [task resume];
+}
+
++ (NSString *)extractTitle:(NSDictionary *)result;
+{
+    NSString *title = nil;
+    
+    NSDictionary *interest_components =
+        _.find(result[@"address_components"], ^BOOL (NSDictionary *ac) {
+            return _.any(ac[@"types"], ^BOOL (NSString *type) {
+                return [type isEqualToString:@"point_of_interest"] || [type isEqualToString:@"premise"];
+            });
+        });
+    
+    if (interest_components) {
+        title = interest_components[@"long_name"];
+        if (!title)
+            title = interest_components[@"short_name"];
+        
+        DLog(@"%@", title);
+    }
+    
+    return title;
+}
+
++ (NSArray *)resultsToArray:(NSArray *)results
+{
+    NSMutableArray *resArray = @[].mutableCopy;
+    
+    for (NSDictionary *result in results) {
+        NSMutableDictionary *res = @{}.mutableCopy;
+        __block NSString *addr = result[@"formatted_address"];
+        if (!addr)
+            continue;
+        _.arrayEach(@[@"日本, ", ], ^(NSString *w) {  // remove from prefix
+            if ([addr hasPrefix:w]) {
+                addr = [addr substringFromIndex:w.length];
+            }
+        });
+        NSString *title = [self extractTitle:result];
+        if (title) {
+            res[@"title"] = title;
+            if ([addr hasSuffix:title]) {
+                addr = [addr substringToIndex:addr.length - title.length];
+            }
+        }
+        res[@"addr"] = addr;
+        DLog(@"%@", res[@"addr"]);
+        
+        id lat = [result valueForKeyPath:@"geometry.location.lat"];
+        id lng = [result valueForKeyPath:@"geometry.location.lng"];
+        if (![lat isKindOfClass:NSNumber.class] || ![lng isKindOfClass:NSNumber.class])
+            continue;
+        NSString *latlng = [NSString stringWithFormat:@"%@,%@", lat, lng];
+        res[@"latlng"] = latlng;
+        [resArray addObject:res];
+    }
+
+    return resArray;
+}
+
++ (instancetype)shared;
+{
+    static GeoUtil *_shared;
+    static dispatch_once_t once;
+    
+    dispatch_once(&once, ^{
+        if (!_shared) {
+            _shared = [self manager];
+        }
+    });
+    
+    return _shared;
+}
+
++ (void)searchByStr:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
+{
+    NSString *code = self.GoogleGeoLangCodeByLang;
+    NSMutableDictionary *param = @{@"address":str, @"sensor":@"true"}.mutableCopy;
+    if (![StringUtil empty:code])
+        param[@"language"] = code;
+    
+    [self.shared GET:@"https://maps.googleapis.com/maps/api/geocode/json"
+          parameters:param
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 if (![responseObject[@"status"] isEqualToString:@"OK"]) {
+                     if (handler) {
+                         handler(nil, NSERR(@"status not OK, %@", responseObject));
+                         return;
+                     }
+                 }
+                 if (![responseObject[@"results"] isKindOfClass:NSArray.class]) {
+                     if (handler) {
+                         handler(nil, NSERR(@"no results, %@", responseObject));
+                         return;
+                     }
+                 }
+
+                 NSArray *res = [self resultsToArray:responseObject[@"results"]];
+                 //DLog(@"%@", res);
+                 
+                 if (handler) {
+                     handler(res, nil);
+                 }
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 if (handler) {
+                     handler(nil, error);
+                 };
+             }];
 }
 
 @end

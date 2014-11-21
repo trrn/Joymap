@@ -48,6 +48,8 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <AFNetworking.h>
 #import <UIView+AutoLayout.h>
+#import <Underscore.h>
+#define _ Underscore
 
 #define JDB_FILE_NAME @"jdb.sqlite"
 

@@ -10,7 +10,9 @@
 
 #import <CoreLocation/CLLocation.h>
 
-@interface GeoUtil : NSObject
+#import <AFNetworking.h>
+
+@interface GeoUtil : AFHTTPRequestOperationManager
 + (BOOL)strToCoordinate2D:(NSString *)str co:(CLLocationCoordinate2D *)co;
 + (NSString *)coordinate2DtoStr:(CLLocationCoordinate2D)co;
 + (void)searchByStr:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;

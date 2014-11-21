@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *addPinTitleLabel;
+@property (nonatomic) GMSMarker *searchedMarker;
 
 @end
 
@@ -36,7 +37,6 @@
     
 
     SearchOnMap *searchOnMap_;
-    GMSMarker  *searchedMarker_;
     BOOL        searchBarShouldBeginEditing_;   // search bar clear button control
 
     GMSMarker  *addMarker_;
@@ -52,7 +52,7 @@
 
     [GMSServices provideAPIKey:Env.googleMapsApiKey];
 
-    searchedMarker_ = nil;
+    _searchedMarker = nil;
     searchBarShouldBeginEditing_ = YES;
 
     addMarker_ = nil;
@@ -72,7 +72,7 @@
     _mapView.delegate = self;
     
     // register search table view's row tap action
-    searchedMarker_ = GMSMarker.new;
+    _searchedMarker = GMSMarker.new;
     __weak typeof(self) _self = self;
     
     searchOnMap_ = SearchOnMap.new;
@@ -80,12 +80,24 @@
     self.tableView.delegate = searchOnMap_;
     self.tableView.dataSource = searchOnMap_;
     searchOnMap_.tableView = self.tableView;
-    searchOnMap_.didTapRowCallback = ^(Pin *pin) {
+    searchOnMap_.didTapRowCallback = ^(id resOrPin) {
         [_self mapViewGestures:YES];
         _self.searchBar.showsCancelButton = NO;
         [_self.searchBar resignFirstResponder];
         [_self setAdminControl];
-        [_self selectPin:pin];
+        if ([resOrPin isKindOfClass:Pin.class]) {
+            [_self selectPin:resOrPin];
+        } else {  // searched geo location
+            _self.searchedMarker.map = nil; // hide
+            _self.searchedMarker = GMSMarker.new;
+            CLLocationCoordinate2D co;
+            [GeoUtil strToCoordinate2D:resOrPin[@"latlng"] co:&co];
+            _self.searchedMarker.position = co;
+            _self.searchedMarker.icon = [GMSMarker markerImageWithColor:UIColor.blueColor];
+            _self.searchedMarker.title = resOrPin[@"title"] ?: resOrPin[@"addr"];
+            _self.searchedMarker.map = _self.mapView;
+            [_self focusMarker:_self.searchedMarker];
+        }
     };
 
     [self.view bringSubviewToFront:self.tableView];
@@ -200,17 +212,22 @@
 
 #pragma mark - public
 
+- (void)focusMarker:(GMSMarker *)marker
+{
+    GMSCameraUpdate *upd =
+    [GMSCameraUpdate setTarget:marker.position zoom:_mapView.camera.zoom < 16 ? 16 : _mapView.camera.zoom];
+    [_mapView animateWithCameraUpdate:upd];
+    [ProcUtil asyncMainqDelay:0.5 block:^{
+        _mapView.selectedMarker = marker;
+    }];
+}
+
 - (void)selectPin0:(Pin *)pin
 {
     for (Pin *p in pins_) {
         if (p.id == pin.id) {
             GMSMarker *m = p.marker;
-            GMSCameraUpdate *upd =
-            [GMSCameraUpdate setTarget:m.position zoom:_mapView.camera.zoom < 16 ? 16 : _mapView.camera.zoom];
-            [_mapView animateWithCameraUpdate:upd];
-            [ProcUtil asyncMainqDelay:0.5 block:^{
-                _mapView.selectedMarker = m;
-            }];
+            [self focusMarker:m];
             break;
         }
     }
@@ -249,7 +266,7 @@
         return;
     }
     
-    if (marker == searchedMarker_) {
+    if (marker == _searchedMarker) {
         return;
     }
 
@@ -284,7 +301,7 @@
         GoogleStreetViewController *gvc = nvc.viewControllers[0];
         gvc.coord = coordinate;
         gvc.pins = pins_;
-        gvc.searchedMarker = searchedMarker_;
+        gvc.searchedMarker = _searchedMarker;
         nvc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentViewController:nvc animated:YES completion:nil];
     }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 sekken. All rights reserved.
 //
 
-#import "AFHTTPSessionManager.h"
+#import <AFNetworking.h>
 
 #define JDB_NEED_UPDATE @"JDB_NEED_UPDATE"
 #define JDB_VERSION @"JDB_VERSION"
