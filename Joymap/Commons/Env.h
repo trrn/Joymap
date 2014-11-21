@@ -18,6 +18,8 @@
 
 + (NSString *)googleMapsApiKey;
 
++ (NSString *)googleBrowserApiKey;
+
 + (NSString *)googleMapsImageApiKey;
 
 + (BOOL)enableEdit;

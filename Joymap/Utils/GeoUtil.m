@@ -189,7 +189,7 @@
             return;
         }
 
-        NSArray *res = [self resultsToArray:json[@"results"]];
+        NSArray *res = [self geoResultsToArray:json[@"results"]];
 
         handler(res, nil);
     }];
@@ -219,7 +219,7 @@
     return title;
 }
 
-+ (NSArray *)resultsToArray:(NSArray *)results
++ (NSArray *)geoResultsToArray:(NSArray *)results
 {
     NSMutableArray *resArray = @[].mutableCopy;
     
@@ -255,6 +255,42 @@
     return resArray;
 }
 
++ (NSArray *)placeResultsToArray:(NSArray *)results
+{
+    NSMutableArray *resArray = @[].mutableCopy;
+    
+    for (NSDictionary *result in results) {
+        NSMutableDictionary *res = @{}.mutableCopy;
+        __block NSString *addr = result[@"formatted_address"];
+        if (!addr)
+            continue;
+        _.arrayEach(@[@"日本, ", ], ^(NSString *w) {  // remove from prefix
+            if ([addr hasPrefix:w]) {
+                addr = [addr substringFromIndex:w.length];
+            }
+        });
+        NSString *title = result[@"name"];
+        if (title) {
+            res[@"title"] = title;
+            if ([addr hasSuffix:title]) {
+                addr = [addr substringToIndex:addr.length - title.length];
+            }
+        }
+        res[@"addr"] = addr;
+        DLog(@"%@", res[@"addr"]);
+        
+        id lat = [result valueForKeyPath:@"geometry.location.lat"];
+        id lng = [result valueForKeyPath:@"geometry.location.lng"];
+        if (![lat isKindOfClass:NSNumber.class] || ![lng isKindOfClass:NSNumber.class])
+            continue;
+        NSString *latlng = [NSString stringWithFormat:@"%@,%@", lat, lng];
+        res[@"latlng"] = latlng;
+        [resArray addObject:res];
+    }
+    
+    return resArray;
+}
+
 + (instancetype)shared;
 {
     static GeoUtil *_shared;
@@ -269,7 +305,8 @@
     return _shared;
 }
 
-+ (void)searchByStr:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
+// geo coding api
++ (void)searchByStrGeo:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
 {
     NSString *code = self.GoogleGeoLangCodeByLang;
     NSMutableDictionary *param = @{@"address":str, @"sensor":@"true"}.mutableCopy;
@@ -292,8 +329,47 @@
                      }
                  }
 
-                 NSArray *res = [self resultsToArray:responseObject[@"results"]];
+                 NSArray *res = [self geoResultsToArray:responseObject[@"results"]];
                  //DLog(@"%@", res);
+                 
+                 if (handler) {
+                     handler(res, nil);
+                 }
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 if (handler) {
+                     handler(nil, error);
+                 };
+             }];
+}
+
+// place api
++ (void)searchByStr:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
+{
+    NSString *code = self.GoogleGeoLangCodeByLang;
+    NSMutableDictionary *param = @{@"key":Env.googleBrowserApiKey, @"query":str, @"sensor":@"true"}.mutableCopy;
+    if (![StringUtil empty:code])
+        param[@"language"] = code;
+    
+    [self.shared GET:@"https://maps.googleapis.com/maps/api/place/textsearch/json"
+          parameters:param
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 if (![responseObject[@"status"] isEqualToString:@"OK"]) {
+                     if (handler) {
+                         handler(nil, NSERR(@"status not OK, %@", responseObject));
+                         return;
+                     }
+                 }
+                 if (![responseObject[@"results"] isKindOfClass:NSArray.class]) {
+                     if (handler) {
+                         handler(nil, NSERR(@"no results, %@", responseObject));
+                         return;
+                     }
+                 }
+                 
+                 //DLog(@"%@", responseObject);
+                 NSArray *res = [self placeResultsToArray:responseObject[@"results"]];
+                 DLog(@"%@", res);
                  
                  if (handler) {
                      handler(res, nil);

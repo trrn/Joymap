@@ -122,9 +122,9 @@
         if (no < seq_)      // newer request was sent
             return;
         self.result = res ?: @[];
-        [ProcUtil asyncMainq:^{
+//        [ProcUtil asyncMainq:^{
             [self.tableView reloadData];
-        }];
+//        }];
     }
 }
 
@@ -139,9 +139,9 @@
             if (no < seq_)      // newer request was sent
                 return;
             _resultGeo = results ?: @[];
-            [ProcUtil asyncMainq:^{
+//            [ProcUtil asyncMainq:^{
                 [self.tableView reloadData];
-            }];
+//            }];
         }
     }];
 }

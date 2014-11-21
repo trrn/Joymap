@@ -78,6 +78,11 @@
     return self.dict[@"GoogleMapsAPIKey"];
 }
 
++ (NSString *)googleBrowserApiKey;
+{
+    return self.dict[@"GoogleBrowserAPIKey"];
+}
+
 + (NSString *)googleMapsImageApiKey
 {
     return self.dict[@"GoogleMapsImageAPIKey"];
