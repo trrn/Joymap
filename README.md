@@ -16,7 +16,7 @@
 
 |Key                    |Valueの説明                |
 |:----------------------|:--------------------------|
-|User                   |管理画面(joymap.jp/member/)のユーザーID|
+|User                   |管理画面(http://joymap.jp/member/)のユーザーID|
 |Map                    |地図アプリの名前           |
 |GoogleMapsAPIKey       |https://developers.google.com/maps/documentation/ios/start|
 |GoogleBrowserAPIKey    |https://developers.google.com/places/documentation/?hl=ja|
