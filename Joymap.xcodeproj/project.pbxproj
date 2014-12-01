@@ -664,6 +664,7 @@
 				ORGANIZATIONNAME = sekken;
 				TargetAttributes = {
 					479BA365180AB2B5008E640F = {
+						DevelopmentTeam = WG258VXGNC;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
