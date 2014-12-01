@@ -14,7 +14,7 @@
 ####3. Joymap/Env.plist を編集する
 ![env_plist.png](env_plist.png)  
 
-|Key                    |Description                |Required|  
+|Key                    |説明                |必須属性|  
 |:----------------------|:--------------------------|:------:|  
 |ManagerURL             |管理画面のURL              |Y|  
 |User                   |管理画面のユーザーID (e-mail) |Y|  
