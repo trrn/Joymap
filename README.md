@@ -4,7 +4,7 @@
 
 ####1. setup cocoapods (http://beta.cocoapods.org/?q=)  
 
-    $ sudo gem install cocoapods
+    $ sudo gem install cocoapods -v 0.33.1
     $ pod install
 
 ####2. open project  
@@ -20,7 +20,7 @@
 |User                   |login user(e-mail) for manager |Y|  
 |Map                    |registered map name        |Y|  
 |GoogleMapsAPIKey       |https://developers.google.com/maps/documentation/ios/start  |Y|  
-|GoogleBrowserAPIKey    |://developers.google.com/places/documentation/?hl=ja |Y|  
+|GoogleBrowserAPIKey    |https://developers.google.com/places/documentation/?hl=ja |Y|  
 
 ####4. put jdb file into "Supporting Files"  
 ![copy_jdb.png](copy_jdb.png)  
