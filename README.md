@@ -14,11 +14,11 @@
 ####3. Joymap/Env.plist を編集する
 ![env_plist.png](env_plist.png)  
 
-|Key                    |説明                |必須属性|  
-|:----------------------|:--------------------------|:------:|  
-|ManagerURL             |管理画面のURL              |Y|  
-|User                   |管理画面のユーザーID (e-mail) |Y|  
-|Map                    |地図の名前                 |Y|  
+|Key                    |Valueの説明                |
+|:----------------------|:--------------------------|
+|ManagerURL             |管理画面のURL              |
+|User                   |管理画面のユーザーID (e-mail) |
+|Map                    |地図の名前                 |
 |GoogleMapsAPIKey       |https://developers.google.com/maps/documentation/ios/start  |Y|  
 |GoogleBrowserAPIKey    |https://developers.google.com/places/documentation/?hl=ja |Y|  
 
