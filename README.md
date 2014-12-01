@@ -16,7 +16,6 @@
 
 |Key                    |Valueの説明                |
 |:----------------------|:--------------------------|
-|ManagerURL             |管理画面のURL              |
 |User                   |管理画面のユーザーID (e-mail) |
 |Map                    |地図の名前                 |
 |GoogleMapsAPIKey       |https://developers.google.com/maps/documentation/ios/start  |Y|  
