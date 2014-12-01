@@ -2,7 +2,7 @@
 
 ##セットアップ
 
-####1. cocoapodsのインストール (http://beta.cocoapods.org/?q=)  
+####1. cocoapodsのインストール (http://cocoapods.org)  
 
     $ sudo gem install cocoapods -v 0.33.1
     $ pod install
