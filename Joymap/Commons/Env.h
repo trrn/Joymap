@@ -31,4 +31,6 @@
 + (NSString *)map;
 + (NSString *)updateCheckActionUrl;
 
++ (NSInteger)JDBInitialVersion;
+
 @end

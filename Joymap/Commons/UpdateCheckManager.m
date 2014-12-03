@@ -47,6 +47,10 @@
         return NO;
     }
 
+    if (remote == Env.JDBInitialVersion) {
+        return NO;
+    }
+
     NSInteger local = [DefaultsUtil int:JDB_VERSION];
 
     return remote != local;

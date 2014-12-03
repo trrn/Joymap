@@ -110,4 +110,10 @@
     return [url URLByAppendingPathComponent:self.dict[@"UpdateCheckAction"]].absoluteString;
 }
 
++ (NSInteger)JDBInitialVersion;
+{
+    NSNumber *n = self.dict[@"JDBInitialVersion"];
+    return n ? [n integerValue] : 0;
+}
+
 @end
