@@ -70,12 +70,13 @@
         [p subtitle:cell];
     } else {
         NSDictionary *r = _resultGeo[indexPath.row];
-        DLog(@"%@", r);
+        //DLog(@"%@", r);
         if (r[@"title"]) {
-            cell.textLabel.text = r[@"title"];
-            cell.detailTextLabel.text = r[@"addr"];
+            // workarround. When the blank cell is reused, the text does not appear
+            cell.textLabel.text = ![StringUtil empty:r[@"title"]] ? r[@"title"] : @" ";
+            cell.detailTextLabel.text = ![StringUtil empty:r[@"addr"]] ? r[@"addr"] : @" ";
         } else {
-            cell.textLabel.text = r[@"addr"];
+            cell.textLabel.text = ![StringUtil empty:r[@"addr"]] ? r[@"addr"] : @" ";
             cell.detailTextLabel.text = @" ";
         }
     }

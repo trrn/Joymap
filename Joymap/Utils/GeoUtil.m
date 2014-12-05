@@ -277,7 +277,7 @@
             }
         }
         res[@"addr"] = addr;
-        DLog(@"%@", res[@"addr"]);
+        //DLog(@"%@", res[@"addr"]);
         
         id lat = [result valueForKeyPath:@"geometry.location.lat"];
         id lng = [result valueForKeyPath:@"geometry.location.lng"];
@@ -369,7 +369,7 @@
                  
                  //DLog(@"%@", responseObject);
                  NSArray *res = [self placeResultsToArray:responseObject[@"results"]];
-                 DLog(@"%@", res);
+                 //DLog(@"%@", res);
                  
                  if (handler) {
                      handler(res, nil);
