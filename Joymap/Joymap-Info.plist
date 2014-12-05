@@ -27,7 +27,9 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
 	<key>UIBackgroundModes</key>
-	<array/>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>

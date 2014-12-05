@@ -34,37 +34,22 @@
     return _shared;
 }
 
-
-- (void)refresh;
++ (CLLocationManager *)manager
 {
-    [RegionMonitor.shared runSilently:YES];
-}
-
-- (void)refreshWithAlertIfCannot;
-{
-    [RegionMonitor.shared runSilently:NO];
-}
-
-+ (BOOL)deviceSupported
-{
-    return [CLLocationManager isMonitoringAvailableForClass:CLCircularRegion.class];
-}
-
-- (void)runSilently:(BOOL)silently
-{
-    DLog();
-
-    if ([DefaultsUtil bool:DEF_SET_NOTIFY_SPOT]) {
-        if (self.authorized) {
-            [RegionMonitor.shared start];
-        } else {
-            if (!silently) {
-                Alert(nil, NSLocalizedString(@"This application is not authorized to use location services.", nil));
+    static dispatch_once_t once;
+    static CLLocationManager *_manager;
+    
+    dispatch_once(&once, ^{
+        if (!_manager) {
+            _manager = CLLocationManager.new;
+            _manager.delegate = self.shared;
+            if ([Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
+                [_manager requestAlwaysAuthorization];
             }
         }
-    } else {
-        [RegionMonitor.shared stop];
-    }
+    });
+    
+    return _manager;
 }
 
 - (BOOL)authorized
@@ -80,41 +65,49 @@
     return NO;
 }
 
+- (BOOL)isMonitoringAvailable
+{
+    // ios7 or greater is only supported
+    return [CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]];
+}
+
+- (void)refresh;
+{
+    if ([DefaultsUtil bool:DEF_SET_NOTIFY_SPOT]) {
+        if (self.authorized && self.isMonitoringAvailable) {
+            [RegionMonitor.shared start];
+            return;
+        } else {
+            Alert(nil, NSLocalizedString(@"This application is not authorized or not available to use location services.", nil));
+        }
+    }
+    [RegionMonitor.shared stop];
+}
+
++ (BOOL)deviceSupported
+{
+    return [CLLocationManager isMonitoringAvailableForClass:CLCircularRegion.class];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
-        [RegionMonitor.shared runSilently:YES];
+        [RegionMonitor.shared refresh];
     }
-}
-
-+ (CLLocationManager *)manager
-{
-    static dispatch_once_t once;
-    static CLLocationManager *_manager;
-
-    dispatch_once(&once, ^{
-        if (!_manager) {
-            _manager = CLLocationManager.new;
-            _manager.delegate = self.shared;
-            if ([Version greaterThanOrEqualMajorVersion:8 minorVersion:0 patchVersion:0]) {
-                [_manager requestAlwaysAuthorization];
-            }
-        }
-    });
-
-    return _manager;
 }
 
 - (void)start
 {
     CLLocationManager *manager = RegionMonitor.manager;
-    
+
     DLog("monitoring %ld regions", (unsigned long)manager.monitoredRegions.count)
     
     manager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     manager.distanceFilter = kCLDistanceFilterNone;
     [manager startMonitoringSignificantLocationChanges];
     DLog(@"startMonitoringSignificantLocationChanges");
+    
+    // get current location immediately
     [manager startUpdatingLocation];
     DLog(@"startUpdatingLocation");
 }
@@ -137,6 +130,12 @@
 
 - (void)notify:(Pin *)pin
 {
+    if (!pin) {
+        return;
+    }
+    
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    
     UILocalNotification *n = UILocalNotification.new;
     n.alertBody = [NSString stringWithFormat:NSLocalizedString(@"close to a region", nil), pin.name];
     //n.applicationIconBadgeNumber = 1;
@@ -146,15 +145,58 @@
     [UIApplication.sharedApplication presentLocalNotificationNow:n];
 }
 
+- (void)didReceiveLocalNotification:(UILocalNotification *)notification;
+{
+    NSNumber *n = notification.userInfo[@"id"];
+
+    if (!n)
+        return;
+
+    Pin *pin = [DataSource pinByID:[n integerValue]];
+    
+    if (!pin)
+        return;
+
+    NSDictionary *options = @{
+                              kCRToastTextKey : [NSString stringWithFormat:@"%@ %@", pin.name, NSLocalizedString(@"is close", nil)],
+                              kCRToastFontKey : [UIFont boldSystemFontOfSize:17.],
+                              kCRToastNotificationTypeKey : @(CRToastTypeNavigationBar),
+                              kCRToastUnderStatusBarKey : @(YES),
+                              kCRToastTextAlignmentKey : @(NSTextAlignmentCenter),
+                              kCRToastBackgroundColorKey : UIColorFromRGB(0x0585ff),
+                              kCRToastAnimationInTypeKey : @(CRToastAnimationTypeSpring),
+                              kCRToastAnimationOutTypeKey : @(CRToastAnimationTypeGravity),
+                              kCRToastAnimationInDirectionKey : @(CRToastAnimationDirectionTop),
+                              kCRToastAnimationOutDirectionKey : @(CRToastAnimationDirectionBottom),
+                              kCRToastTimeIntervalKey : @(0.75),
+                              };
+    [CRToastManager showNotificationWithOptions:options
+                                completionBlock:^{
+                                    DLog(@"Completed");
+                                }];
+
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
+    static NSDate *_lastDate = nil;
+    
     @synchronized(self) {
-        [manager stopUpdatingLocation];
+        [manager stopUpdatingLocation];  // for immediately
         DLog(@"stopUpdatingLocation");
-        
-        // delete all
+
+        NSDate *now = NSDate.date;
+        if (_lastDate) {
+            NSTimeInterval delta = [now timeIntervalSinceDate:_lastDate];
+            if (abs(delta) < 2) {
+                return;
+            }
+        }
+        _lastDate = now;
+
+        // remove all regions
         for (CLRegion *region in manager.monitoredRegions) {
             [manager stopMonitoringForRegion:region];
         }
@@ -164,15 +206,20 @@
         CLLocationCoordinate2D co = [locations.lastObject coordinate];
         NSArray *pins = [DataSource pinsOrderByDistanceFrom:&co];
         NSInteger n = 0;
-        for (Pin *pin in [pins objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, REGION_MONITORING_MAX)]]) {
-            CLCircularRegion *region = [CLCircularRegion.alloc initWithCenter:pin.coordinate radius:REGION_MONITORING_RADIUS_METERS identifier:[NSString stringWithFormat:@"%ld", (unsigned  long)pin.id]];
+        for (Pin *pin in _.head(pins, REGION_MONITORING_MAX)) {
+            CLCircularRegion *region =
+                [CLCircularRegion.alloc initWithCenter:pin.coordinate
+                                                radius:REGION_MONITORING_RADIUS_METERS
+                                            identifier:[NSString stringWithFormat:@"%ld", (unsigned  long)pin.id]];
             [manager startMonitoringForRegion:region];
             ++n;
         }
         DLog(@"add %ld regions", (unsigned long)n);
-        
+
         for (CLRegion *region in manager.monitoredRegions) {
-            [manager requestStateForRegion:region];
+            [ProcUtil asyncMainqDelay:1 block:^{
+                [manager requestStateForRegion:region];
+            }];
         }
     }
 }
@@ -181,14 +228,16 @@
 {
     DLog();
     Pin *pin = [DataSource pinByID:region.identifier.integerValue];
-    if (pin) {
-        [self notify:pin];
-    }
+    [self notify:pin];
 }
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
 {
-    ELog(@"%@", error);
+#ifdef DEBUG
+    Pin *pin = [DataSource pinByID:region.identifier.integerValue];
+#endif
+    ELog(@"%@: %@", pin.name, error);
+    DLog(@"monitoring: %ld", manager.monitoredRegions.count);
 }
 
 #pragma mark - Debug

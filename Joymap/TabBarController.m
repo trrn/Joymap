@@ -8,6 +8,7 @@
 
 #import "TabBarController.h"
 
+#import "AppDelegate.h"
 #import "GoogleMapsViewController.h"
 #import "JdbManager.h"
 #import "UpdateCheckManager.h"
@@ -52,6 +53,12 @@
      selector:@selector(jdbUpdated)
      name:JDB_DOWNLOAD_SUCCEEDED
      object:nil];
+    
+    [NSNotificationCenter.defaultCenter
+     addObserver:self
+     selector:@selector(selectPinBy:)
+     name:TAP_NOTIFICATION_AREA
+     object:nil];
 }
 
 - (void)dealloc
@@ -71,6 +78,18 @@
     UINavigationController *nvc = self.viewControllers[0];
     GoogleMapsViewController *gvc = (GoogleMapsViewController *)nvc.topViewController;
     [gvc selectPin:pin];
+}
+
+- (void)selectPinBy:(NSNotification *)notification;
+{
+    if (notification && notification.userInfo && notification.userInfo[@"id"]) {
+        self.selectedIndex = 0; // map
+        UINavigationController *nvc = self.viewControllers[0];
+        if ([nvc.topViewController isMemberOfClass:GoogleMapsViewController.class]) {
+            GoogleMapsViewController *gvc = (GoogleMapsViewController *)nvc.topViewController;
+            [gvc selectPinByID:[notification.userInfo[@"id"] integerValue]];
+        }
+    }
 }
 
 - (void)jdbNeedUpdate

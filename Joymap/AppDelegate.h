@@ -10,6 +10,8 @@
 
 #import "SettingViewController.h"
 
+#define TAP_NOTIFICATION_AREA @"TAP_NOTIFICATION_AREA"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

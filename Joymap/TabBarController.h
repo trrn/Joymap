@@ -10,4 +10,5 @@
 
 @interface TabBarController : UITabBarController
 - (void)selectPin:(id)pin;
+- (void)selectPinBy:(NSNotification *)notification;
 @end

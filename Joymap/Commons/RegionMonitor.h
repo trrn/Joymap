@@ -13,7 +13,7 @@
 + (instancetype)shared;
 
 - (void)refresh;
-- (void)refreshWithAlertIfCannot;
+- (void)didReceiveLocalNotification:(UILocalNotification *)notification;
 
 + (BOOL)deviceSupported;
 + (void)debugOutRegions;

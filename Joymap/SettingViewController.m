@@ -78,7 +78,7 @@
     }
 
     NSString *str = [NSString stringWithFormat:@"%@ %@", [TimeUtil format:@"yyyy/MM/dd HH:mm:ss" date:date], NSLocalizedString(@"updated", nil)];
-    
+
     return str;
 }
 
@@ -88,7 +88,7 @@
 
     [DefaultsUtil setBool:_notifySwitch.on key:DEF_SET_NOTIFY_SPOT];
 
-    [RegionMonitor.shared refreshWithAlertIfCannot];
+    [RegionMonitor.shared refresh];
 }
 
 - (IBAction)tapTrafficSwitch:(id)sender {

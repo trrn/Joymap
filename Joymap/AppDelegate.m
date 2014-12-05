@@ -17,17 +17,28 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-
-    // background fetch
-    //[UIApplication.sharedApplication setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
-
     [self firstlaunched];
     
     [Theme setup];
     
     AFNetworkActivityIndicatorManager.sharedManager.enabled = YES;
     
+    // enable local notification for ios8
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings =
+            [UIUserNotificationSettings settingsForTypes:
+             UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil];
+        [application registerUserNotificationSettings:settings];
+    }
+
+    // launch by region monitoring and tap notification area
+    if([[launchOptions allKeys] containsObject:UIApplicationLaunchOptionsLocationKey]) {
+        UILocalNotification *notif = launchOptions[UIApplicationLaunchOptionsLocalNotificationKey];
+        if (notif) {
+            [self didTapNotificationArea:notif];
+        }
+    }
+
     [RegionMonitor.shared refresh];
 
     return YES;
@@ -91,6 +102,33 @@
         //DLog(@"### once");
         [UpdateCheckManager check];
         [DefaultsUtil setObj:now key:kLastLaunched];
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+
+    // foreground
+    if(application.applicationState == UIApplicationStateActive) {
+        [RegionMonitor.shared didReceiveLocalNotification:notification];
+        [[UIApplication sharedApplication] cancelLocalNotification:notification];
+    }
+
+    // background and tap notification area
+    if(application.applicationState == UIApplicationStateInactive) {
+        [self didTapNotificationArea:notification];
+    }
+}
+
+- (void)didTapNotificationArea:(UILocalNotification *)notification
+{
+    NSNumber *n = notification.userInfo[@"id"];
+    if (n) {
+        NSDictionary *info = @{@"id":n};
+        NSNotification *notif =
+        [NSNotification notificationWithName:TAP_NOTIFICATION_AREA
+                                      object:nil
+                                    userInfo:info];
+        [NSNotificationCenter.defaultCenter postNotification:notif];
     }
 }
 

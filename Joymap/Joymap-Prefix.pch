@@ -50,6 +50,7 @@
 #import <UIView+AutoLayout.h>
 #import <Underscore.h>
 #define _ Underscore
+#import <CRToast.h>
 
 #define JDB_FILE_NAME @"jdb.sqlite"
 

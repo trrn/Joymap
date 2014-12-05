@@ -14,5 +14,6 @@
 
 - (void)selectPin:(Pin *)pin;
 - (void)hideKeyboard;
+- (void)selectPinByID:(NSInteger)pinID;
 
 @end
