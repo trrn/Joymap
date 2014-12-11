@@ -133,3 +133,6 @@
 }
 
 @end
+
+@implementation UserEmailStubWorkaround
+@end

@@ -18,3 +18,7 @@
 @property (copy) void (^backgroundSessionCompletionHandler)();
 
 @end
+
+@interface UserEmailStubWorkaround : NSObject
+@property(nonatomic, readonly) NSString *userEmail;
+@end
