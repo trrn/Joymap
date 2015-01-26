@@ -33,4 +33,6 @@
 
 + (NSInteger)JDBInitialVersion;
 
++ (UIColor *)SearchedMarkerColor;
+
 @end

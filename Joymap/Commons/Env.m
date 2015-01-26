@@ -116,4 +116,37 @@
     return n ? [n integerValue] : 0;
 }
 
++ (UIColor *)SearchedMarkerColor;
+{
+    NSString *colorStr = self.dict[@"SearchedMarkerColor"];
+    
+    if ([StringUtil empty:colorStr]) {
+        return UIColor.blueColor;
+    } else if ([colorStr rangeOfString:@"red" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.redColor;
+    } else if ([colorStr rangeOfString:@"blue" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.blueColor;
+    } else if ([colorStr rangeOfString:@"yellow" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.yellowColor;
+    } else if ([colorStr rangeOfString:@"green" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.greenColor;
+    } else if ([colorStr rangeOfString:@"cyan" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.cyanColor;
+    } else if ([colorStr rangeOfString:@"magenta" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.magentaColor;
+    } else if ([colorStr rangeOfString:@"orange" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.orangeColor;
+    } else if ([colorStr rangeOfString:@"purple" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.purpleColor;
+    } else if ([colorStr rangeOfString:@"black" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.blackColor;
+    } else if ([colorStr rangeOfString:@"darkGray" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.darkGrayColor;
+    } else if ([colorStr rangeOfString:@"lightGray" options:NSCaseInsensitiveSearch].location != NSNotFound) {
+        return UIColor.lightGrayColor;
+    } else {
+        return UIColor.blueColor;
+    }
+}
+
 @end

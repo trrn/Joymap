@@ -93,7 +93,7 @@
             CLLocationCoordinate2D co;
             [GeoUtil strToCoordinate2D:resOrPin[@"latlng"] co:&co];
             _self.searchedMarker.position = co;
-            _self.searchedMarker.icon = [GMSMarker markerImageWithColor:UIColor.blueColor];
+            _self.searchedMarker.icon = [GMSMarker markerImageWithColor:Env.SearchedMarkerColor];
             _self.searchedMarker.title = resOrPin[@"title"] ?: resOrPin[@"addr"];
             _self.searchedMarker.map = _self.mapView;
             [_self focusMarker:_self.searchedMarker];
