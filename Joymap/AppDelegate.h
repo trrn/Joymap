@@ -22,3 +22,7 @@
 @interface UserEmailStubWorkaround : NSObject
 @property(nonatomic, readonly) NSString *userEmail;
 @end
+
+
+
+

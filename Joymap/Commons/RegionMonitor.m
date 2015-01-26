@@ -234,10 +234,10 @@
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error
 {
 #ifdef DEBUG
-    Pin *pin = [DataSource pinByID:region.identifier.integerValue];
+    //Pin *pin = [DataSource pinByID:region.identifier.integerValue];
 #endif
-    ELog(@"%@: %@", pin.name, error);
-    DLog(@"monitoring: %ld", manager.monitoredRegions.count);
+    //ELog(@"%@: %@", pin.name, error);
+    //DLog(@"monitoring: %ld", manager.monitoredRegions.count);
 }
 
 #pragma mark - Debug

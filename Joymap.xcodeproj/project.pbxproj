@@ -53,11 +53,6 @@
 		479BA37A180AB2B5008E640F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 479BA379180AB2B5008E640F /* AppDelegate.m */; };
 		479BA37D180AB2B5008E640F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479BA37B180AB2B5008E640F /* Main_iPhone.storyboard */; };
 		479BA388180AB2B5008E640F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 479BA387180AB2B5008E640F /* Images.xcassets */; };
-		479BA38F180AB2B5008E640F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 479BA38E180AB2B5008E640F /* XCTest.framework */; };
-		479BA390180AB2B5008E640F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 479BA369180AB2B5008E640F /* Foundation.framework */; };
-		479BA391180AB2B5008E640F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 479BA36D180AB2B5008E640F /* UIKit.framework */; };
-		479BA399180AB2B5008E640F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 479BA397180AB2B5008E640F /* InfoPlist.strings */; };
-		479BA39B180AB2B5008E640F /* JoymapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 479BA39A180AB2B5008E640F /* JoymapTests.m */; };
 		47BFBE01182509BD00A2D7D3 /* GeoSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFBE00182509BD00A2D7D3 /* GeoSearch.m */; };
 		47BFBE0418250B4600A2D7D3 /* GeoUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 47BFBE0318250B4600A2D7D3 /* GeoUtil.m */; };
 		47E68652180B87C80065B45B /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = 47E68651180B87C80065B45B /* Pin.m */; };
@@ -103,16 +98,6 @@
 		DCC4E36319BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */; };
 		DCDC321E19C2F36A00D4B46C /* JMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDC321D19C2F36A00D4B46C /* JMTableViewCell.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		479BA392180AB2B5008E640F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 479BA35E180AB2B5008E640F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 479BA365180AB2B5008E640F;
-			remoteInfo = Joymap;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4700907E180D8D56009FB810 /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
@@ -203,7 +188,6 @@
 		479BA379180AB2B5008E640F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		479BA37C180AB2B5008E640F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		479BA387180AB2B5008E640F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		479BA38D180AB2B5008E640F /* JoymapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JoymapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		479BA38E180AB2B5008E640F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		479BA396180AB2B5008E640F /* JoymapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JoymapTests-Info.plist"; sourceTree = "<group>"; };
 		479BA398180AB2B5008E640F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -303,16 +287,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		479BA38A180AB2B5008E640F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				479BA38F180AB2B5008E640F /* XCTest.framework in Frameworks */,
-				479BA391180AB2B5008E640F /* UIKit.framework in Frameworks */,
-				479BA390180AB2B5008E640F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -405,7 +379,6 @@
 			isa = PBXGroup;
 			children = (
 				479BA366180AB2B5008E640F /* Joymap.app */,
-				479BA38D180AB2B5008E640F /* JoymapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -636,24 +609,6 @@
 			productReference = 479BA366180AB2B5008E640F /* Joymap.app */;
 			productType = "com.apple.product-type.application";
 		};
-		479BA38C180AB2B5008E640F /* JoymapTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 479BA3A1180AB2B5008E640F /* Build configuration list for PBXNativeTarget "JoymapTests" */;
-			buildPhases = (
-				479BA389180AB2B5008E640F /* Sources */,
-				479BA38A180AB2B5008E640F /* Frameworks */,
-				479BA38B180AB2B5008E640F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				479BA393180AB2B5008E640F /* PBXTargetDependency */,
-			);
-			name = JoymapTests;
-			productName = JoymapTests;
-			productReference = 479BA38D180AB2B5008E640F /* JoymapTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -674,9 +629,6 @@
 							};
 						};
 					};
-					479BA38C180AB2B5008E640F = {
-						TestTargetID = 479BA365180AB2B5008E640F;
-					};
 				};
 			};
 			buildConfigurationList = 479BA361180AB2B5008E640F /* Build configuration list for PBXProject "Joymap" */;
@@ -694,7 +646,6 @@
 			projectRoot = "";
 			targets = (
 				479BA365180AB2B5008E640F /* Joymap */,
-				479BA38C180AB2B5008E640F /* JoymapTests */,
 			);
 		};
 /* End PBXProject section */
@@ -723,14 +674,6 @@
 				479BA374180AB2B5008E640F /* InfoPlist.strings in Resources */,
 				4700908D180ED79D009FB810 /* Env.plist in Resources */,
 				47F5C989185D5E4200399624 /* MGImageUtilities in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		479BA38B180AB2B5008E640F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				479BA399180AB2B5008E640F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -839,23 +782,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		479BA389180AB2B5008E640F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				479BA39B180AB2B5008E640F /* JoymapTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		479BA393180AB2B5008E640F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 479BA365180AB2B5008E640F /* Joymap */;
-			targetProxy = 479BA392180AB2B5008E640F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		47859036183103090087C55F /* Localizable.strings */ = {
@@ -1011,46 +938,6 @@
 			};
 			name = Release;
 		};
-		479BA3A2180AB2B5008E640F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Joymap.app/Joymap";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "JoymapTests/JoymapTests-Info.plist";
-				PRODUCT_NAME = JoymapTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		479BA3A3180AB2B5008E640F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Joymap.app/Joymap";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Joymap/Joymap-Prefix.pch";
-				INFOPLIST_FILE = "JoymapTests/JoymapTests-Info.plist";
-				PRODUCT_NAME = JoymapTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1068,15 +955,6 @@
 			buildConfigurations = (
 				479BA39F180AB2B5008E640F /* Debug */,
 				479BA3A0180AB2B5008E640F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		479BA3A1180AB2B5008E640F /* Build configuration list for PBXNativeTarget "JoymapTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				479BA3A2180AB2B5008E640F /* Debug */,
-				479BA3A3180AB2B5008E640F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
