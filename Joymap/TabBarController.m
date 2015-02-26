@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "GoogleMapsViewController.h"
 #import "JdbManager.h"
+#import "JdbDownloadController.h"
 #import "UpdateCheckManager.h"
 
 #import <NIKFontAwesomeIconFactory.h>
@@ -94,18 +95,45 @@
 
 - (void)jdbNeedUpdate
 {
+    NSDate *lastCanceled = [Setting lastJDBUpdateCanceledDate];
+
+    if (lastCanceled && ([NSDate.date timeIntervalSinceDate:lastCanceled] < (60*60*24))) {  // 1day
+        DLog(@"update alert skipped");
+        return;
+    }
+
     [ProcUtil asyncMainqDelay:1 block:^{
-        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
-        item.badgeValue = @"Update";
+        UIAlertView *alertView = [UIAlertView.alloc initWithTitle:nil
+                message:NSLocalizedString(@"Spot data has been updated. Do you want to update now?", nil)
+               delegate:self
+      cancelButtonTitle:NSLocalizedString(@"No", nil)
+      otherButtonTitles:NSLocalizedString(@"Yes", nil), nil];
+        [alertView show];
     }];
+}
+
+-(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch (buttonIndex) {
+        case 0: {   // No
+            [Setting setlastJDBUpdateCanceledDate:NSDate.date];
+            break;
+        }
+        case 1: {   // Yes
+            JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
+            [self presentViewController:vc animated:YES completion:^{
+                [Setting setlastJDBUpdateCanceledDate:nil];
+            }];
+            break;
+        }
+    }
 }
 
 - (void)jdbUpdated
 {
-    [ProcUtil asyncMainqDelay:1 block:^{
-        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
-        item.badgeValue = nil;
-    }];    
+//    [ProcUtil asyncMainqDelay:1 block:^{
+//        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
+//        item.badgeValue = nil;
+//    }];
 }
 
 @end

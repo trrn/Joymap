@@ -13,4 +13,7 @@
 + (NSInteger)lastSelectedSortIndexForList;
 + (void)setLastSelectedSortIndexForList:(NSInteger)index;
 
++ (NSDate *)lastJDBUpdateCanceledDate;
++ (void)setlastJDBUpdateCanceledDate:(NSDate *)date;
+
 @end

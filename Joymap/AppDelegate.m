@@ -98,8 +98,11 @@
     NSDate *last = [DefaultsUtil obj:kLastLaunched];
     NSDate *now = NSDate.date;
     
+    // TEST
+    //[DefaultsUtil setInt:297 key:@"JDB_VERSION"];
+
     if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {
-        //DLog(@"### once");
+        DLog(@"");
         [UpdateCheckManager check];
         [DefaultsUtil setObj:now key:kLastLaunched];
     }

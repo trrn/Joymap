@@ -12,7 +12,7 @@
 
 + (id)viewControllerWithID:(NSString *)identifier
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
     return [storyboard instantiateViewControllerWithIdentifier:identifier];
 }
 
