@@ -165,7 +165,6 @@
 		47859038183104020087C55F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		4785903A183104020087C55F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4785903B183104020087C55F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		4785903C183104020087C55F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4785903D183106080087C55F /* AdminHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminHelper.h; sourceTree = "<group>"; };
 		4785903E183106080087C55F /* AdminHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminHelper.m; sourceTree = "<group>"; };
 		478B5C54182616420068E30A /* LocationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationUtil.h; sourceTree = "<group>"; };
@@ -189,9 +188,6 @@
 		479BA37C180AB2B5008E640F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		479BA387180AB2B5008E640F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		479BA38E180AB2B5008E640F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		479BA396180AB2B5008E640F /* JoymapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JoymapTests-Info.plist"; sourceTree = "<group>"; };
-		479BA398180AB2B5008E640F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		479BA39A180AB2B5008E640F /* JoymapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JoymapTests.m; sourceTree = "<group>"; };
 		47BFBDFF182509BD00A2D7D3 /* GeoSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoSearch.h; sourceTree = "<group>"; };
 		47BFBE00182509BD00A2D7D3 /* GeoSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoSearch.m; sourceTree = "<group>"; };
 		47BFBE0218250B4600A2D7D3 /* GeoUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoUtil.h; sourceTree = "<group>"; };
@@ -368,7 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				479BA36F180AB2B5008E640F /* Joymap */,
-				479BA394180AB2B5008E640F /* JoymapTests */,
 				479BA368180AB2B5008E640F /* Frameworks */,
 				479BA367180AB2B5008E640F /* Products */,
 				830491D7EE934B3D9C92317E /* Pods.xcconfig */,
@@ -457,24 +452,6 @@
 				479BA377180AB2B5008E640F /* Joymap-Prefix.pch */,
 				4700908C180ED79D009FB810 /* Env.plist */,
 				DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		479BA394180AB2B5008E640F /* JoymapTests */ = {
-			isa = PBXGroup;
-			children = (
-				479BA39A180AB2B5008E640F /* JoymapTests.m */,
-				479BA395180AB2B5008E640F /* Supporting Files */,
-			);
-			path = JoymapTests;
-			sourceTree = "<group>";
-		};
-		479BA395180AB2B5008E640F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				479BA396180AB2B5008E640F /* JoymapTests-Info.plist */,
-				479BA397180AB2B5008E640F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -811,15 +788,6 @@
 				4708FDF4185CA3300003701F /* en */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		479BA397180AB2B5008E640F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				479BA398180AB2B5008E640F /* en */,
-				4785903C183104020087C55F /* ja */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -374,6 +374,22 @@ static NSDate *_date;
     }] firstObject];
 }
 
++ (NSDictionary *)jdbConfig;
+{
+    NSMutableDictionary *dict = @{}.mutableCopy;
+
+    [self select:nil exe:^(FMDatabase *db) {
+        return [db executeQueryWithFormat:@"select config_name, config_value from config"];
+    } map:^(FMResultSet *rs, id ret) {
+        NSString *key = [rs stringForColumn:@"config_name"];
+        NSData *value = [rs dataForColumn:@"config_value"];
+        dict[key] = value;
+        return YES;
+    }];
+
+    return dict;
+}
+
 #pragma mark - update
 
 + (void)saveLayoutItem:(Item *)item db:(FMDatabase *)db

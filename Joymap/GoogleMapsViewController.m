@@ -133,8 +133,24 @@
 
 - (void)moveCameraToAnyPin
 {
+    NSDictionary *config = DataSource.jdbConfig;
+    CLLocationCoordinate2D co = CLLocationCoordinate2DMake(35.681382, 139.766084);
+    float zoom = 13.0;
+
+    if (config[@"init_zoom"]) {
+        NSString *str = [NSString.alloc initWithData:config[@"init_zoom"] encoding:NSUTF8StringEncoding];
+        zoom = str.floatValue;
+    }
+
+    if (config[@"init_latitude"] && config[@"init_longitude"]) {
+        NSString *lat = [NSString.alloc initWithData:config[@"init_latitude"] encoding:NSUTF8StringEncoding];
+        NSString *lng = [NSString.alloc initWithData:config[@"init_longitude"] encoding:NSUTF8StringEncoding];
+        co.latitude = lat.doubleValue;
+        co.longitude = lng.doubleValue;
+    }
+
     GMSCameraUpdate *upd =
-    [GMSCameraUpdate setTarget:(CLLocationCoordinate2D){35.681382,139.766084} zoom:13];
+    [GMSCameraUpdate setTarget:co zoom:zoom];
     [_mapView animateWithCameraUpdate:upd];
 }
 

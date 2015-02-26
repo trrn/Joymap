@@ -31,6 +31,8 @@
 + (Item *)itemForSubtitle:(Pin *)pin;
 + (Item *)itemForThumbnail:(Pin *)pin;
 
++ (NSDictionary *)jdbConfig;
+
 + (id)save:(Pin *)pin;
 + (id)delete:(Pin *)pin;
 
