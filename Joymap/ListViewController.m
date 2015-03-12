@@ -13,6 +13,7 @@
 #import "PageViewController.h"
 #import "PinViewController.h"
 #import "JMTableViewCell.h"
+#import "TabBarController.h"
 
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
@@ -144,6 +145,7 @@
     if (!cell) {
         cell = [[JMTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    cell.listViewController = self;
 
     Pin *p = nil;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -153,6 +155,7 @@
     }
     [p thumbnail:cell];
     [p subtitle:cell];
+    cell.pin = p;
     cell.textLabel.text = [p name];
 
     return cell;
@@ -231,6 +234,10 @@
     preChangeIndex_ = didChangeIndex_;
     didChangeIndex_ = seg.selectedSegmentIndex;
 
+    pins_ = [DataSource pins];
+    [self.tableView reloadData];
+    return;
+    
     // sort by location
     if (didChangeIndex_ == 0) {
         [self pinsSortByLocation];
@@ -274,6 +281,13 @@
             }];
         }
     }];
+}
+
+- (void)tapCellButton:(Pin *)pin;
+{
+    TabBarController *tvc = (TabBarController *)self.tabBarController;
+    [self.navigationController popViewControllerAnimated:NO];
+    [tvc selectPin:pin];
 }
 
 #pragma mark - Admin Mode

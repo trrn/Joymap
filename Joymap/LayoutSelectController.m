@@ -38,7 +38,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger kind = indexPath.row + 1;
-    NSString *iD = [NSString stringWithFormat:@"Layout%02d", kind];
+    NSString *iD = [NSString stringWithFormat:@"Layout%02ld", (long)kind];
     LayoutViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:iD];
     vc.edit = YES;
     vc.layout = Layout.new;
@@ -61,7 +61,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell;
-    NSString *CellIdentifier = [NSString stringWithFormat:@"Layout%02d", indexPath.row + 1];
+    NSString *CellIdentifier = [NSString stringWithFormat:@"Layout%02ld", indexPath.row + 1];
 
     cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 

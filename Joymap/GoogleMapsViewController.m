@@ -163,7 +163,7 @@
         GMSMarker *m = GMSMarker.new;
         //m.icon = [GMSMarker markerImageWithColor:UIColor.magentaColor];
         m.position = CLLocationCoordinate2DMake(p.latitude, p.longitude);
-        DLog(@"%f, %f", p.latitude, p.longitude);
+        //DLog(@"%f, %f", p.latitude, p.longitude);
         //m.icon = [GMSMarker markerImageWithColor:UIColor.blueColor];
         m.title = p.name;
         m.map = _mapView;
