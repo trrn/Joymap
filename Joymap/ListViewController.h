@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class Pin;
+
 @interface ListViewController : BaseTableViewController
 - (void)reload;
+- (void)tapCellButton:(Pin *)pin;
 @end

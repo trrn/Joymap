@@ -196,6 +196,25 @@ static NSDate *_date;
     return (asc ? [self pinsOrderBy:@"_id"] : [self pinsOrderBy:@"_id desc"]);
 }
 
++ (NSArray *)tableInfo
+{
+    NSMutableArray *ret = @[].mutableCopy;
+
+    return [self select:ret exe:^(FMDatabase *db) {
+        return [db executeQuery:[NSString stringWithFormat:@"pragma table_info(pin)"]];
+    } map:^(FMResultSet *rs, id ret) {
+        NSMutableDictionary *dict = @{}.mutableCopy;
+        dict[@"cid"] = @([rs intForColumn:@"cid"]);
+        dict[@"name"] = [rs stringForColumn:@"name"];
+        dict[@"type"] = [rs stringForColumn:@"type"];
+        dict[@"notnull"] = @([rs intForColumn:@"notnull"]);
+        dict[@"dflt_value"] = @([rs intForColumn:@"dflt_value"]);
+        dict[@"pk"] = @([rs intForColumn:@"pk"]);
+        [ret addObject:dict];
+        return YES;
+    }];
+}
+
 + (NSArray *)pinsOrderByName:(BOOL)asc
 {
     return (asc ? [self pinsOrderBy:@"name"] : [self pinsOrderBy:@"name desc"]);
@@ -232,7 +251,21 @@ static NSDate *_date;
 
 + (NSArray *)pins
 {
-    return [self pinsOrderByID:YES];
+    NSArray *info = [self tableInfo];
+    
+    BOOL hasOrderNo = NO;
+    
+    for (NSDictionary *dict in info) {
+        NSString *col = dict[@"name"];
+        if ([col isEqualToString:@"orderno"]) {
+            hasOrderNo = YES;
+            break;
+        }
+    }
+    
+    DLog(@"hasOrderNo %d", hasOrderNo);
+    
+    return hasOrderNo ? [self pinsOrderBy:@"orderno"] : [self pinsOrderBy:@"_id"];
 }
 
 + (NSArray *)searchPinsByName:(NSString *)str;
@@ -260,7 +293,7 @@ static NSDate *_date;
     NSMutableArray *ret = @[].mutableCopy;
     
     return [self select:ret exe:^(FMDatabase *db) {
-        NSString *q = [NSString stringWithFormat:@"select p.* from pin p inner join layout l on p._id = l.pin_id inner join layout_item li on l._id = li.layout_id inner join item i on li.item_id = i._id and i.type = 1 and i.resource1 like '%%%@%%' group by p._id order by 1", str];
+        NSString *q = [NSString stringWithFormat:@"select p.* from pin p inner join layout l on p._id = l.pin_id inner join layout_item li on l._id = li.layout_id inner join item i on li.item_id = i._id where i.resource1 like '%%%@%%' and i.type = 1 or p.name like '%%%@%%' group by p._id order by 1", str, str];
         DLog(@"%@", q);
         return [db executeQuery:q];
     } map:^(FMResultSet *rs, id ret) {

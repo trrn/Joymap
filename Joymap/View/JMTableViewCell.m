@@ -10,7 +10,14 @@
 
 #import <UIImage+ProportionalFill.h>
 
+#import <NIKFontAwesomeIconFactory.h>
+#import <NIKFontAwesomeIconFactory+iOS.h>
+
 #define PAD 4
+
+@interface JMTableViewCell ()
+@property (nonatomic) UIButton *button;
+@end
 
 @implementation JMTableViewCell
 
@@ -27,6 +34,14 @@
 - (void)awakeFromNib
 {
     [Theme setTableViewCellSelectedBackgroundColor:self];
+
+    self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.button.frame = CGRectMake(250.0f, 8.0f, 40.0f, 40.0f);
+    NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
+    [self.button setImage:[factory createImageForIcon:NIKFontAwesomeIconMapMarker] forState:UIControlStateNormal];
+    [self.contentView addSubview:self.button];
+    self.button.tintColor = UIColorFromRGB(0xf76459);
+    [self.button addTarget:self action:@selector(tapButton) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)layoutSubviews {
@@ -39,6 +54,11 @@
     }
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.clipsToBounds = YES;
+}
+
+- (void)tapButton
+{
+    [_listViewController tapCellButton:self.pin];
 }
 
 @end

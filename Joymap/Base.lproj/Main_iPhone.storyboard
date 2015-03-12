@@ -262,7 +262,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="List" id="VRG-55-yDt">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="4OI-AM-G1M">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Pgm-QO-fyd" customClass="SegmentedControl">
+                            <segmentedControl key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Pgm-QO-fyd" customClass="SegmentedControl">
                                 <rect key="frame" x="117" y="5" width="86" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -295,7 +295,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1239" y="1236.5"/>
+            <point key="canvasLocation" x="1239" y="1233"/>
         </scene>
         <!--Layout01 View Controller-->
         <scene sceneID="BuA-D2-BwG">
@@ -1677,7 +1677,9 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <constraint firstAttribute="height" constant="46" id="fzu-r5-uPW"/>
                                     <constraint firstAttribute="width" constant="46" id="zfr-Bv-bax"/>
                                 </constraints>
-                                <state key="normal" title="Play"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="pushV3btn:" destination="dp4-OW-mPs" eventType="touchUpInside" id="M7W-pf-2PF"/>
                                 </connections>
