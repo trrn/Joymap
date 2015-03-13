@@ -38,16 +38,18 @@
     const CGFloat BUTTON_SIZE = 32.0f;
 
     self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.button.frame = CGRectMake(255.0f, 14.0f, BUTTON_SIZE, BUTTON_SIZE);
+    self.button.frame = CGRectMake(257.0f, 14.0f, BUTTON_SIZE, BUTTON_SIZE);
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     [self.button setImage:[factory createImageForIcon:NIKFontAwesomeIconMapMarker] forState:UIControlStateNormal];
     [self.contentView addSubview:self.button];
     self.button.tintColor = UIColorFromRGB(0xf76459);
     [self.button addTarget:self action:@selector(tapButton) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.button addTarget:self action:@selector(highlightBorder) forControlEvents:UIControlEventTouchDown];
+    [self.button addTarget:self action:@selector(unhighlightBorder) forControlEvents:UIControlEventTouchCancel|UIControlEventTouchUpOutside|UIControlEventTouchDragExit|UIControlEventTouchDragOutside];
+
     self.button.layer.cornerRadius = BUTTON_SIZE / 2;
     self.button.layer.borderColor = [UIColorFromRGB(0xf76459) CGColor];
-    self.button.layer.borderWidth = 1.5f;
+    self.button.layer.borderWidth = 1.2f;
 }
 
 - (void)layoutSubviews {
@@ -62,9 +64,20 @@
     self.imageView.clipsToBounds = YES;
 }
 
+- (void)highlightBorder
+{
+    self.button.layer.borderColor = [UIColorFromRGB(0xfee4e2) CGColor];
+}
+
 - (void)tapButton
 {
+    [self unhighlightBorder];
     [_listViewController tapCellButton:self.pin];
+}
+
+- (void)unhighlightBorder
+{
+    self.button.layer.borderColor = [UIColorFromRGB(0xf76459) CGColor];
 }
 
 @end
