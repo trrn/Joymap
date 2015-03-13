@@ -34,14 +34,20 @@
 - (void)awakeFromNib
 {
     [Theme setTableViewCellSelectedBackgroundColor:self];
+    
+    const CGFloat BUTTON_SIZE = 32.0f;
 
     self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.button.frame = CGRectMake(250.0f, 8.0f, 40.0f, 40.0f);
+    self.button.frame = CGRectMake(255.0f, 14.0f, BUTTON_SIZE, BUTTON_SIZE);
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     [self.button setImage:[factory createImageForIcon:NIKFontAwesomeIconMapMarker] forState:UIControlStateNormal];
     [self.contentView addSubview:self.button];
     self.button.tintColor = UIColorFromRGB(0xf76459);
     [self.button addTarget:self action:@selector(tapButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.button.layer.cornerRadius = BUTTON_SIZE / 2;
+    self.button.layer.borderColor = [UIColorFromRGB(0xf76459) CGColor];
+    self.button.layer.borderWidth = 1.5f;
 }
 
 - (void)layoutSubviews {
