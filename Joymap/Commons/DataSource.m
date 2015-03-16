@@ -424,7 +424,7 @@ static NSDate *_date;
     } map:^(FMResultSet *rs, id ret) {
         NSString *key = [rs stringForColumn:@"config_name"];
         NSData *value = [rs dataForColumn:@"config_value"];
-        dict[key] = value;
+        dict[key] = value ? value : NSNull.null;
         return YES;
     }];
 
