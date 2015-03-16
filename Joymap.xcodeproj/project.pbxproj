@@ -225,7 +225,6 @@
 		DC1813121A03AAB5009F5C14 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		DC1813151A03AAEA009F5C14 /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		DC1813161A03AAEA009F5C14 /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
-		DC20EB5719E4D6D5007E1F58 /* layout_test.jdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = layout_test.jdb; sourceTree = "<group>"; };
 		DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOnMap.h; sourceTree = "<group>"; };
 		DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOnMap.m; sourceTree = "<group>"; };
 		DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -315,7 +314,6 @@
 		470090C01817AAB3009FB810 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DC20EB5719E4D6D5007E1F58 /* layout_test.jdb */,
 				DCC4E36219BDBEBB00DFA8CE /* Download_on_iTunes_Badge_JP_110x40_1016@2x.png */,
 				DC2EDAA319BD8C3700EBC40A /* Download_on_iTunes_Badge_JP_110x40_1016.png */,
 				470090C51817AB9F009FB810 /* thumbnail_tv.png */,

@@ -58,23 +58,16 @@
     
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     segImages_ = @[
-       // 0 asc/desc,
-       // 1 asc image,
-       // 2 desc image,
-
-       @[@(YES),
-         [factory createImageForIcon:NIKFontAwesomeIconLocationArrow],
-         [factory createImageForIcon:NIKFontAwesomeIconLocationArrow],].mutableCopy,
-       @[@(YES),
+       // default order, asc image, desc image
+       @[@(NO),
          [factory createImageForIcon:NIKFontAwesomeIconSortAlphaAsc],
          [factory createImageForIcon:NIKFontAwesomeIconSortAlphaDesc],].mutableCopy,
-       @[@(YES),
+       @[@(NO),
          [factory createImageForIcon:NIKFontAwesomeIconSortNumericAsc],
          [factory createImageForIcon:NIKFontAwesomeIconSortNumericDesc],].mutableCopy,
                    ].mutableCopy;
     [self.segmentedControl setImage:segImages_[0][1] forSegmentAtIndex:0];
     [self.segmentedControl setImage:segImages_[1][1] forSegmentAtIndex:1];
-    [self.segmentedControl setImage:segImages_[2][1] forSegmentAtIndex:2];
     
     didChangeIndex_ = Setting.lastSelectedSortIndexForList;
 
@@ -234,16 +227,6 @@
     preChangeIndex_ = didChangeIndex_;
     didChangeIndex_ = seg.selectedSegmentIndex;
 
-    pins_ = [DataSource pins];
-    [self.tableView reloadData];
-    return;
-    
-    // sort by location
-    if (didChangeIndex_ == 0) {
-        [self pinsSortByLocation];
-        return;
-    }
-
     // change image
     BOOL asc = [segImages_[didChangeIndex_][0] boolValue];
     if (preChangeIndex_ == didChangeIndex_) {
@@ -255,10 +238,10 @@
 
     // sort pins
     switch (didChangeIndex_) {
-        case 1:
+        case 0:
             pins_ = [DataSource pinsOrderByName:asc];
             break;
-        case 2:
+        case 1:
             pins_ = [DataSource pinsOrderByID:asc];
             break;
     }

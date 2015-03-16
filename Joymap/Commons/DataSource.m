@@ -193,7 +193,11 @@ static NSDate *_date;
 
 + (NSArray *)pinsOrderByID:(BOOL)asc
 {
-    return (asc ? [self pinsOrderBy:@"_id"] : [self pinsOrderBy:@"_id desc"]);
+    if (self.hasOrderNo) {
+        return (asc ? [self pinsOrderBy:@"orderno"] : [self pinsOrderBy:@"orderno desc"]);
+    } else {
+        return (asc ? [self pinsOrderBy:@"_id"] : [self pinsOrderBy:@"_id desc"]);
+    }
 }
 
 + (NSArray *)tableInfo
@@ -249,19 +253,23 @@ static NSDate *_date;
     }];
 }
 
-+ (NSArray *)pins
++ (BOOL)hasOrderNo
 {
     NSArray *info = [self tableInfo];
-    
-    BOOL hasOrderNo = NO;
     
     for (NSDictionary *dict in info) {
         NSString *col = dict[@"name"];
         if ([col isEqualToString:@"orderno"]) {
-            hasOrderNo = YES;
+            return YES;
             break;
         }
     }
+    return NO;
+}
+
++ (NSArray *)pins
+{
+    BOOL hasOrderNo = self.hasOrderNo;
     
     DLog(@"hasOrderNo %d", hasOrderNo);
     
