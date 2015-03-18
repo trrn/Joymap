@@ -59,6 +59,9 @@
         [LocationUtil setup];
 
         [DefaultsUtil setBool:YES key:_key];
+        
+        Setting.lastSelectedSortIndexForList = 1;    // order no
+        Setting.lastSelectedSortOrderForList = YES;  // asc
     }
 }
 

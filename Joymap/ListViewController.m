@@ -32,6 +32,7 @@
     NSInteger didChangeIndex_;
     NSInteger preChangeIndex_;
     NSMutableArray *segImages_;
+    BOOL lastSelectedSortOrderIsAsc_;
 
     BOOL        editMode_;
     BOOL        isAdmin_;
@@ -58,19 +59,30 @@
     
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     segImages_ = @[
-       // default order, asc image, desc image
-       @[@(NO),
+       // default order(is asc), asc image, desc image
+       @[@(YES),
          [factory createImageForIcon:NIKFontAwesomeIconSortAlphaAsc],
          [factory createImageForIcon:NIKFontAwesomeIconSortAlphaDesc],].mutableCopy,
-       @[@(NO),
+       @[@(YES),
          [factory createImageForIcon:NIKFontAwesomeIconSortNumericAsc],
          [factory createImageForIcon:NIKFontAwesomeIconSortNumericDesc],].mutableCopy,
                    ].mutableCopy;
     [self.segmentedControl setImage:segImages_[0][1] forSegmentAtIndex:0];
     [self.segmentedControl setImage:segImages_[1][1] forSegmentAtIndex:1];
     
+//    DLog(@"======== index=%d asc=%d", Setting.lastSelectedSortIndexForList, Setting.lastSelectedSortOrderForList);
+    
     didChangeIndex_ = Setting.lastSelectedSortIndexForList;
+    self.segmentedControl.selectedSegmentIndex = Setting.lastSelectedSortIndexForList;
+    preChangeIndex_ = Setting.lastSelectedSortIndexForList;
+    lastSelectedSortOrderIsAsc_ = Setting.lastSelectedSortOrderForList;
+    segImages_[Setting.lastSelectedSortIndexForList][0] = @(Setting.lastSelectedSortOrderForList);
 
+    
+    BOOL asc = Setting.lastSelectedSortOrderForList;
+    [self.segmentedControl setImage:segImages_[Setting.lastSelectedSortIndexForList][asc ? 1 : 2] forSegmentAtIndex:Setting.lastSelectedSortIndexForList];
+
+    
     // hide search bar
     if (self.tableView.contentOffset.y == 0.0) {
         [self.tableView setContentOffset:CGPointMake(0.0, 44.0) animated:NO];
@@ -79,15 +91,17 @@
     [Theme setListSegmentedControl:_segmentedControl];
     
     //[self setAdminControl];
+    
+    [self loadPins:Setting.lastSelectedSortIndexForList asc:Setting.lastSelectedSortOrderForList];
 
-    [self reload];
+    lastReloaded_ = NSDate.date;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     if ([TimeUtil earlier:lastReloaded_ than:DataSource.updatedDate]) {
         [Pin clearCache];
-        [self reload];
+        [self loadPins:Setting.lastSelectedSortIndexForList asc:Setting.lastSelectedSortOrderForList];
     }
 
     // work around for deselect row, when swipe back. (probably ios7's bug)
@@ -101,6 +115,7 @@
     }
 }
 
+// un used ?
 - (void)reload
 {
     DLog();
@@ -235,9 +250,23 @@
     }
     [self.segmentedControl setImage:segImages_[didChangeIndex_][asc ? 1 : 2]
                   forSegmentAtIndex:didChangeIndex_];
+    
+    Setting.lastSelectedSortIndexForList = didChangeIndex_;
+    Setting.lastSelectedSortOrderForList = asc;
 
+//    DLog(@"********* index=%d asc=%d", Setting.lastSelectedSortIndexForList, Setting.lastSelectedSortOrderForList);
+    
     // sort pins
-    switch (didChangeIndex_) {
+    [self loadPins:didChangeIndex_ asc:asc];
+}
+
+- (void)loadPins:(NSInteger)index asc:(BOOL)asc
+{
+    
+//    DLog(@"++++++++++ index=%d asc=%d", index, asc);
+    
+    // sort pins
+    switch (index) {
         case 0:
             pins_ = [DataSource pinsOrderByName:asc];
             break;
@@ -245,7 +274,7 @@
             pins_ = [DataSource pinsOrderByID:asc];
             break;
     }
-
+    
     [self.tableView reloadData];
 }
 

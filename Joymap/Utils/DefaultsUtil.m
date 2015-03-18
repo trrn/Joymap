@@ -33,16 +33,19 @@
 + (void)setInt:(NSInteger)i key:(NSString *)key
 {
     [NSUserDefaults.standardUserDefaults setInteger:i forKey:key];
+    [NSUserDefaults.standardUserDefaults synchronize];
 }
 
 + (void)setObj:(id)obj key:(NSString *)key
 {
     [NSUserDefaults.standardUserDefaults setObject:obj forKey:key];
+    [NSUserDefaults.standardUserDefaults synchronize];
 }
 
 + (void)setBool:(BOOL)yn key:(NSString *)key
 {
     [NSUserDefaults.standardUserDefaults setBool:yn forKey:key];
+    [NSUserDefaults.standardUserDefaults synchronize];
 }
 
 @end
