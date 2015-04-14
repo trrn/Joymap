@@ -90,7 +90,8 @@
 
 + (NSString *)adUnitIDActionUrl;
 {
-    return self.dict[@"AdUnitIDAction"];
+    NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];
+    return [url URLByAppendingPathComponent:self.dict[@"AdUnitIDAction"]].absoluteString;
 }
 
 + (BOOL)enableEdit;

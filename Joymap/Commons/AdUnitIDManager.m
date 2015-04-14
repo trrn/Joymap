@@ -12,6 +12,8 @@
 
 + (void)check
 {
+    DLog(@"Env.adUnitIDActionUrl %@", Env.adUnitIDActionUrl);
+    
     if ([StringUtil empty:Env.adUnitIDActionUrl] ||
         [StringUtil empty:Env.user] ||
         [StringUtil empty:Env.map]) {
