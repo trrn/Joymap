@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  Joymap
 //
-//  Created by gli on 2013/10/13.
+//  Created by faith on 2013/10/13.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 
 #import "RegionMonitor.h"
 #import "UpdateCheckManager.h"
+#import "AdUnitIDManager.h"
 
 #import <AFNetworkActivityIndicatorManager.h>
 
@@ -101,12 +102,11 @@
     NSDate *last = [DefaultsUtil obj:kLastLaunched];
     NSDate *now = NSDate.date;
     
-    // TEST
-    //[DefaultsUtil setInt:297 key:@"JDB_VERSION"];
-
-    if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {
+//    if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {    TODO
+    if (!last || (last && ([now timeIntervalSinceDate:last] > (1*6)))) {
         DLog(@"");
         [UpdateCheckManager check];
+        [AdUnitIDManager check];
         [DefaultsUtil setObj:now key:kLastLaunched];
     }
 }
