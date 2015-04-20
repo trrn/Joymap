@@ -13,8 +13,10 @@
 @import GoogleMobileAds;
 
 @interface AdContainerViewController () <GADBannerViewDelegate>
-@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
+@property (weak, nonatomic) IBOutlet UIView *bannerViewPlaceholder;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerViewHeightConstraint;
+
+@property (nonatomic) GADBannerView *bannerView;
 @end
 
 @implementation AdContainerViewController
@@ -23,8 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.bannerView.rootViewController = self;
-    self.bannerView.delegate = self;
     [self hideBanner];
     [self updateUnitID];
 
@@ -44,15 +44,35 @@
 - (void)updateUnitID
 {
     NSString *unitID = [DefaultsUtil str:AD_UNIT_ID];
+    DLog(@"%@", unitID);
+    
     if ([StringUtil present:unitID]) {
         [ProcUtil asyncMainq:^{
-            [self showBanner];
+            if (self.bannerView) {
+                if ([self.bannerView.adUnitID isEqualToString:unitID]) {
+                    DLog(@"not changed");
+                    return;
+                }
+                self.bannerView.delegate = nil;
+            }
+            DLog(@"re-create");
+            self.bannerView = [GADBannerView autoLayoutView];
+            [self.bannerViewPlaceholder addSubview:self.bannerView];
+            [self.bannerView centerInView:self.bannerViewPlaceholder];
+            [self.bannerView constrainToSize:CGSizeMake(320.0,50.0)];
             self.bannerView.adUnitID = unitID;
+            self.bannerView.rootViewController = self;
             [self.bannerView loadRequest:[GADRequest request]];
+            [self showBanner];
         }];
     } else {
+        DLog(@"hide");
         [ProcUtil asyncMainq:^{
             [self hideBanner];
+            if (self.bannerView) {
+                self.bannerView.delegate = nil;
+                self.bannerView = nil;
+            }
         }];
     }
 }

@@ -215,7 +215,7 @@
                                     <segue destination="8YX-ce-x5E" kind="embed" id="uhc-Sh-0PD"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ej-yV-n5w" customClass="GADBannerView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ej-yV-n5w">
                                 <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -235,8 +235,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bannerView" destination="2ej-yV-n5w" id="wUY-rx-4ve"/>
                         <outlet property="bannerViewHeightConstraint" destination="ohB-6I-8zz" id="na1-Hc-MnR"/>
+                        <outlet property="bannerViewPlaceholder" destination="2ej-yV-n5w" id="egX-X9-Rpy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5d-et-CWy" userLabel="First Responder" sceneMemberID="firstResponder"/>
