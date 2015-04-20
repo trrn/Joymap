@@ -101,9 +101,8 @@
 
     NSDate *last = [DefaultsUtil obj:kLastLaunched];
     NSDate *now = NSDate.date;
-    
-//    if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {    TODO
-    if (!last || (last && ([now timeIntervalSinceDate:last] > (1*6)))) {
+
+    if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {
         DLog(@"");
         [UpdateCheckManager check];
         [AdUnitIDManager check];
