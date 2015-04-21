@@ -73,6 +73,9 @@
 		47F5C98A185D5E4200399624 /* SVProgressHUD in Resources */ = {isa = PBXBuildFile; fileRef = 47F5C982185D5E4200399624 /* SVProgressHUD */; };
 		6855C3F163E541B18B9035E1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608E473FACF44AEFB45A07AB /* libPods.a */; };
 		DC022EB81ADCF82D000FA7B0 /* AdUnitIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DC022EB71ADCF82D000FA7B0 /* AdUnitIDManager.m */; };
+		DC0E04B51AE5E77E002BA435 /* AppleMapsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0E04B41AE5E77E002BA435 /* AppleMapsViewController.m */; };
+		DC0E04B71AE5F367002BA435 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0E04B61AE5F367002BA435 /* MapKit.framework */; };
+		DC0E04BA1AE5F9BC002BA435 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DC0E04B91AE5F9BC002BA435 /* MapAnnotation.m */; };
 		DC1813131A03AAB5009F5C14 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813101A03AAB5009F5C14 /* BaseTableViewController.m */; };
 		DC1813141A03AAB5009F5C14 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813121A03AAB5009F5C14 /* BaseViewController.m */; };
 		DC1813171A03AAEA009F5C14 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813161A03AAEA009F5C14 /* Setting.m */; };
@@ -223,6 +226,11 @@
 		830491D7EE934B3D9C92317E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		DC022EB61ADCF82D000FA7B0 /* AdUnitIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdUnitIDManager.h; sourceTree = "<group>"; };
 		DC022EB71ADCF82D000FA7B0 /* AdUnitIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdUnitIDManager.m; sourceTree = "<group>"; };
+		DC0E04B31AE5E77E002BA435 /* AppleMapsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppleMapsViewController.h; sourceTree = "<group>"; };
+		DC0E04B41AE5E77E002BA435 /* AppleMapsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppleMapsViewController.m; sourceTree = "<group>"; };
+		DC0E04B61AE5F367002BA435 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DC0E04B81AE5F9BC002BA435 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		DC0E04B91AE5F9BC002BA435 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 		DC18130F1A03AAB5009F5C14 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		DC1813101A03AAB5009F5C14 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		DC1813111A03AAB5009F5C14 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -275,6 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0E04B71AE5F367002BA435 /* MapKit.framework in Frameworks */,
 				DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */,
 				DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */,
 				DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */,
@@ -384,6 +393,7 @@
 		479BA368180AB2B5008E640F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC0E04B61AE5F367002BA435 /* MapKit.framework */,
 				DCE5ED4D19BECBA500728527 /* QuartzCore.framework */,
 				DCE5ED4B19BEB38C00728527 /* CFNetwork.framework */,
 				DC3C295519BEA54E00D189E3 /* SystemConfiguration.framework */,
@@ -418,6 +428,8 @@
 				477E949A180ACB56005E83D4 /* HomeViewController.m */,
 				470090B218157362009FB810 /* ListViewController.h */,
 				470090B318157362009FB810 /* ListViewController.m */,
+				DC0E04B31AE5E77E002BA435 /* AppleMapsViewController.h */,
+				DC0E04B41AE5E77E002BA435 /* AppleMapsViewController.m */,
 				477E949C180ACB6B005E83D4 /* GoogleMapsViewController.h */,
 				477E949D180ACB6B005E83D4 /* GoogleMapsViewController.m */,
 				4700909118100C1E009FB810 /* GoogleStreetViewController.h */,
@@ -567,6 +579,8 @@
 				DCDC321D19C2F36A00D4B46C /* JMTableViewCell.m */,
 				DC6684991A02520400AA0011 /* Theme.h */,
 				DC66849A1A02520400AA0011 /* Theme.m */,
+				DC0E04B81AE5F9BC002BA435 /* MapAnnotation.h */,
+				DC0E04B91AE5F9BC002BA435 /* MapAnnotation.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -729,11 +743,13 @@
 				470090C91817B608009FB810 /* Cache.m in Sources */,
 				477E9498180AC793005E83D4 /* TabBarController.m in Sources */,
 				DC9177D219BD8FF50087DDF8 /* NSURL+Sekken.m in Sources */,
+				DC0E04BA1AE5F9BC002BA435 /* MapAnnotation.m in Sources */,
 				DC9177D419BD8FF50087DDF8 /* UIStoryboard+Sekken.m in Sources */,
 				479BA376180AB2B5008E640F /* main.m in Sources */,
 				47859027182FE3B10087C55F /* Layout02ViewController.m in Sources */,
 				47E68665180B8FD10065B45B /* Jdb.m in Sources */,
 				DC9177D119BD8FF50087DDF8 /* NSString+Sekken.m in Sources */,
+				DC0E04B51AE5E77E002BA435 /* AppleMapsViewController.m in Sources */,
 				470090B418157362009FB810 /* ListViewController.m in Sources */,
 				47009096181227B7009FB810 /* TimeUtil.m in Sources */,
 				477E949B180ACB56005E83D4 /* HomeViewController.m in Sources */,

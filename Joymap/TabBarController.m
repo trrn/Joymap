@@ -27,6 +27,13 @@
 {
     [super awakeFromNib];
 
+    self.viewControllers = @[
+//         [UIStoryboard viewControllerWithID:@"GoogleMapsNavigationController"],
+         [UIStoryboard viewControllerWithID:@"AppleMapsNavigationController"],
+         [UIStoryboard viewControllerWithID:@"ListNavigationController"],
+         [UIStoryboard viewControllerWithID:@"SettingNavigationController"],
+                             ];
+    
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     UITabBarItem *item;
     

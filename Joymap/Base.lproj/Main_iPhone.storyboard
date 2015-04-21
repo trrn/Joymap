@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1167" y="-189"/>
+            <point key="canvasLocation" x="1167" y="-977"/>
         </scene>
         <!--Home-->
         <scene sceneID="DOY-5f-sAC">
@@ -58,12 +58,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Du-vG-crb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="-189"/>
+            <point key="canvasLocation" x="653" y="-977"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="44n-Vc-4eA">
+            <objects>
+                <navigationController storyboardIdentifier="AppleMapsNavigationController" id="PsD-Tq-qwi" customClass="NavigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7wP-LU-hTW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Dqo-QD-fs9" kind="relationship" relationship="rootViewController" id="Dwf-0D-P3l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xar-79-1Z6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="-135"/>
         </scene>
         <!--Map-->
         <scene sceneID="WPp-wD-5CN">
             <objects>
-                <navigationController definesPresentationContext="YES" id="i12-zE-Geq" customClass="NavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GoogleMapsNavigationController" definesPresentationContext="YES" id="i12-zE-Geq" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" id="373-9k-IYo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="m9f-DI-bbW">
                         <autoresizingMask key="autoresizingMask"/>
@@ -89,11 +105,11 @@
                         <viewControllerLayoutGuide type="bottom" id="DrV-2l-sYe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gMD-aP-Fq6" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="64" width="320" height="425"/>
+                        <rect key="frame" x="0.0" y="44" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" alpha="0.84999999999999998" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xo1-c2-SZl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="425"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="WhQ-uR-sh1" detailTextLabel="gJv-XA-5LV" style="IBUITableViewCellStyleSubtitle" id="YzI-6Z-1vD">
@@ -187,11 +203,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="i12-zE-Geq" kind="relationship" relationship="viewControllers" id="CjR-gL-x7Q"/>
-                        <segue destination="B09-3j-kIt" kind="relationship" relationship="viewControllers" id="UQi-WJ-e36"/>
-                        <segue destination="Kam-zc-QPT" kind="relationship" relationship="viewControllers" id="5V7-QR-9mg"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNP-y4-bzi" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,7 +257,7 @@
         <!--List-->
         <scene sceneID="UhG-Xt-V3k">
             <objects>
-                <navigationController definesPresentationContext="YES" id="B09-3j-kIt" customClass="NavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ListNavigationController" definesPresentationContext="YES" id="B09-3j-kIt" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" id="Td1-sw-mKP"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XXI-eo-3LC">
                         <autoresizingMask key="autoresizingMask"/>
@@ -264,7 +275,7 @@
             <objects>
                 <tableViewController id="asH-WZ-mFX" customClass="ListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Eu4-Ic-4mT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="j1B-3p-oD1">
@@ -471,7 +482,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uDB-UD-tm7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681" y="-189"/>
+            <point key="canvasLocation" x="1681" y="-977"/>
         </scene>
         <!--Google Street View Controller-->
         <scene sceneID="kUw-Hn-gE5">
@@ -496,12 +507,12 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fI-dP-eyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2171" y="-189"/>
+            <point key="canvasLocation" x="2171" y="-977"/>
         </scene>
         <!--Setting-->
         <scene sceneID="ywY-WG-fkt">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Kam-zc-QPT" customClass="NavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingNavigationController" definesPresentationContext="YES" id="Kam-zc-QPT" customClass="NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Setting" id="o56-fX-YkX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GRM-XN-d2r">
                         <autoresizingMask key="autoresizingMask"/>
@@ -519,7 +530,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
             <objects>
                 <tableViewController id="VXi-eg-pPq" customClass="SettingViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="zHY-IY-asU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -632,7 +643,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
             <objects>
                 <tableViewController storyboardIdentifier="PinViewController" hidesBottomBarWhenPushed="YES" id="sxK-dP-V1P" customClass="PinViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="IPd-rD-gW9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -791,7 +802,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="4f9-HU-yHE" customClass="LayoutSelectController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="trv-Bo-HnP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="10" id="hms-6L-gMY">
@@ -1194,7 +1205,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <viewControllerLayoutGuide type="bottom" id="8JL-lc-hF3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8ch-9q-41g" customClass="GMSMapView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1422,11 +1433,11 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                         <viewControllerLayoutGuide type="bottom" id="9i4-13-dTQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="139-Wm-ZUu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pageControl opaque="NO" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="nUC-ig-N1V">
-                                <rect key="frame" x="0.0" y="498" width="320" height="20"/>
+                                <rect key="frame" x="0.0" y="548" width="320" height="20"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="W9C-Oc-eNR"/>
@@ -1802,6 +1813,61 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84f-Oz-UaV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2702" y="1236"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="HOo-4H-Ndn">
+            <objects>
+                <viewController title="Map" id="Dqo-QD-fs9" customClass="AppleMapsViewController" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="GX5-FE-o2V">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <connections>
+                            <outlet property="delegate" destination="Dqo-QD-fs9" id="aoS-RA-6Iw"/>
+                        </connections>
+                    </mapView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="" id="pOS-YJ-zSJ"/>
+                    <navigationItem key="navigationItem" id="ozm-tx-71K">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="Fke-PI-qnY">
+                            <rect key="frame" x="8" y="6" width="304" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="IaL-b3-CAW">
+                                    <rect key="frame" x="0.0" y="-5" width="304" height="44"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="Dqo-QD-fs9" id="xnF-y9-JkE"/>
+                                    </connections>
+                                </searchBar>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNn-PY-qtC">
+                                    <rect key="frame" x="20" y="6" width="264" height="21"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="IaL-b3-CAW" firstAttribute="leading" secondItem="Fke-PI-qnY" secondAttribute="leading" id="27O-9D-3Qk"/>
+                                <constraint firstItem="FNn-PY-qtC" firstAttribute="centerX" secondItem="IaL-b3-CAW" secondAttribute="centerX" id="A3s-7H-8fd"/>
+                                <constraint firstItem="FNn-PY-qtC" firstAttribute="leading" secondItem="Fke-PI-qnY" secondAttribute="leading" constant="20" symbolic="YES" id="FYm-l4-afF"/>
+                                <constraint firstItem="IaL-b3-CAW" firstAttribute="centerX" secondItem="Fke-PI-qnY" secondAttribute="centerX" id="LuG-At-Tlb"/>
+                                <constraint firstItem="FNn-PY-qtC" firstAttribute="centerY" secondItem="Fke-PI-qnY" secondAttribute="centerY" id="XN7-FC-vdA"/>
+                                <constraint firstItem="IaL-b3-CAW" firstAttribute="top" secondItem="Fke-PI-qnY" secondAttribute="top" constant="-5" id="mEN-RV-jcJ"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addPinTitleLabel" destination="FNn-PY-qtC" id="Z8O-ve-Ux6"/>
+                        <outlet property="mapView" destination="GX5-FE-o2V" id="0O4-sq-b6u"/>
+                        <outlet property="searchBar" destination="IaL-b3-CAW" id="XKG-dK-k9m"/>
+                        <outlet property="searchBarBaseView" destination="Fke-PI-qnY" id="je2-mw-llA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vGX-gh-RnC" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1167" y="-135"/>
         </scene>
     </scenes>
     <resources>
