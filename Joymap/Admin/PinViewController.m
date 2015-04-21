@@ -2,7 +2,7 @@
 //  PinViewController.m
 //  Joymap
 //
-//  Created by gli on 2013/11/14.
+//  Created by faith on 2013/11/14.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 

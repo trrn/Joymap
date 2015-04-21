@@ -2,7 +2,7 @@
 //  GMSMapViewController.h
 //  Joymap
 //
-//  Created by gli on 2013/11/16.
+//  Created by faith on 2013/11/16.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 

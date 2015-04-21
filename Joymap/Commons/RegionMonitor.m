@@ -2,7 +2,7 @@
 //  RegionMonitor.m
 //  Joymap
 //
-//  Created by gli on 2013/11/10.
+//  Created by faith on 2013/11/10.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 

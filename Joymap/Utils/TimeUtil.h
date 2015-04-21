@@ -2,7 +2,7 @@
 //  TimeUtil.h
 //  Joymap
 //
-//  Created by gli on 2013/10/15.
+//  Created by faith on 2013/10/15.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 

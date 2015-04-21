@@ -2,7 +2,7 @@
 //  AdminHelper.h
 //  Joymap
 //
-//  Created by gli on 2013/11/11.
+//  Created by faith on 2013/11/11.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  ProcUtil.m
 //  Joymap
 //
-//  Created by gli on 2013/10/19.
+//  Created by faith on 2013/10/19.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 

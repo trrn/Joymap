@@ -2,7 +2,7 @@
 //  Layout03ViewController.m
 //  Joymap
 //
-//  Created by gli on 2013/10/26.
+//  Created by faith on 2013/10/26.
 //  Copyright (c) 2013年 sekken. All rights reserved.
 //
 
