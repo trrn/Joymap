@@ -12,10 +12,13 @@
 
 #import <AFNetworking.h>
 
+@import MapKit;
+
 @interface GeoUtil : AFHTTPRequestOperationManager
 + (BOOL)strToCoordinate2D:(NSString *)str co:(CLLocationCoordinate2D *)co;
 + (NSString *)coordinate2DtoStr:(CLLocationCoordinate2D)co;
 + (void)searchByStr:(NSString *)str handler:(void(^)(NSArray *, NSError *))handler;
++ (void)searchByStrAtApple:(NSString *)str region:(MKCoordinateRegion)region handler:(void(^)(NSArray *, NSError *))handler;
 
 #pragma mark - Google
 

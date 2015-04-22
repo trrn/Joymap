@@ -148,7 +148,7 @@
         co.latitude = lat.doubleValue;
         co.longitude = lng.doubleValue;
     }
-
+    
     GMSCameraUpdate *upd =
     [GMSCameraUpdate setTarget:co zoom:zoom];
     [_mapView animateWithCameraUpdate:upd];
