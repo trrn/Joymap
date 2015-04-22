@@ -60,8 +60,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell"];
-    //[Theme setTableViewCellBackgroundColor:cell];
+    static NSString *identifier = @"SearchResultCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (!cell) {
+        cell = [UITableViewCell.alloc initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    
     [Theme setTableViewCellSelectedBackgroundColor:cell];
 
     if (indexPath.section == 0) {
@@ -129,22 +135,33 @@
     }
 }
 
+- (void)reloadWithNo:(NSInteger)no results:(NSArray *)results error:(NSError *)error;
+{
+    if (error) {
+        ELog(@"%@", error);
+        return;
+    }
+    @synchronized(self) {
+        if (no < seq_)      // newer request was sent
+            return;
+        _resultGeo = results ?: @[];
+        //            [ProcUtil asyncMainq:^{
+        [self.tableView reloadData];
+        //            }];
+    }
+}
+
 - (void)searchAddr:(NSString *)str no:(NSInteger)no
 {
-    [GeoUtil searchByStr:str handler:^(NSArray *results, NSError *error) {
-        if (error) {
-            ELog(@"%@", error);
-            return;
-        }
-        @synchronized(self) {
-            if (no < seq_)      // newer request was sent
-                return;
-            _resultGeo = results ?: @[];
-//            [ProcUtil asyncMainq:^{
-                [self.tableView reloadData];
-//            }];
-        }
-    }];
+    if ([StringUtil present:Env.googleBrowserApiKey]) {
+        [GeoUtil searchByStr:str handler:^(NSArray *results, NSError *error) {
+            [self reloadWithNo:no results:results error:error];
+        }];
+    } else {
+        [GeoUtil searchByStrAtApple:str region:_region handler:^(NSArray *results, NSError *error) {
+            [self reloadWithNo:no results:results error:error];
+        }];
+    }
 }
 
 - (void)searchByStr:(NSString *)str

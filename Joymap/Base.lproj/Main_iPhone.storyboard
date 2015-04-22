@@ -1840,29 +1840,20 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                         <outlet property="delegate" destination="Dqo-QD-fs9" id="xnF-y9-JkE"/>
                                     </connections>
                                 </searchBar>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNn-PY-qtC">
-                                    <rect key="frame" x="20" y="6" width="264" height="21"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="IaL-b3-CAW" firstAttribute="leading" secondItem="Fke-PI-qnY" secondAttribute="leading" id="27O-9D-3Qk"/>
-                                <constraint firstItem="FNn-PY-qtC" firstAttribute="centerX" secondItem="IaL-b3-CAW" secondAttribute="centerX" id="A3s-7H-8fd"/>
-                                <constraint firstItem="FNn-PY-qtC" firstAttribute="leading" secondItem="Fke-PI-qnY" secondAttribute="leading" constant="20" symbolic="YES" id="FYm-l4-afF"/>
                                 <constraint firstItem="IaL-b3-CAW" firstAttribute="centerX" secondItem="Fke-PI-qnY" secondAttribute="centerX" id="LuG-At-Tlb"/>
-                                <constraint firstItem="FNn-PY-qtC" firstAttribute="centerY" secondItem="Fke-PI-qnY" secondAttribute="centerY" id="XN7-FC-vdA"/>
                                 <constraint firstItem="IaL-b3-CAW" firstAttribute="top" secondItem="Fke-PI-qnY" secondAttribute="top" constant="-5" id="mEN-RV-jcJ"/>
                             </constraints>
                         </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="addPinTitleLabel" destination="FNn-PY-qtC" id="Z8O-ve-Ux6"/>
                         <outlet property="mapView" destination="GX5-FE-o2V" id="0O4-sq-b6u"/>
                         <outlet property="searchBar" destination="IaL-b3-CAW" id="XKG-dK-k9m"/>
                         <outlet property="searchBarBaseView" destination="Fke-PI-qnY" id="je2-mw-llA"/>
+                        <segue destination="NeK-mD-kup" kind="push" identifier="showDetailFromAppleMap" id="udi-rq-epX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vGX-gh-RnC" sceneMemberID="firstResponder"/>
@@ -1880,5 +1871,6 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="QVW-JR-xIg"/>
+        <segue reference="udi-rq-epX"/>
     </inferredMetricsTieBreakers>
 </document>

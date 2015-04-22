@@ -27,13 +27,20 @@
 {
     [super awakeFromNib];
 
-    self.viewControllers = @[
-//         [UIStoryboard viewControllerWithID:@"GoogleMapsNavigationController"],
-         [UIStoryboard viewControllerWithID:@"AppleMapsNavigationController"],
-         [UIStoryboard viewControllerWithID:@"ListNavigationController"],
-         [UIStoryboard viewControllerWithID:@"SettingNavigationController"],
-                             ];
-    
+    if ([StringUtil present:Env.googleMapsApiKey]) {
+        self.viewControllers = @[
+             [UIStoryboard viewControllerWithID:@"GoogleMapsNavigationController"],
+             [UIStoryboard viewControllerWithID:@"ListNavigationController"],
+             [UIStoryboard viewControllerWithID:@"SettingNavigationController"],
+             ];
+    } else {
+        self.viewControllers = @[
+             [UIStoryboard viewControllerWithID:@"AppleMapsNavigationController"],
+             [UIStoryboard viewControllerWithID:@"ListNavigationController"],
+             [UIStoryboard viewControllerWithID:@"SettingNavigationController"],
+             ];
+    }
+
     NIKFontAwesomeIconFactory *factory = [NIKFontAwesomeIconFactory tabBarItemIconFactory];
     UITabBarItem *item;
     

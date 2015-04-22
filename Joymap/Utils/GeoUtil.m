@@ -8,6 +8,8 @@
 
 #import "GeoUtil.h"
 
+@import MapKit;
+
 #define GEOLANG @"GEOUTIL_GOOGLE_GEO_LANG"
 
 @implementation GeoUtil
@@ -380,6 +382,35 @@
                      handler(nil, error);
                  };
              }];
+}
+
++ (void)searchByStrAtApple:(NSString *)str region:(MKCoordinateRegion)region handler:(void(^)(NSArray *, NSError *))handler;
+{
+    NSMutableArray *resArray = @[].mutableCopy;
+
+    MKLocalSearchRequest *request = MKLocalSearchRequest.new;
+    request.naturalLanguageQuery = str;
+    request.region = region;
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError
+                                         *error) {
+        if (error) {
+            if (handler) {
+                handler(nil, error);
+            }
+            return;
+        }
+        
+        for (MKMapItem *item in response.mapItems) {
+            NSMutableDictionary *res = @{}.mutableCopy;
+            res[@"title"] = item.name;
+            res[@"latlng"] = [GeoUtil coordinate2DtoStr:item.placemark.coordinate];
+            [resArray addObject:res];
+        }
+        if (handler) {
+            handler(resArray, nil);
+        }
+    }];
 }
 
 @end
