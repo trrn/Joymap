@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface JdbDownloadController : BaseViewController
-
+@property (nonatomic) NSURLRequest *request;
 @end

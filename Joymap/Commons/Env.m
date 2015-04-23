@@ -62,6 +62,13 @@
     return req;
 }
 
++ (NSURLRequest *)downloadRequestWithHash:(NSString *)hash;
+{
+    NSMutableURLRequest *req = [self.downloadURL.path stringByAppendingString:hash].URL.request.mutableCopy;
+    req.HTTPMethod = @"POST";
+    return req;
+}
+
 + (NSURL *)downloadURL
 {
     NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];

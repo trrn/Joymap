@@ -57,5 +57,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.hoge.$(PRODUCT_NAME:rfc1034identifier)</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>$(PRODUCT_NAME:rfc1034identifier)</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>

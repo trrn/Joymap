@@ -43,7 +43,7 @@
 
     __weak typeof(self) _self = self;
 
-    [JdbManager.shared downloadWithProgress:^(double progress) {
+    [JdbManager.shared downloadWithRequest:_request progress:^(double progress) {
         if (progress == 1.0)  // work around for when download starts
             return;
         [ProcUtil asyncMainq:^{

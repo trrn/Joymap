@@ -16,8 +16,9 @@
 
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
+#import <IACDelegate.h>
 
-@interface TabBarController ()
+@interface TabBarController () <IACDelegate>
 
 @end
 
@@ -134,6 +135,7 @@
         }
         case 1: {   // Yes
             JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
+            vc.request = Env.downloadRequest;
             [self presentViewController:vc animated:YES completion:^{
                 [Setting setlastJDBUpdateCanceledDate:nil];
             }];
@@ -148,6 +150,26 @@
 //        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
 //        item.badgeValue = nil;
 //    }];
+}
+
+#pragma mark - Inter-App Communication Delegate
+
+- (BOOL)supportsIACAction:(NSString *)action
+{
+    NSArray *supportedActions = @[@"download_jdb"];
+    return [supportedActions containsObject:action];
+}
+
+- (void)performIACAction:(NSString *)action
+              parameters:(NSDictionary *)parameters
+               onSuccess:(IACSuccessBlock)success
+               onFailure:(IACFailureBlock)failure
+{
+    if ([action isEqualToString:@"download_jdb"]) {
+        JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
+        vc.request = Env.downloadRequest;
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 @end
