@@ -16,9 +16,8 @@
 
 #import <NIKFontAwesomeIconFactory.h>
 #import <NIKFontAwesomeIconFactory+iOS.h>
-#import <IACDelegate.h>
 
-@interface TabBarController () <IACDelegate>
+@interface TabBarController ()
 
 @end
 
@@ -27,6 +26,9 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+
+    AppDelegate *appDelegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    appDelegate.openURLHandler = self;
 
     if ([StringUtil present:Env.googleMapsApiKey]) {
         self.viewControllers = @[
@@ -152,22 +154,14 @@
 //    }];
 }
 
-#pragma mark - Inter-App Communication Delegate
+#pragma mark - open url handler
 
-- (BOOL)supportsIACAction:(NSString *)action
+- (void)handleURL:(NSURL *)url
 {
-    NSArray *supportedActions = @[@"download_jdb"];
-    return [supportedActions containsObject:action];
-}
-
-- (void)performIACAction:(NSString *)action
-              parameters:(NSDictionary *)parameters
-               onSuccess:(IACSuccessBlock)success
-               onFailure:(IACFailureBlock)failure
-{
-    if ([action isEqualToString:@"download_jdb"]) {
+    DLog(@"%@", url);
+    if ([url.host isEqualToString:@"download_jdb"] && [StringUtil present:url.query]) {
         JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
-        vc.request = Env.downloadRequest;
+        vc.request = [Env downloadRequestWithHash:url.query];
         [self presentViewController:vc animated:YES completion:nil];
     }
 }

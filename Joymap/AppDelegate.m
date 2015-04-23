@@ -13,7 +13,6 @@
 #import "AdUnitIDManager.h"
 
 #import <AFNetworkActivityIndicatorManager.h>
-#import <IACManager.h>
 
 @implementation AppDelegate
 
@@ -43,9 +42,6 @@
 
     [RegionMonitor.shared refresh];
 
-    
-    IACManager.sharedManager.callbackURLScheme = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleName"];
-    
     return YES;
 }
 
@@ -144,8 +140,8 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 
-    if ([url.scheme isEqualToString:[NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleName"]]) {
-        return [IACManager.sharedManager handleOpenURL:url];
+    if ([url.scheme caseInsensitiveCompare:@"joymap"] == NSOrderedSame) {
+        [self.openURLHandler handleURL:url];
     }
 
     DLog(@"failed calling openURL");

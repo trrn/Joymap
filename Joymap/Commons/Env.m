@@ -64,8 +64,8 @@
 
 + (NSURLRequest *)downloadRequestWithHash:(NSString *)hash;
 {
-    NSMutableURLRequest *req = [self.downloadURL.path stringByAppendingString:hash].URL.request.mutableCopy;
-    req.HTTPMethod = @"POST";
+    NSMutableURLRequest *req = [self.downloadByHashURL.absoluteString stringByAppendingPathComponent:hash].URL.request.mutableCopy;
+    req.HTTPMethod = @"GET";
     return req;
 }
 
@@ -73,6 +73,12 @@
 {
     NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];
     return [url URLByAppendingPathComponent:self.dict[@"DownloadAction"]];
+}
+
++ (NSURL *)downloadByHashURL
+{
+    NSURL *url = [NSURL URLWithString:self.dict[@"ManagerURL"]];
+    return [url URLByAppendingPathComponent:self.dict[@"DownloadByHashAction"]];
 }
 
 + (NSString *)jdbIdHeader

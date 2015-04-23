@@ -13,7 +13,6 @@ pod 'UIImage-Categories',       '~>0.0'
 pod 'Underscore.m',             '~>0.2'
 pod 'CRToast',                  '~>0.0'
 pod 'Google-Mobile-Ads-SDK',    '~>7.1'
-pod 'InterAppCommunication',    '~>1.0'
 
 post_install do | installer |
   require 'fileutils'
