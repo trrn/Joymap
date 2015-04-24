@@ -42,6 +42,7 @@
     _canceled = NO;
 
     NSProgress* p = nil;
+    DLog(@"%@", request);
     NSURLSessionDownloadTask *task =
     [self downloadTaskWithRequest:request
               progress:&p

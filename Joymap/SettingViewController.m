@@ -68,6 +68,9 @@
         vc.selectHandler = ^(NSInteger idx) {
             [GoogleMapsHelper setMapType:idx];
         };
+    } else if ([[segue identifier] isEqualToString:@"JdbDownloadController"]) {
+        JdbDownloadController *vc = segue.destinationViewController;
+        vc.request = Env.downloadRequest;
     }
 }
 
