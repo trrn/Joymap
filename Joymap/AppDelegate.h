@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "SettingViewController.h"
+#import "TabBarController.h"
 
 #define TAP_NOTIFICATION_AREA @"TAP_NOTIFICATION_AREA"
 
@@ -16,7 +17,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (copy) void (^backgroundSessionCompletionHandler)();
-
+@property (nonatomic) id<OpenURLHandler> openURLHandler;
 @end
 
 @interface UserEmailStubWorkaround : NSObject

@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TabBarController : UITabBarController
+@protocol OpenURLHandler
+@required
+- (void)handleURL:(NSURL *)url;
+@end
+
+@interface TabBarController : UITabBarController <OpenURLHandler>
 - (void)selectPin:(id)pin;
 - (void)selectPinBy:(NSNotification *)notification;
 @end

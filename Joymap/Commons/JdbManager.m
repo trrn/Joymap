@@ -36,14 +36,15 @@
     return _shared;
 }
 
-- (void)downloadWithProgress:(void(^)(double))progress finished:(void(^)())finished;
+- (void)downloadWithRequest:(NSURLRequest *)request progress:(void(^)(double))progress finished:(void(^)())finished;
 {
     _progressHandler = progress;
     _canceled = NO;
 
     NSProgress* p = nil;
+    DLog(@"%@", request);
     NSURLSessionDownloadTask *task =
-    [self downloadTaskWithRequest:Env.downloadRequest
+    [self downloadTaskWithRequest:request
               progress:&p
            destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
                @try {

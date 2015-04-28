@@ -28,6 +28,7 @@
 
 
 + (NSURLRequest *)downloadRequest;
++ (NSURLRequest *)downloadRequestWithHash:(NSString *)hash;
 
 + (NSString *)user;
 + (NSString *)map;

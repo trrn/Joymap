@@ -27,6 +27,9 @@
 {
     [super awakeFromNib];
 
+    AppDelegate *appDelegate = (AppDelegate *)UIApplication.sharedApplication.delegate;
+    appDelegate.openURLHandler = self;
+
     if ([StringUtil present:Env.googleMapsApiKey]) {
         self.viewControllers = @[
              [UIStoryboard viewControllerWithID:@"GoogleMapsNavigationController"],
@@ -134,6 +137,7 @@
         }
         case 1: {   // Yes
             JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
+            vc.request = Env.downloadRequest;
             [self presentViewController:vc animated:YES completion:^{
                 [Setting setlastJDBUpdateCanceledDate:nil];
             }];
@@ -148,6 +152,18 @@
 //        UITabBarItem *item = [self.tabBar.items objectAtIndex:2];
 //        item.badgeValue = nil;
 //    }];
+}
+
+#pragma mark - open url handler
+
+- (void)handleURL:(NSURL *)url
+{
+    DLog(@"%@", url);
+    if ([url.host isEqualToString:@"download_jdb"] && [StringUtil present:url.query]) {
+        JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
+        vc.request = [Env downloadRequestWithHash:url.query];
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 @end

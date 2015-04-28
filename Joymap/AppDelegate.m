@@ -137,6 +137,17 @@
     }
 }
 
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+
+    if ([url.scheme caseInsensitiveCompare:@"joymap"] == NSOrderedSame) {
+        [self.openURLHandler handleURL:url];
+    }
+
+    DLog(@"failed calling openURL");
+    return NO;
+}
+
 @end
 
 @implementation UserEmailStubWorkaround
