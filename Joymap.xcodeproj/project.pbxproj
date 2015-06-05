@@ -80,6 +80,10 @@
 		DC1813141A03AAB5009F5C14 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813121A03AAB5009F5C14 /* BaseViewController.m */; };
 		DC1813171A03AAEA009F5C14 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = DC1813161A03AAEA009F5C14 /* Setting.m */; };
 		DC20D3EE1ADCEA4A0069CFB9 /* AdContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC20D3ED1ADCEA4A0069CFB9 /* AdContainerViewController.m */; };
+		DC25E16E1B21A7BF00050914 /* libAMoAd_3_0_8.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC25E16C1B21A7BF00050914 /* libAMoAd_3_0_8.a */; };
+		DC25E16F1B21A7BF00050914 /* libAMoAdGmAdapter_1_0_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC25E16D1B21A7BF00050914 /* libAMoAdGmAdapter_1_0_2.a */; };
+		DC25E1711B21A8A800050914 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC25E1701B21A8A800050914 /* ImageIO.framework */; };
+		DC25E1731B21A8B400050914 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC25E1721B21A8B400050914 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DC2EDA9319B966DD00EBC40A /* SearchOnMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */; };
 		DC2EDA9519B9BE7A00EBC40A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */; };
 		DC2EDAA219BD567200EBC40A /* Layout06ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC2EDAA119BD567200EBC40A /* Layout06ViewController.m */; };
@@ -239,6 +243,10 @@
 		DC1813161A03AAEA009F5C14 /* Setting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Setting.m; sourceTree = "<group>"; };
 		DC20D3EC1ADCEA4A0069CFB9 /* AdContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdContainerViewController.h; sourceTree = "<group>"; };
 		DC20D3ED1ADCEA4A0069CFB9 /* AdContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdContainerViewController.m; sourceTree = "<group>"; };
+		DC25E16C1B21A7BF00050914 /* libAMoAd_3_0_8.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAMoAd_3_0_8.a; sourceTree = "<group>"; };
+		DC25E16D1B21A7BF00050914 /* libAMoAdGmAdapter_1_0_2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAMoAdGmAdapter_1_0_2.a; sourceTree = "<group>"; };
+		DC25E1701B21A8A800050914 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		DC25E1721B21A8B400050914 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		DC2EDA9119B966DD00EBC40A /* SearchOnMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOnMap.h; sourceTree = "<group>"; };
 		DC2EDA9219B966DD00EBC40A /* SearchOnMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOnMap.m; sourceTree = "<group>"; };
 		DC2EDA9419B9BE7A00EBC40A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
@@ -283,11 +291,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC25E1731B21A8B400050914 /* AdSupport.framework in Frameworks */,
+				DC25E1711B21A8A800050914 /* ImageIO.framework in Frameworks */,
 				DC0E04B71AE5F367002BA435 /* MapKit.framework in Frameworks */,
 				DC3C295419BEA4E200D189E3 /* Security.framework in Frameworks */,
 				DC3C295719BEACE000D189E3 /* SystemConfiguration.framework in Frameworks */,
 				DCAE1EBD19B6EA23002B006E /* CoreMedia.framework in Frameworks */,
 				DCAE1EBB19B6EA1A002B006E /* MediaPlayer.framework in Frameworks */,
+				DC25E16E1B21A7BF00050914 /* libAMoAd_3_0_8.a in Frameworks */,
+				DC25E16F1B21A7BF00050914 /* libAMoAdGmAdapter_1_0_2.a in Frameworks */,
 				DCAE1EB919B5BBCF002B006E /* AVFoundation.framework in Frameworks */,
 				479BA36C180AB2B5008E640F /* CoreGraphics.framework in Frameworks */,
 				479BA36E180AB2B5008E640F /* UIKit.framework in Frameworks */,
@@ -375,6 +387,7 @@
 		479BA35D180AB2B5008E640F = {
 			isa = PBXGroup;
 			children = (
+				DC25E1691B21A7BF00050914 /* Ad */,
 				479BA36F180AB2B5008E640F /* Joymap */,
 				479BA368180AB2B5008E640F /* Frameworks */,
 				479BA367180AB2B5008E640F /* Products */,
@@ -393,6 +406,8 @@
 		479BA368180AB2B5008E640F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC25E1721B21A8B400050914 /* AdSupport.framework */,
+				DC25E1701B21A8A800050914 /* ImageIO.framework */,
 				DC0E04B61AE5F367002BA435 /* MapKit.framework */,
 				DCE5ED4D19BECBA500728527 /* QuartzCore.framework */,
 				DCE5ED4B19BEB38C00728527 /* CFNetwork.framework */,
@@ -551,6 +566,23 @@
 				DC1813121A03AAB5009F5C14 /* BaseViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		DC25E1691B21A7BF00050914 /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				DC25E16A1B21A7BF00050914 /* AMoAd */,
+			);
+			path = Ad;
+			sourceTree = "<group>";
+		};
+		DC25E16A1B21A7BF00050914 /* AMoAd */ = {
+			isa = PBXGroup;
+			children = (
+				DC25E16C1B21A7BF00050914 /* libAMoAd_3_0_8.a */,
+				DC25E16D1B21A7BF00050914 /* libAMoAdGmAdapter_1_0_2.a */,
+			);
+			path = AMoAd;
 			sourceTree = "<group>";
 		};
 		DC9177C319BD8FF50087DDF8 /* Category */ = {
@@ -908,6 +940,10 @@
 				INFOPLIST_FILE = "Joymap/Joymap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ad/AMoAd",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = Joymap;
 				PROVISIONING_PROFILE = "";
@@ -935,6 +971,10 @@
 				INFOPLIST_FILE = "Joymap/Joymap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Ad/AMoAd",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Joymap;
 				PROVISIONING_PROFILE = "";
