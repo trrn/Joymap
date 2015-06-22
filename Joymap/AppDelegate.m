@@ -10,7 +10,7 @@
 
 #import "RegionMonitor.h"
 #import "UpdateCheckManager.h"
-#import "AdUnitIDManager.h"
+#import "AppWebStatus.h"
 
 #import <AFNetworkActivityIndicatorManager.h>
 
@@ -103,9 +103,10 @@
     NSDate *now = NSDate.date;
 
     if (!last || (last && ([now timeIntervalSinceDate:last] > (10*60)))) {
+//    if (!last || (last && ([now timeIntervalSinceDate:last] > (10)))) {
         DLog(@"");
         [UpdateCheckManager check];
-        [AdUnitIDManager check];
+        [AppWebStatus.shared sync];
         [DefaultsUtil setObj:now key:kLastLaunched];
     }
 }
