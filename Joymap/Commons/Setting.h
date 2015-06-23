@@ -17,6 +17,6 @@
 + (void)setLastSelectedSortOrderForList:(BOOL)asc;
 
 + (NSDate *)lastJDBUpdateCanceledDate;
-+ (void)setlastJDBUpdateCanceledDate:(NSDate *)date;
++ (void)setLastJDBUpdateCanceledDate:(NSDate *)date;
 
 @end

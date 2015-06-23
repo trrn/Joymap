@@ -1,47 +1,64 @@
 //
-//  AdUnitIDManager.m
+//  AppWebStatus.m
 //  Joymap
 //
-//  Created by Faith on 2015/04/14.
+//  Created by Faith on 2015/06/11.
 //  Copyright (c) 2015年 sekken. All rights reserved.
 //
 
-#import "AdUnitIDManager.h"
+#import "AppWebStatus.h"
 
-@implementation AdUnitIDManager
+#define APP_WEB_STATUS @"APP_WEB_STATUS"
 
-+ (void)check
+@implementation AppWebStatus
+
++ (instancetype)shared;
+{
+    static AppWebStatus *_shared = nil;
+    static dispatch_once_t once;
+
+    dispatch_once(&once, ^{
+        if (!_shared) {
+            _shared = self.new;
+            _shared.status = [DefaultsUtil obj:APP_WEB_STATUS];
+        }
+    });
+
+    return _shared;
+}
+
+- (void)sync
 {
     DLog(@"Env.adUnitIDActionUrl %@", Env.adUnitIDActionUrl);
-    
+
     if ([StringUtil empty:Env.adUnitIDActionUrl] ||
         [StringUtil empty:Env.user] ||
         [StringUtil empty:Env.map]) {
         return;
     }
-    
+
     AFHTTPRequestOperationManager* manager = [AFHTTPRequestOperationManager manager];
     [manager POST:Env.adUnitIDActionUrl
        parameters:@{@"user":Env.user, @"map":Env.map}
           success:^(AFHTTPRequestOperation *operation, id responseObject) {
               Log(@"response: %@", responseObject);
-              
-              NSString *unitID = @"";
-              if ([StringUtil present:responseObject[@"unit_id"]]) {
-                  unitID = responseObject[@"unit_id"];
+
+              if ([responseObject isKindOfClass:NSDictionary.class]) {
+                  [DefaultsUtil setObj:responseObject key:APP_WEB_STATUS];
+                  self.status = responseObject;
               }
-              [DefaultsUtil setObj:unitID key:AD_UNIT_ID];
+
               [self notify];
 
-                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
               DLog(@"Error: %@", error);
           }];
 }
 
-+ (void)notify
+- (void)notify
 {
     NSNotification *notification =
-    [NSNotification notificationWithName:AD_UNIT_ID_NEED_UPDATE
+    [NSNotification notificationWithName:APP_WEB_STATUS_UPDATED
                                   object:nil
                                 userInfo:nil];
     [NSNotificationCenter.defaultCenter postNotification:notification];

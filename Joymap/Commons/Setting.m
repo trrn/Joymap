@@ -39,7 +39,7 @@
     return [DefaultsUtil obj:LAST_JDB_UPDATE_CANCELED_DATE];
 }
 
-+ (void)setlastJDBUpdateCanceledDate:(NSDate *)date;
++ (void)setLastJDBUpdateCanceledDate:(NSDate *)date;
 {
     [DefaultsUtil setObj:date key:LAST_JDB_UPDATE_CANCELED_DATE];
 }

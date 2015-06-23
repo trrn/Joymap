@@ -132,14 +132,14 @@
 -(void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch (buttonIndex) {
         case 0: {   // No
-            [Setting setlastJDBUpdateCanceledDate:NSDate.date];
+            [Setting setLastJDBUpdateCanceledDate:NSDate.date];
             break;
         }
         case 1: {   // Yes
             JdbDownloadController *vc = [UIStoryboard viewControllerWithID:@"JdbDownloadController"];
             vc.request = Env.downloadRequest;
             [self presentViewController:vc animated:YES completion:^{
-                [Setting setlastJDBUpdateCanceledDate:nil];
+                [Setting setLastJDBUpdateCanceledDate:nil];
             }];
             break;
         }
