@@ -50,11 +50,16 @@
     DLog(@"%@", status);
 
     if (!status || !status[@"plan_id"]) {
-        [self hide];
+        [self removeBanner];
         return;
     }
 
     NSInteger plan_id = [status[@"plan_id"] integerValue];
+
+    if ([StringUtil empty:status[@"unit_id"]]) {
+        [self removeBanner];
+        return;
+    }
 
     if (plan_id > 0) {  // charging
         [self showAdmob:status[@"unit_id"]];
@@ -119,7 +124,7 @@
     }];
 }
 
-- (void)hide
+- (void)removeBanner
 {
     [ProcUtil asyncMainq:^{
         [self hideBanner];
